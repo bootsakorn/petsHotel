@@ -22,3 +22,4 @@
 [![function.png](https://i.postimg.cc/jd8RBNv0/function.png)](https://postimg.cc/kBbrb2kf)
 
 ## [ตัวอย่าง UI](https://www.draw.io/?lightbox=1&highlight=CCE5FF&edit=_blank&layers=1&nav=1#G1pgc8Xh6hFUE5G0rbYaLvB7esVmpEhBwj)
+[![Capture.png](https://i.postimg.cc/d3L51bM9/Capture.png)](https://postimg.cc/tnG3vm41)
