@@ -1,6 +1,14 @@
-# petsHotel
 
-## Personas
+# **Pets Hotel** 
+> ร้านรับฝากสัตว์เลี้ยงที่มีขนาดเล็ก รับฝากสุนัข แมว และกระต่าย 
+
+>มีบริการเสริมคือ อาบน้ำและตัดขนสัตว์ และสามารถเลือกยี่ห้ออาหารที่ต้องการได้เวลาที่สัตว์เลี้ยงของท่านมาพักอยู่ที่ร้านของเรา มีอาหารยี่ห้อต่างๆมากมายที่มีคุณภาพและมีประโยชน์ต่อสัตว์เลี้ยงของท่าน
+
+>ขณะที่สัตว์เลี้ยงของท่านพักอยู่กับเราจะมีพนักงานคอยดูแลความสะอาดห้องพักของสัตว์เลี้ยงของท่านอย่างสม่ำเสมอและยังมีบริการพาสัตว์เลี้ยงของท่านไปเดินเล่นบริเวณรอบที่พักอีกด้วย 
+
+## **Personas**
+
+ผู้ที่จะใช้งานโปรแกรมของเราคือ เจ้าของร้าน พนักงานหน้าร้าน พนักงานดูแลทั่วไป และพนักงานอาบน้ำและตัดขน
 
 ![Image](https://lh3.googleusercontent.com/J6ZDUhwel_Utb1w2ZCzaBlK8fEG5q1InrMC9LX1fkT79p88-L5ywPK9JaINeeeUEGWFcf_MxPIYbvwKJja5pR1mqf_uq98-Izo-ijODBVKK26Rg2LBchq2AwXwviSV0bL_Qn_lURAjaZk_-9jYz5TSBoh6FxqgIHZ-RbNIS2EGUcl0VRtAxMio8WuUPikZfJinn0Sr5s1uRh-YLQIf1Okj9KENICHtQzq1onKuNIpBAIValnRHyg23qi59y79QEG9FrRPa-Kc3-lvP6QL0cDPtCsa6wF63pakiv3nkn5Wno1sJ06Z_z5b3JPekT3aLN8KKhKluF1AjjPen39rPR-MdAPW_vqsa3JsQqoDNHIuQCuuXN4cWJeMxhmPqD-Q68ppCveGr3R6hl0V63X83Ds8STult6qy-2XkWfCAYOsc5nVXmkEqLq_pJlcivam9ABXHIGLWhFS_XVP6w9LbyEkFFcfqIvqXP2cwxxquGvd2qJpZvjfckpNR45nY64W6P9Ckjq9uammdHAjjD16c3HQkDf5uSu6br_B6dOZgXLGJhTm7Pts3cRjJsEbj5meyGNG-M3eB8_Ybx9qz1U5UUfwlt59zVuhNt0QW8yaL3Gic4l-FOJIVwgWX2eNVc18WMOOnO_-iJy53OrQeR3nt3o0mzFTLKaNKkTDhYSHsVed-fatuOvSFE6jTtiz=w689-h974-no)
 
@@ -13,3 +21,5 @@
 ![Image](https://lh3.googleusercontent.com/g4A95CFDbdHRDT9AOPeAjSaR01ADJkHTTQUScILrxzJHIpz_zdB9UKAP3SYvMXL8MidTNfTEC1bQDzPa2yJt-8VGQBjjbDlubLorQMMRz2qSiX3uP_5KtRUbXE11abcp7-avrlbxBm94dhgpzLN6mIuMy7Z1Dg1CuKlVCDWxThCZsrf6JHr25ciZLLDiqtHed-gLk7UV_sVyd2DPZrPdJWyM5NZrisJYj68KG9EHdtr7suLtGlCEeF-30s53zPKTfk1hTTzIhYEPJB9ws6BriGG0UmITQNrONn1qRGIJ_hqP8v6tdVKQmUGrY3ynm5MS_LG9dTctSvtS8DUlLu6XSmfZ8wRtYwG5NNsdP53TKlNVfJNHlAyU6TAEx4XnTe6j7JzsTePz3j231St3Y7Pt7lD4W9mwFkjDNguazFEqVsWEgfrsPcRndPWy7IynC9ctNZ-oJ-NR07gCWBzlGQ3JwQWXqpqWZiA3FuwQfkfuZ1JvWAgDu4VxWbAsZCFviL3TipYxvzJu6onSziKUIKS4Zt9uVMOt2x0gMFiS_jMXImKLM_4oYgZd9_QW7UlxqCkeWxCdyAosS-j48aXoe7s3AHwUwt7L-nGdb_KW4rRQgw2BmC9RfLf1IGdK5bNl6wJtl4mAIpMDNyatF4JNe7DTWHKGdYassYDgTf293FTvSjIlvyVfHw3_DDLE=w689-h974-no)
 
 ![Image](https://lh3.googleusercontent.com/ubKIaWn5BsluNKIU_2uhRMczME1cQkCsADBKeOLS6yPbxvpOF1IrpZI0TvBWhVHzSQ-bYn5y3nhCYBqgjgQv8KtW_sDiFfm3J0uMIak4cKJDtBRgfB4xlo4_kkPU7KIse43bTAdFUdX4Jt8A98ZKR7XdwuYIF3FD-BehsAW0FPdZsBJCiqZoAYTqBcV6pdvE0r2SPXspUovSPUohUVnxl2JAaljXjsxrHRJXfMPWUhDvWZ4wAucqNfxKMByyJy-xtUpeUS_i_uyCUiK2w-5grKGrHIkeP0ldqqwVMbiJa52RTztpmlQu3EHVB_IsXipoNihj7gEMK-skIuAeOAME2StTv92NlK0OUzTzxL8-fxT4z_4fq1204iJAigsHvR6ppcOGUe_x8Os6cNT-8eK0hnH979J1PgJIqJLCHinFsBs12c6vCyoWj-FsnIzXlTOiP38OYjbDyGuEJrULEJOPGN63i06Th9uzLcNbbYQb_RySh9vYnBBCiKN68sTmreU6FJDJHT9Nt7QilwpVwps945wz0LxSEtrJN3x_qPmlT9PwxlzqRZqr8sWLweAgjmVib-aX2HjolUG8BAjRDbeTqBUX9rt3TTykr3vX1QsXb_PQl_3yW14G8A86EeGqmhv0Uo5xPmt3NkfsCGxH4QnT83yfaBvmZv5KKsLOwpcVWmwYpxitLdKAy30D=w689-h974-no)
+
+## [ตัวอย่าง UI](https://www.draw.io/?lightbox=1&highlight=CCE5FF&edit=_blank&layers=1&nav=1#G1pgc8Xh6hFUE5G0rbYaLvB7esVmpEhBwj)
