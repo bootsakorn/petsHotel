@@ -11,12 +11,12 @@ public class Customer {
     public Customer(String firstName, String lastName, String address){
         this.firstName = firstName;
         this.lastName = lastName;
+        this.address = address;
         this.pets = new ArrayList<>();
     }
 
     public void addPets(Pets newPets){
         this.pets.add(newPets);
     }
-
 
 }
