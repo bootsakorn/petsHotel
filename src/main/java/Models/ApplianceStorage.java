@@ -9,6 +9,11 @@ public class ApplianceStorage implements Stockable {
         this.appliances = new ArrayList<>();
     }
 
+    public void insert(String name, int qualtity) {
+        Appliance newItem = new Appliance(name, qualtity);
+        this.appliances.add(newItem);
+    }
+
     @Override
     public void add(String name, int qualtity) {
         for (Appliance item:appliances) {
@@ -16,12 +21,6 @@ public class ApplianceStorage implements Stockable {
                 item.setQualtity(item.getQualtity() + qualtity);
             }
         }
-    }
-
-    @Override
-    public void insert(String name, int qualtity) {
-        Appliance newItem = new Appliance(name, qualtity);
-        this.appliances.add(newItem);
     }
 
     @Override
