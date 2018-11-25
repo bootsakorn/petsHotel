@@ -1,22 +1,60 @@
-package Controller;
+package Controller.dataController;
 
 import java.sql.*;
+import java.util.ArrayList;
 
-public class JdbcSQLiteConnection {
-    private Connection conn;
-    private final String DBURL = "jdbc:sqlite:petshotel.db";
-    public void JdbcSQLiteConnection () throws ClassNotFoundException {
-        Class.forName("org.sqlite.JDBC");
-    }
-    private void connect() throws SQLException {
-        conn = DriverManager.getConnection(DBURL);
-    }
+public class LoginDataController extends DatabaseConnection {
 
-    private void disconnect() throws SQLException {
-        if (conn != null) {
-            conn.close();
+    public ArrayList<String> getUsernames () {
+        ArrayList<String> usernames = new ArrayList<>();
+        try {
+            connect();
+            String query = "Select username from employees";
+            Statement statement = conn.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                String username = resultSet.getString("username");
+                usernames.add(username);
+            }
+            disconnect();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+        return usernames;
     }
+
+    public String getPassword (String username) {
+        String password = "";
+        try {
+            connect();
+            String query = "select password from employees where username='"+username+"'";
+            Statement statement = conn.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                password = resultSet.getString("username");
+            }
+            disconnect();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return password;
+    }
+
+    public void editPassword(int id, String newPassword){
+        try {
+            connect();
+            Statement stmt = conn.createStatement();
+            String query = ("UPDATE employees SET password = '"+newPassword+"' WHERE id = '"+id+"'");
+            stmt.execute(query);
+            disconnect();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+
 
     public void getData() {
         try {
@@ -89,5 +127,4 @@ public class JdbcSQLiteConnection {
             e.printStackTrace();
         }
     }
-
 }
