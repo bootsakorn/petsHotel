@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ReservedController">
+    <children>
+        <SplitPane dividerPositions="0.2140468227424749" orientation="VERTICAL" prefHeight="600.0" prefWidth="800.0">
+            <items>
+                <AnchorPane minHeight="100.0" minWidth="0.0" prefHeight="194.0" prefWidth="798.0" style="-fx-background-color: #ffffff;">
+                    <children>
+                        <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="14.0" layoutY="13.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
+                            <image>
+                                <Image url="@../image/logo.png" />
+                            </image>
+                        </ImageView>
+                        <Pane layoutX="115.0" layoutY="9.0" minHeight="100.0" prefHeight="110.0" prefWidth="309.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="10.0">
+                            <children>
+                                <GridPane layoutX="14.0" layoutY="50.0" prefHeight="52.0" prefWidth="300.0">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    </rowConstraints>
+                                    <children>
+                                        <Label text="ร้านเพ็ดโฮเทล เลขที่ 50 ถนนงามวงศ์วาน">
+                                            <font>
+                                                <Font name="Angsana New" size="20.0" />
+                                            </font>
+                                        </Label>
+                                        <Label text="แขวงลาดยาว เขตจตุจักร กรุงเทพฯ 10900" GridPane.rowIndex="1">
+                                            <font>
+                                                <Font name="Angsana New" size="20.0" />
+                                            </font>
+                                        </Label>
+                                        <Label text="โทรศัพท์ : 090-9786039" GridPane.rowIndex="2">
+                                            <font>
+                                                <Font name="Angsana New" size="20.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </GridPane>
+                                <Label layoutX="14.0" layoutY="-13.0" text="PetsHotel" textFill="#0066cc">
+                                    <font>
+                                        <Font name="Angsana New Bold" size="55.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </Pane>
+                        <MenuButton layoutX="720.0" layoutY="9.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="43.0" textAlignment="CENTER">
+                            <items>
+                                <MenuItem fx:id="home" mnemonicParsing="false" onAction="#handleOnClickHomeMenuItem" text="Home">
+                                    <graphic>
+                                        <ImageView fitHeight="26.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../image/Home.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </MenuItem>
+                                <MenuItem fx:id="calendar" mnemonicParsing="false" onAction="#handleOnClickCalendarMenuItem" text="Calendar">
+                                    <graphic>
+                                        <ImageView fitHeight="26.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../image/calendar.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </MenuItem>
+                                <MenuItem fx:id="logout" mnemonicParsing="false" onAction="#handleOnClickLogOutMenuItem" text="Log Out">
+                                    <graphic>
+                                        <ImageView fitHeight="26.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../image/logout.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </MenuItem>
+                            </items>
+                            <graphic>
+                                <ImageView fitHeight="20.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../image/Gear.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </MenuButton>
+                    </children>
+                </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #ffffff;">
+                    <children>
+                        <SplitPane dividerPositions="0.16040100250626566" prefHeight="467.0" prefWidth="800.0">
+                            <items>
+                                <AnchorPane minHeight="0.0" minWidth="100.0" prefHeight="465.0" prefWidth="100.0">
+                                    <children>
+                                        <Button fx:id="counterBtn" layoutX="22.0" layoutY="9.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#handleOnClickCounterBtn" prefHeight="80.0" prefWidth="80.0" text="เคาท์เตอร์" AnchorPane.topAnchor="10.0">
+                                            <font>
+                                                <Font name="Angsana New" size="19.0" />
+                                            </font>
+                                        </Button>
+                                        <Button fx:id="serviceBtn" layoutX="22.0" layoutY="97.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#handleOnClickServiceBtn" prefHeight="80.0" prefWidth="80.0" text="บริการ" AnchorPane.topAnchor="100.0" />
+                                        <Button fx:id="salonBtn" layoutX="22.0" layoutY="185.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#handleOnClickSalonBtn" prefHeight="80.0" prefWidth="80.0" text="ซาลอน" AnchorPane.topAnchor="190.0" />
+                                        <Button fx:id="stockBtn" layoutX="22.0" layoutY="272.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#handleOnClickStockBtn" prefHeight="80.0" prefWidth="80.0" text="คลัง" AnchorPane.topAnchor="280.0" />
+                                        <Button fx:id="paperBtn" layoutX="23.0" layoutY="371.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#handleOnClickPaperBtn" prefHeight="80.0" prefWidth="80.0" text="รายงาน" AnchorPane.topAnchor="370.0" />
+                                    </children>
+                                </AnchorPane>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                           <children>
+                              <TabPane layoutY="26.0" prefHeight="445.0" prefWidth="667.0" tabClosingPolicy="UNAVAILABLE">
+                                <tabs>
+                                  <Tab text="กรอกรายละเอียด">
+                                    <content>
+                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <Group layoutX="59.0" layoutY="61.0">
+                                                   <children>
+                                                      <DatePicker prefHeight="26.0" prefWidth="218.0" />
+                                                      <ChoiceBox fx:id="petName" layoutX="350.0" prefWidth="150.0" />
+                                                      <ChoiceBox layoutX="350.0" layoutY="42.0" prefWidth="150.0" />
+                                                      <AnchorPane layoutX="354.0" layoutY="78.0" prefHeight="111.0" prefWidth="141.0">
+                                                         <children>
+                                                            <RadioButton layoutX="13.0" layoutY="18.0" mnemonicParsing="false" text="Normal Package" />
+                                                            <RadioButton layoutX="14.0" layoutY="45.0" mnemonicParsing="false" text="Silver Package" />
+                                                            <RadioButton layoutX="14.0" layoutY="75.0" mnemonicParsing="false" text="Gold Package" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </children>
+                                                </Group>
+                                                <Label layoutX="316.0" layoutY="64.0" text="เลือกสัตว์เลี้ยง :" />
+                                                <Label layoutX="316.0" layoutY="110.0" text="เลือกอาหาร :" />
+                                                <Label layoutX="316.0" layoutY="155.0" text="เลือกโปรโมชั่นเสริม :" />
+                                                <Button layoutX="279.0" layoutY="250.0" mnemonicParsing="false" text="เพิ่มสัตว์เลี้ยง" />
+                                             </children>
+                                          </AnchorPane>
+                                    </content>
+                                  </Tab>
+                                  <Tab text="เลือกห้อง">
+                                    <content>
+                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <TabPane layoutX="58.0" layoutY="40.0" prefHeight="300.0" prefWidth="533.0" tabClosingPolicy="UNAVAILABLE">
+                                                  <tabs>
+                                                    <Tab text="สัตว์เลี้ยงตัวที่ 1">
+                                                      <content>
+                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="221.0" prefWidth="475.0">
+                                                               <children>
+                                                                  <ComboBox layoutX="43.0" layoutY="29.0" prefWidth="150.0" promptText="ชนิดห้อง" />
+                                                                  <AnchorPane layoutX="38.0" layoutY="66.0" prefHeight="182.0" prefWidth="160.0">
+                                                                     <children>
+                                                                        <Button layoutX="14.0" layoutY="16.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="A1" />
+                                                                        <Button layoutX="14.0" layoutY="71.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="A2" />
+                                                                        <Button layoutX="14.0" layoutY="129.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="A3" />
+                                                                        <Button layoutX="88.0" layoutY="16.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="A4" />
+                                                                        <Button layoutX="88.0" layoutY="71.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="A5" />
+                                                                        <Button layoutX="88.0" layoutY="129.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="A6" />
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                                  <AnchorPane layoutX="241.0" layoutY="29.0" prefHeight="111.0" prefWidth="210.0">
+                                                                     <children>
+                                                                        <Button layoutX="14.0" layoutY="16.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="B1" />
+                                                                        <Button layoutX="76.0" layoutY="16.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="B2" />
+                                                                        <Button layoutX="144.0" layoutY="16.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="B3" />
+                                                                        <Button layoutX="14.0" layoutY="71.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="B4" />
+                                                                        <Button layoutX="77.0" layoutY="71.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="B5" />
+                                                                        <Button layoutX="144.0" layoutY="71.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="B6" />
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                                  <AnchorPane layoutX="208.0" layoutY="148.0" prefHeight="52.0" prefWidth="323.0">
+                                                                     <children>
+                                                                        <Button layoutX="14.0" layoutY="16.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="C1" />
+                                                                        <Button layoutX="88.0" layoutY="16.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="C2" />
+                                                                        <Button layoutX="162.0" layoutY="16.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="C3" />
+                                                                        <Button layoutX="237.0" layoutY="16.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="C4" />
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                                  <AnchorPane layoutX="208.0" layoutY="200.0" prefHeight="52.0" prefWidth="323.0">
+                                                                     <children>
+                                                                        <Button layoutX="14.0" layoutY="16.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="D1" />
+                                                                        <Button layoutX="88.0" layoutY="16.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="D2" />
+                                                                        <Button layoutX="162.0" layoutY="16.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="E1" />
+                                                                        <Button layoutX="237.0" layoutY="16.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="E2" />
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                               </children>
+                                                            </AnchorPane>
+                                                      </content>
+                                                    </Tab>
+                                                  </tabs>
+                                                   <effect>
+                                                      <Glow />
+                                                   </effect>
+                                                </TabPane>
+                                             </children>
+                                          </AnchorPane>
+                                    </content>
+                                  </Tab>
+                                    <Tab text="ยืนยันรายละเอียด">
+                                       <content>
+                                          <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <TextArea layoutX="42.0" layoutY="53.0" prefHeight="260.0" prefWidth="582.0" text="รายละเอียด" />
+                                                <Button layoutX="539.0" layoutY="366.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="106.0" text="Check In" />
+                                                <Label layoutX="48.0" layoutY="14.0" text="รายละเอียด :">
+                                                   <font>
+                                                      <Font size="25.0" />
+                                                   </font>
+                                                </Label>
+                                                <Button layoutX="293.0" layoutY="331.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="80.0" text="ยืนยัน" />
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                    </Tab>
+                                </tabs>
+                              </TabPane>
+                           </children>
+                        </AnchorPane>
+                            </items>
+                        </SplitPane>
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
+</AnchorPane>
