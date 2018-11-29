@@ -20,7 +20,10 @@ public class PageSwitchController {
         stage.show();
     }
     @FXML protected void handleOnClickCalendarMenuItem(ActionEvent e) throws Exception{
-        System.out.println("calendar");
+        Stage stage = (Stage) root.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CalendarPage.fxml"));
+        stage.setScene(new Scene((Parent) loader.load()));
+        stage.show();
     }
     @FXML protected void handleOnClickLogOutMenuItem(ActionEvent e) throws Exception{
         System.out.println("Logout");

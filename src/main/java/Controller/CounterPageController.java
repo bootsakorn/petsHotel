@@ -1,6 +1,6 @@
 package Controller;
 
-import Controller.dataController.BookingDataController;
+//import Controller.dataController.BookingDataController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,7 +12,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 public class CounterPageController extends PageSwitchController{
-    final ObservableList<BookingDataController> data = FXCollections.observableArrayList();
+//    final ObservableList<BookingDataController> data = FXCollections.observableArrayList();
     @FXML protected MenuItem home;
     @FXML protected MenuItem calendar;
     @FXML protected MenuItem logout;
