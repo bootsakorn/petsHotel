@@ -68,7 +68,7 @@ public class ReservedController {
     @FXML protected void handleOnClickPaperBtn(ActionEvent e) throws Exception{
         Button button = (Button) e.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
-        Parent loader = FXMLLoader.load(getClass().getResource("fxml/CounterPage.fxml"));
+        Parent loader = FXMLLoader.load(getClass().getResource("fxml/PaperPage.fxml"));
         stage.setScene(new Scene(loader));
         stage.show();
     }

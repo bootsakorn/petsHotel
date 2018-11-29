@@ -25,11 +25,10 @@ public class LoginController {
 //        //if(username.getText().equals(logInDB.getUsernames())&& password.getText().equals(logInDB.getPassword(username.toString()))){
 //            Button b = (Button) e.getSource();
 //            Stage stage = (Stage) b.getScene().getWindow();
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/Home.fxml"));
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Home.fxml"));
 //            //try {
 //            stage.setScene(new Scene(loader.load()));
 //            stage.show();
-//
 ////            } catch (IOException e1) {
 ////                e1.printStackTrace();
 ////            }

@@ -9,22 +9,14 @@ import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 
 public class HomeController {
-    @FXML
-    protected MenuItem home;
-    @FXML
-    protected MenuItem calendar;
-    @FXML
-    protected MenuItem logout;
-    @FXML
-    protected Button counterBtn;
-    @FXML
-    protected Button paperBtn;
-    @FXML
-    protected Button salonBtn;
-    @FXML
-    protected Button serviceBtn;
-    @FXML
-    protected Button stockBtn;
+    @FXML protected MenuItem home;
+    @FXML protected MenuItem calendar;
+    @FXML protected MenuItem logout;
+    @FXML protected Button counterBtn;
+    @FXML protected Button paperBtn;
+    @FXML protected Button salonBtn;
+    @FXML protected Button serviceBtn;
+    @FXML protected Button stockBtn;
 
     @FXML
     protected void number(ActionEvent e){

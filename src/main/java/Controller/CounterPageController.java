@@ -3,8 +3,6 @@ package Controller;
 import Controller.dataController.BookingDataController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
-import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,7 +10,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import java.util.function.Predicate;
 
 public class CounterPageController {
     final ObservableList<BookingDataController> data = FXCollections.observableArrayList();
@@ -38,8 +35,8 @@ public class CounterPageController {
     @FXML protected void handleOnClickHomeMenuItem(ActionEvent e) throws Exception{
         Button button = (Button) e.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
-        Parent loader = FXMLLoader.load(getClass().getResource("fxml/HomePage.fxml"));
-        stage.setScene(new Scene(loader));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Home.fxml"));
+        stage.setScene(new Scene((Parent) loader.load()));
         stage.show();
     }
     @FXML protected void handleOnClickCalendarMenuItem(ActionEvent e) throws Exception{
@@ -48,15 +45,15 @@ public class CounterPageController {
     @FXML protected void handleOnClickLogOutMenuItem(ActionEvent e) throws Exception{
         Button button = (Button) e.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
-        Parent loader = FXMLLoader.load(getClass().getResource("fxml/Login.fxml"));
-        stage.setScene(new Scene(loader));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Login.fxml"));
+        stage.setScene(new Scene((Parent) loader.load()));
         stage.show();
     }
     @FXML protected void handleOnClickReserveBtnOnTopPage(ActionEvent e) throws Exception{
         Button button = (Button) e.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
-        Parent loader = FXMLLoader.load(getClass().getResource("fxml/CounterPage.fxml"));
-        stage.setScene(new Scene(loader));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CounterPage.fxml"));
+        stage.setScene(new Scene((Parent) loader.load()));
         stage.show();
     }
 
@@ -71,29 +68,29 @@ public class CounterPageController {
     @FXML protected void handleOnClickPaperBtn(ActionEvent e) throws Exception{
         Button button = (Button) e.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
-        Parent loader = FXMLLoader.load(getClass().getResource("fxml/CounterPage.fxml"));
-        stage.setScene(new Scene(loader));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CounterPage.fxml"));
+        stage.setScene(new Scene((Parent) loader.load()));
         stage.show();
     }
     @FXML protected void handleOnClickSalonBtn(ActionEvent e)throws Exception{
         Button button = (Button) e.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
-        Parent loader = FXMLLoader.load(getClass().getResource("fxml/SalonPage.fxml"));
-        stage.setScene(new Scene(loader));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/SalonPage.fxml"));
+        stage.setScene(new Scene((Parent) loader.load()));
         stage.show();
     }
     @FXML protected void handleOnClickServiceBtn(ActionEvent e) throws Exception{
         Button button = (Button) e.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
-        Parent loader = FXMLLoader.load(getClass().getResource("fxml/ServicePage.fxml"));
-        stage.setScene(new Scene(loader));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ServicePage.fxml"));
+        stage.setScene(new Scene((Parent) loader.load()));
         stage.show();
     }
     @FXML protected void handleOnClickStockBtn(ActionEvent e)throws Exception{
         Button button = (Button) e.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
-        Parent loader = FXMLLoader.load(getClass().getResource("fxml/StockPage.fxml"));
-        stage.setScene(new Scene(loader));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/StockPage.fxml"));
+        stage.setScene(new Scene((Parent) loader.load()));
         stage.show();}
         //Button on center
     @FXML protected void handleOnClickSearchTextfield(ActionEvent e){
