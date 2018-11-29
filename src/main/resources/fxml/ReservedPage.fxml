@@ -140,11 +140,11 @@
                                                       <DatePicker prefHeight="26.0" prefWidth="218.0" />
                                                       <ChoiceBox fx:id="petName" layoutX="358.0" layoutY="-1.0" prefWidth="150.0" />
                                                       <ChoiceBox layoutX="358.0" layoutY="45.0" prefWidth="150.0" />
-                                                      <AnchorPane layoutX="377.0" layoutY="106.0" prefHeight="97.0" prefWidth="137.0">
+                                                      <AnchorPane layoutX="377.0" layoutY="112.0" prefHeight="97.0" prefWidth="137.0">
                                                          <children>
-                                                            <RadioButton layoutY="4.0" mnemonicParsing="false" text="Normal Package" />
-                                                            <RadioButton layoutY="41.0" mnemonicParsing="false" text="Silver Package" />
-                                                            <RadioButton layoutX="2.0" layoutY="74.0" mnemonicParsing="false" text="Gold Package" />
+                                                            <RadioButton layoutY="4.0" mnemonicParsing="false" text="Normal Package" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                            <RadioButton layoutY="41.0" mnemonicParsing="false" text="Silver Package" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="35.0" />
+                                                            <RadioButton layoutX="2.0" layoutY="76.0" mnemonicParsing="false" text="Gold Package" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="70.0" />
                                                          </children>
                                                       </AnchorPane>
                                                       <Label layoutX="261.0" layoutY="6.0" text="เลือกสัตว์เลี้ยง :" />
@@ -161,7 +161,7 @@
                                     <content>
                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                              <children>
-                                                <TabPane layoutX="13.0" layoutY="13.0" prefHeight="392.0" prefWidth="636.0" tabClosingPolicy="UNAVAILABLE">
+                                                <TabPane layoutX="13.0" layoutY="13.0" prefHeight="392.0" prefWidth="636.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                                                   <tabs>
                                                     <Tab text="สัตว์เลี้ยงตัวที่ 1">
                                                       <content>
