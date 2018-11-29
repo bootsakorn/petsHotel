@@ -19,17 +19,12 @@ public class HomeController {
     @FXML protected Button stockBtn;
 
     @FXML
-    protected void number(ActionEvent e){
-        System.out.println("1");
-    }
-    @FXML
     protected void handleOnClickHomeMenuItem(ActionEvent e) throws Exception{
         Button button = (Button) e.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
-        Parent loader = FXMLLoader.load(getClass().getResource("fxml/HomePage.fxml"));
+        Parent loader = FXMLLoader.load(getClass().getResource("/fxml/Home.fxml"));
         stage.setScene(new Scene(loader));
         stage.show();
-
     }
     @FXML
     protected void handleOnClickCalendarMenuItem(ActionEvent e) throws Exception{
@@ -38,29 +33,26 @@ public class HomeController {
     }
     @FXML
     protected void handleOnClickLogOutMenuItem(ActionEvent e) throws Exception{
-
         Button button = (Button) e.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
-        Parent loader = FXMLLoader.load(getClass().getResource("fxml/Login.fxml"));
+        Parent loader = FXMLLoader.load(getClass().getResource("/fxml/Login.fxml"));
         stage.setScene(new Scene(loader));
         stage.show();
-
     }
 
     @FXML
     protected void handleOnClickCounterBtn(ActionEvent e) throws Exception{
         Button button = (Button) e.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
-        Parent loader = FXMLLoader.load(getClass().getResource("fxml/CounterPage.fxml"));
+        Parent loader = FXMLLoader.load(getClass().getResource("/fxml/CounterPage.fxml"));
         stage.setScene(new Scene(loader));
         stage.show();
-
     }
     @FXML
     protected void handleOnClickPaperBtn(ActionEvent e) throws Exception{
         Button button = (Button) e.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
-        Parent loader = FXMLLoader.load(getClass().getResource("fxml/CounterPage.fxml"));
+        Parent loader = FXMLLoader.load(getClass().getResource("/fxml/CounterPage.fxml"));
         stage.setScene(new Scene(loader));
         stage.show();
     }
@@ -68,7 +60,7 @@ public class HomeController {
     protected void handleOnClickSalonBtn(ActionEvent e)throws Exception{
         Button button = (Button) e.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
-        Parent loader = FXMLLoader.load(getClass().getResource("fxml/SalonPage.fxml"));
+        Parent loader = FXMLLoader.load(getClass().getResource("/fxml/SalonPage.fxml"));
         stage.setScene(new Scene(loader));
         stage.show();
     }
@@ -76,7 +68,7 @@ public class HomeController {
     protected void handleOnClickServiceBtn(ActionEvent e) throws Exception{
         Button button = (Button) e.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
-        Parent loader = FXMLLoader.load(getClass().getResource("fxml/ServicePage.fxml"));
+        Parent loader = FXMLLoader.load(getClass().getResource("/fxml/ServicePage.fxml"));
         stage.setScene(new Scene(loader));
         stage.show();
     }
@@ -84,9 +76,8 @@ public class HomeController {
     protected void handleOnClickStockBtn(ActionEvent e)throws Exception{
         Button button = (Button) e.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
-        Parent loader = FXMLLoader.load(getClass().getResource("fxml/StockPage.fxml"));
+        Parent loader = FXMLLoader.load(getClass().getResource("/fxml/StockPage.fxml"));
         stage.setScene(new Scene(loader));
-        stage.show();}
-
-
+        stage.show();
+    }
 }

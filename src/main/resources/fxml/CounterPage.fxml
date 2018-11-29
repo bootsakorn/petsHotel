@@ -22,7 +22,7 @@
 <children>
     <SplitPane dividerPositions="0.2140468227424749" orientation="VERTICAL" prefHeight="600.0" prefWidth="800.0">
         <items>
-            <AnchorPane minHeight="100.0" minWidth="0.0" prefHeight="194.0" prefWidth="798.0" style="-fx-background-color: #ffffff;">
+            <AnchorPane fx:id="root" minHeight="100.0" minWidth="0.0" prefHeight="194.0" prefWidth="798.0" style="-fx-background-color: #ffffff;">
                 <children>
                     <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="14.0" layoutY="13.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
                         <image>
@@ -68,11 +68,11 @@
                     <Button fx:id="reserve" layoutX="422.0" layoutY="75.0" mnemonicParsing="false" text="จอง" AnchorPane.leftAnchor="420.0" AnchorPane.topAnchor="75.0" />
                   <Button fx:id="checkOutBtn" layoutX="503.0" layoutY="75.0" mnemonicParsing="false" text="เชคเอาท์" AnchorPane.leftAnchor="546.0" AnchorPane.topAnchor="75.0" />
                   <Button fx:id="checkInBtn" layoutX="456.0" layoutY="75.0" mnemonicParsing="false" text="เชคอิน" AnchorPane.leftAnchor="475.0" AnchorPane.topAnchor="75.0" />
-                  <Button fx:id="roomBtn" layoutX="602.0" layoutY="75.0" mnemonicParsing="false" text="ห้อง" AnchorPane.leftAnchor="700.0" AnchorPane.topAnchor="75.0" />
+                  <Button fx:id="roomBtn" layoutX="602.0" layoutY="75.0" mnemonicParsing="false" text="ห้อง" AnchorPane.leftAnchor="700.0" AnchorPane.rightAnchor="55.0" AnchorPane.topAnchor="75.0" />
                   <Button fx:id="searchBtn2" layoutX="559.0" layoutY="75.0" mnemonicParsing="false" text="ค้นหา" AnchorPane.leftAnchor="630.0" AnchorPane.topAnchor="75.0" />
                   <Group layoutX="732.0" layoutY="10.0" />
 
-                    <MenuButton layoutX="720.0" layoutY="9.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="43.0" textAlignment="CENTER">
+                    <MenuButton layoutX="720.0" layoutY="9.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="43.0" textAlignment="CENTER" AnchorPane.leftAnchor="720.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0">
                         <items>
                             <MenuItem fx:id="home" mnemonicParsing="false" onAction="#handleOnClickHomeMenuItem" text="Home">
                                 <graphic>
@@ -145,8 +145,8 @@
                                     </Button>
                                  </children>
                               </Group>
-                              <Button fx:id="addBtn" layoutX="132.0" layoutY="401.0" mnemonicParsing="false" onMouseClicked="#handleOnClickAddBtn" prefHeight="43.0" prefWidth="141.0" text="ADD" />
-                              <Button fx:id="reserveBtn" layoutX="397.0" layoutY="401.0" mnemonicParsing="false" onMouseClicked="#handleOnClickReserveBtn" prefHeight="43.0" prefWidth="141.0" text="RESERVE" />
+                              <Button fx:id="addBtn" layoutX="132.0" layoutY="401.0" mnemonicParsing="false" onAction="#handleOnClickAddBtn" prefHeight="43.0" prefWidth="141.0" text="เพิ่ม" />
+                              <Button fx:id="reserveBtn" layoutX="397.0" layoutY="401.0" mnemonicParsing="false" onAction="#handleOnClickReserveBtn" prefHeight="43.0" prefWidth="141.0" text="จอง" />
                               <TitledPane alignment="CENTER" animated="false" contentDisplay="CENTER" layoutX="75.0" layoutY="86.0" prefHeight="306.0" prefWidth="499.0" text="รายชื่อลูกค้า" textAlignment="CENTER">
                                 <content>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
