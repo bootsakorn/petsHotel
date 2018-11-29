@@ -3,34 +3,34 @@ package Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 
-public class SalonPageController {
-    @FXML
-    protected Button counterBtn;
-    @FXML
-    protected Button paperBtn;
-    @FXML
-    protected Button salonBtn;
-    @FXML
-    protected Button serviceBtn;
-    @FXML
-    protected Button stockBtn;
-
+public class SalonPageController extends PageSwitchController{
+    @FXML protected Button counterBtn;
+    @FXML protected Button paperBtn;
+    @FXML protected Button salonBtn;
+    @FXML protected Button serviceBtn;
+    @FXML protected Button stockBtn;
+    @FXML protected Button toDoneList;
+    @FXML protected Button toToDoList;
+    @FXML protected ListView toDoList,doneList;
 
     @FXML
-    protected void number(ActionEvent e){
-        System.out.println("4");
+    protected void handleToDoListView(ActionEvent e){
+        // get toDolist
     }
     @FXML
-    protected void handleOnClickCounterBtn(ActionEvent e){
-        // go to CounterPage
+    protected void handleDoneListView(ActionEvent e){
+        // get donelist
     }
     @FXML
-    protected void handleOnClickPaperBtn(ActionEvent e){}
+    protected void handleOnClickToToDoListBtn(ActionEvent e){
+        // move selected data to todolist
+    }
     @FXML
-    protected void handleOnClickSalonBtn(ActionEvent e){}
-    @FXML
-    protected void handleOnClickServiceBtn(ActionEvent e){}
-    @FXML
-    protected void handleOnClickStockBtn(ActionEvent e){}
+    protected void handleOnClickToDoneListBtn(ActionEvent e){
+        // move select data to donelist
+    }
+
+
 }

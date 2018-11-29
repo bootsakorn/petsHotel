@@ -23,7 +23,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ReservedController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ReservedController">
     <children>
         <SplitPane dividerPositions="0.2140468227424749" orientation="VERTICAL" prefHeight="600.0" prefWidth="800.0">
             <items>
@@ -129,30 +129,30 @@
                                 </AnchorPane>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                            <children>
-                              <TabPane layoutY="26.0" prefHeight="445.0" prefWidth="667.0" tabClosingPolicy="UNAVAILABLE">
+                              <TabPane layoutY="-5.0" prefHeight="465.0" prefWidth="667.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <tabs>
                                   <Tab text="กรอกรายละเอียด">
                                     <content>
-                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="415.0" prefWidth="667.0">
                                              <children>
-                                                <Group layoutX="59.0" layoutY="61.0">
+                                                <Group layoutX="65.0" layoutY="54.0" AnchorPane.leftAnchor="65.0" AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="20.0">
                                                    <children>
                                                       <DatePicker prefHeight="26.0" prefWidth="218.0" />
-                                                      <ChoiceBox fx:id="petName" layoutX="350.0" prefWidth="150.0" />
-                                                      <ChoiceBox layoutX="350.0" layoutY="42.0" prefWidth="150.0" />
-                                                      <AnchorPane layoutX="354.0" layoutY="78.0" prefHeight="111.0" prefWidth="141.0">
+                                                      <ChoiceBox fx:id="petName" layoutX="358.0" layoutY="-1.0" prefWidth="150.0" />
+                                                      <ChoiceBox layoutX="358.0" layoutY="45.0" prefWidth="150.0" />
+                                                      <AnchorPane layoutX="377.0" layoutY="112.0" prefHeight="97.0" prefWidth="137.0">
                                                          <children>
-                                                            <RadioButton layoutX="13.0" layoutY="18.0" mnemonicParsing="false" text="Normal Package" />
-                                                            <RadioButton layoutX="14.0" layoutY="45.0" mnemonicParsing="false" text="Silver Package" />
-                                                            <RadioButton layoutX="14.0" layoutY="75.0" mnemonicParsing="false" text="Gold Package" />
+                                                            <RadioButton layoutY="4.0" mnemonicParsing="false" text="Normal Package" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                            <RadioButton layoutY="41.0" mnemonicParsing="false" text="Silver Package" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="35.0" />
+                                                            <RadioButton layoutX="2.0" layoutY="76.0" mnemonicParsing="false" text="Gold Package" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="70.0" />
                                                          </children>
                                                       </AnchorPane>
+                                                      <Label layoutX="261.0" layoutY="6.0" text="เลือกสัตว์เลี้ยง :" />
+                                                      <Label layoutX="261.0" layoutY="50.0" text="เลือกอาหาร :" />
+                                                      <Label layoutX="256.0" layoutY="110.0" text="เลือกโปรโมชั่นเสริม :" />
+                                                      <Button layoutX="205.0" layoutY="207.0" mnemonicParsing="false" text="เพิ่มสัตว์เลี้ยง" />
                                                    </children>
                                                 </Group>
-                                                <Label layoutX="316.0" layoutY="64.0" text="เลือกสัตว์เลี้ยง :" />
-                                                <Label layoutX="316.0" layoutY="110.0" text="เลือกอาหาร :" />
-                                                <Label layoutX="316.0" layoutY="155.0" text="เลือกโปรโมชั่นเสริม :" />
-                                                <Button layoutX="279.0" layoutY="250.0" mnemonicParsing="false" text="เพิ่มสัตว์เลี้ยง" />
                                              </children>
                                           </AnchorPane>
                                     </content>
@@ -161,14 +161,14 @@
                                     <content>
                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                              <children>
-                                                <TabPane layoutX="58.0" layoutY="40.0" prefHeight="300.0" prefWidth="533.0" tabClosingPolicy="UNAVAILABLE">
+                                                <TabPane layoutX="13.0" layoutY="13.0" prefHeight="392.0" prefWidth="636.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                                                   <tabs>
                                                     <Tab text="สัตว์เลี้ยงตัวที่ 1">
                                                       <content>
-                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="221.0" prefWidth="475.0">
+                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="292.0" prefWidth="533.0">
                                                                <children>
                                                                   <ComboBox layoutX="43.0" layoutY="29.0" prefWidth="150.0" promptText="ชนิดห้อง" />
-                                                                  <AnchorPane layoutX="38.0" layoutY="66.0" prefHeight="182.0" prefWidth="160.0">
+                                                                  <AnchorPane layoutX="38.0" layoutY="109.0" prefHeight="182.0" prefWidth="160.0">
                                                                      <children>
                                                                         <Button layoutX="14.0" layoutY="16.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="A1" />
                                                                         <Button layoutX="14.0" layoutY="71.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="A2" />
@@ -178,30 +178,35 @@
                                                                         <Button layoutX="88.0" layoutY="129.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="A6" />
                                                                      </children>
                                                                   </AnchorPane>
-                                                                  <AnchorPane layoutX="241.0" layoutY="29.0" prefHeight="111.0" prefWidth="210.0">
+                                                                  <AnchorPane layoutX="213.0" layoutY="121.0" prefHeight="111.0" prefWidth="210.0">
                                                                      <children>
-                                                                        <Button layoutX="14.0" layoutY="16.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="B1" />
-                                                                        <Button layoutX="76.0" layoutY="16.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="B2" />
-                                                                        <Button layoutX="144.0" layoutY="16.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="B3" />
-                                                                        <Button layoutX="14.0" layoutY="71.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="B4" />
-                                                                        <Button layoutX="77.0" layoutY="71.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="B5" />
-                                                                        <Button layoutX="144.0" layoutY="71.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="B6" />
+                                                                        <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="B1" />
+                                                                        <Button layoutX="77.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="B2" />
+                                                                        <Button layoutX="152.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="B3" />
+                                                                        <Button layoutY="57.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="B4" />
+                                                                        <Button layoutX="77.0" layoutY="57.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="B5" />
+                                                                        <Button layoutX="152.0" layoutY="57.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="B6" />
                                                                      </children>
                                                                   </AnchorPane>
-                                                                  <AnchorPane layoutX="208.0" layoutY="148.0" prefHeight="52.0" prefWidth="323.0">
+                                                                  <AnchorPane layoutX="448.0" layoutY="121.0" prefHeight="98.0" prefWidth="130.0">
                                                                      <children>
-                                                                        <Button layoutX="14.0" layoutY="16.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="C1" />
-                                                                        <Button layoutX="88.0" layoutY="16.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="C2" />
-                                                                        <Button layoutX="162.0" layoutY="16.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="C3" />
-                                                                        <Button layoutX="237.0" layoutY="16.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="C4" />
+                                                                        <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="C1" />
+                                                                        <Button layoutX="75.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="C2" />
+                                                                        <Button layoutY="56.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="C3" />
+                                                                        <Button layoutX="75.0" layoutY="56.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="C4" />
                                                                      </children>
                                                                   </AnchorPane>
-                                                                  <AnchorPane layoutX="208.0" layoutY="200.0" prefHeight="52.0" prefWidth="323.0">
+                                                                  <AnchorPane layoutX="198.0" layoutY="223.0" prefHeight="58.0" prefWidth="193.0">
                                                                      <children>
                                                                         <Button layoutX="14.0" layoutY="16.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="D1" />
                                                                         <Button layoutX="88.0" layoutY="16.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="D2" />
-                                                                        <Button layoutX="162.0" layoutY="16.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="E1" />
-                                                                        <Button layoutX="237.0" layoutY="16.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="E2" />
+                                                                        <Button layoutX="162.0" layoutY="16.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="D3" />
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                                  <AnchorPane layoutX="431.0" layoutY="239.0" prefHeight="52.0" prefWidth="150.0">
+                                                                     <children>
+                                                                        <Button layoutX="14.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="E1" />
+                                                                        <Button layoutX="92.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="E2" />
                                                                      </children>
                                                                   </AnchorPane>
                                                                </children>
