@@ -1,10 +1,8 @@
 package Controller;
 
-import Controller.dataController.BookingDataController;
+import Controller.dataController.CustomersDataController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
-import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,10 +10,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import java.util.function.Predicate;
 
 public class CounterPageController {
-    final ObservableList<BookingDataController> data = FXCollections.observableArrayList();
+    final ObservableList<CustomersDataController> data = FXCollections.observableArrayList();
     @FXML protected MenuItem home;
     @FXML protected MenuItem calendar;
     @FXML protected MenuItem logout;
@@ -97,16 +94,16 @@ public class CounterPageController {
         stage.show();}
         //Button on center
     @FXML protected void handleOnClickSearchTextfield(ActionEvent e){
-//        FilteredList<BookingDataController> filteredData = new FilteredList<>(data, even -> true );
+//        FilteredList<CustomersDataController> filteredData = new FilteredList<>(data, even -> true );
 //        searchTextField.setOnKeyReleased(event ->{
 //            searchTextField.textProperty().addListener(((observable, oldValue, newValue) ->
-//                    filteredData.setPredicate((Predicate<? super BookingDataController>) user ->{
+//                    filteredData.setPredicate((Predicate<? super CustomersDataController>) user ->{
 //                        if (newValue == null || newValue.isEmpty()){return  true;}
 //                        if (user.getCustomers().contains(newValue)){return  true;}
 //                        return false;
 //                    })
 //                    ));
-//            SortedList<BookingDataController> sortedData = new SortedList<>(filteredData);
+//            SortedList<CustomersDataController> sortedData = new SortedList<>(filteredData);
 //            sortedData.comparatorProperty().bind(table.comparatorProperty());
 //            table.setItems(sortedData);
 //        });
