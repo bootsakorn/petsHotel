@@ -17,5 +17,4 @@ public class HomeController extends PageSwitchController{
     @FXML protected Button salonBtn;
     @FXML protected Button serviceBtn;
     @FXML protected Button stockBtn;
-
 }

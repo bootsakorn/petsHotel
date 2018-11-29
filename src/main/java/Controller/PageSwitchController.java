@@ -13,11 +13,11 @@ public class PageSwitchController {
     @FXML protected MenuItem home;
     @FXML protected MenuItem calendar;
     @FXML protected MenuItem logout;
-    @FXML protected Button counterBtn;
-    @FXML protected Button paperBtn;
-    @FXML protected Button salonBtn;
-    @FXML protected Button serviceBtn;
-    @FXML protected Button stockBtn;
+//    @FXML protected Button counterBtn;
+//    @FXML protected Button paperBtn;
+//    @FXML protected Button salonBtn;
+//    @FXML protected Button serviceBtn;
+//    @FXML protected Button stockBtn;
     @FXML private Parent root ;
 
     //Button On Top
@@ -44,7 +44,7 @@ public class PageSwitchController {
     @FXML protected void handleOnClickPaperBtn(ActionEvent e) throws Exception{
         Button button = (Button) e.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CounterPage.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/PaperPage.fxml"));
         stage.setScene(new Scene((Parent) loader.load()));
         stage.show();
     }
