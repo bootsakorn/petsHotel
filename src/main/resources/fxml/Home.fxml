@@ -63,7 +63,7 @@
                   </Pane>
                    <MenuButton layoutX="720.0" layoutY="9.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="43.0" textAlignment="CENTER">
                        <items>
-                           <MenuItem fx:id="home" mnemonicParsing="false" onAction="#handleOnClickHomeMenuItem" text="Home">
+                           <MenuItem fx:id="home" mnemonicParsing="false" onAction="#handleOnClickHomeMenuItem" text="หน้าหลัก">
                            <graphic>
                               <ImageView fitHeight="26.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -71,7 +71,7 @@
                                  </image>
                               </ImageView>
                            </graphic></MenuItem>
-                           <MenuItem fx:id="calendar" mnemonicParsing="false" onAction="#handleOnClickCalendarMenuItem" text="Calendar">
+                           <MenuItem fx:id="calendar" mnemonicParsing="false" onAction="#handleOnClickCalendarMenuItem" text="ปฎิทิน">
                            <graphic>
                               <ImageView fitHeight="26.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
