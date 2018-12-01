@@ -37,7 +37,7 @@ public class CustomersDataController extends DatabaseConnection {
     public void insertCustomer(String firstname, String lastname, String address) {
         try {
             connect();
-            String query = "INSERT INTO pets (firstname,lastname,address) VALUES (?,?,?)";
+            String query = "INSERT INTO customers (firstname,lastname,address) VALUES (?,?,?)";
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, firstname);
             stmt.setString(2, lastname);
