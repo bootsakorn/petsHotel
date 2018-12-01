@@ -27,7 +27,7 @@
     <children>
         <SplitPane dividerPositions="0.2140468227424749" orientation="VERTICAL" prefHeight="600.0" prefWidth="800.0">
             <items>
-                <AnchorPane minHeight="100.0" minWidth="0.0" prefHeight="194.0" prefWidth="798.0" style="-fx-background-color: #ffffff;">
+                <AnchorPane fx:id="root" minHeight="100.0" minWidth="0.0" prefHeight="194.0" prefWidth="798.0" style="-fx-background-color: #ffffff;">
                     <children>
                         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="14.0" layoutY="13.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
                             <image>
