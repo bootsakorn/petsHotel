@@ -1,16 +1,18 @@
 package Models;
 
 public class Food {
+    private int id;
     private String name;
     private String species;
     private double price;
-    private int qualtity;
+    private int quantity;
 
-    public Food(String name, String species, double price,int qualtity){
+    public Food(int id, String name, String species, double price){
+        this.id = id;
         this.name = name;
         this.species = species;
         this.price = price;
-        this.qualtity = qualtity;
+        this.quantity = 0;
     }
 
     public String getName() {
@@ -31,10 +33,10 @@ public class Food {
     public void setPrice(double price) {
         this.price = price;
     }
-    public int getQualtity() {
-        return qualtity;
+    public int getQuantity() {
+        return quantity;
     }
-    public void setQualtity(int qualtity) {
-        this.qualtity = qualtity;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }

@@ -18,7 +18,7 @@ public class FoodStorage implements Stockable {
     public void add(String name, int qualtity) {
         for (Food item:foods) {
             if (item.getName().equalsIgnoreCase(name)){
-                item.setQualtity(item.getQualtity() + qualtity);
+                item.setQuantity(item.getQuantity() + qualtity);
             }
         }
     }
@@ -27,7 +27,7 @@ public class FoodStorage implements Stockable {
     public void remove(String name, int qualtity) {
         for (Food item:foods) {
             if (item.getName().equalsIgnoreCase(name)){
-                item.setQualtity(item.getQualtity() - qualtity);
+                item.setQuantity(item.getQuantity() - qualtity);
             }
         }
     }
