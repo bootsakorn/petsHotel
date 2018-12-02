@@ -15,6 +15,7 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -157,6 +158,9 @@
                                                       <Label layoutX="261.0" layoutY="96.0" text="เลือกโปรโมชั่นเสริม :" />
                                                       <Button fx:id="addPetBtn" layoutX="205.0" layoutY="219.0" mnemonicParsing="false" onAction="#handleOnClickedAddPetBtn" text="เพิ่มสัตว์เลี้ยง" />
                                                       <Button fx:id="step1NextBtn" layoutX="461.0" layoutY="219.0" mnemonicParsing="false" onAction="#handleOnClickedStep1NextBtn" text="ถัดไป" />
+                                                      <TextField fx:id="dayNum" alignment="CENTER_RIGHT" layoutX="80.0" layoutY="91.0" prefHeight="31.0" prefWidth="110.0" text="1" />
+                                                      <Label layoutY="96.0" text="จำนวนวัน :" />
+                                                      <Label layoutX="197.0" layoutY="96.0" prefHeight="21.0" prefWidth="22.0" text="วัน" />
                                                    </children>
                                                 </Group>
                                                 <ScrollPane layoutX="64.0" layoutY="279.0" prefHeight="109.0" prefWidth="510.0" AnchorPane.leftAnchor="65.0" AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="280.0">

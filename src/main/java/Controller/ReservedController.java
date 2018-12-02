@@ -1,8 +1,6 @@
 package Controller;
 
-import Models.Customer;
-import Models.Pets;
-import Models.Room;
+import Models.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -17,6 +15,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -51,6 +50,7 @@ public class ReservedController extends PageSwitchController{
     @FXML protected AnchorPane formatAnchorPane;
     //insertDetailTab
     @FXML protected DatePicker datePicker;
+    @FXML protected TextField dayNum;
     @FXML protected ChoiceBox petList;
     @FXML protected ChoiceBox foodList;
     @FXML protected RadioButton normalPackage;
@@ -83,16 +83,21 @@ public class ReservedController extends PageSwitchController{
     private ArrayList<Button> groupC = new ArrayList<>();
     private ArrayList<AnchorPane> groupD = new ArrayList<>();
     private ArrayList<AnchorPane> groupE = new ArrayList<>();
-    private ArrayList<Pets> pets = new ArrayList<>();
+    private Customer cus;
+    private ArrayList<Pets> pets;
+    private FoodStorage fs = new FoodStorage();
 
     @FXML private void initialize(){
+        cus = new Customer(001,"ศศิธร", "สายพา", "88/131");
+        cus.addPets(new Pets(001,"น้องโตโต้","ตัวผู้",2,"ไซบีเรีย","-","-","สุนัข"));
+        cus.addPets(new Pets(002,"น้องปอย","ตัวเมีย",2,"เปอร์เซีย","-","-","แมว"));
         //prep Data
         manageDatePicker();
         managePetList();
         manageFoodList();
     }
 
-    public void manageDatePicker(){
+    private void manageDatePicker(){
         // Converter
         StringConverter<LocalDate> converter = new StringConverter<LocalDate>() {
             DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
@@ -148,17 +153,27 @@ public class ReservedController extends PageSwitchController{
     }
 
     public void managePetList(){
-        ObservableList<String> petName = FXCollections.observableArrayList(
-                "น้องโตโต้","น้องไอซ์","น้องปอย"
-        );
+        cus.getId();
+        pets = cus.getPets();
+        ArrayList petNames = new ArrayList();
+        for (Pets p:pets){
+            petNames.add(p.getName());
+        }
+        ObservableList<String> petName = FXCollections.observableArrayList(petNames);
+//        ObservableList<String> petName = FXCollections.observableArrayList("น้องโตโต้","น้องปอย");
         petList.setValue(petName.get(0));
         petList.setItems(petName);
     }
 
     public void manageFoodList(){
-        ObservableList<String> foodName = FXCollections.observableArrayList(
-                "วิสกี้","เพ็ดดีกรี","Orijen"
-        );
+//        fs.add("วิสกัส",100);
+//        fs.add("เพ็ดดีกรี",100);
+//        ArrayList foodNames = new ArrayList();
+//        for (Food f: fs.getFoods()){
+//            foodNames.add(f.getName());
+//        }
+//        ObservableList<String> foodName = FXCollections.observableArrayList(foodNames);
+        ObservableList<String> foodName = FXCollections.observableArrayList("วิสกัส","เพ็ดดีกรี");
         foodList.setValue(foodName.get(0));
         foodList.setItems(foodName);
     }
@@ -175,17 +190,17 @@ public class ReservedController extends PageSwitchController{
         RadioButton selected = (RadioButton)servicePackage.getSelectedToggle();
         ObservableList<String> pet = addedListView.getItems();
         pet.add(datePicker.getValue()+" | "+petList.getValue()+" | "+foodList.getValue()
-                +" | "+selected.getText());
+                +" | "+selected.getText()+" | "+dayNum.getText()+" วัน");
         addedListView.setItems(pet);
 
         petsDetail.add(new ArrayList(Arrays.asList(
                 datePicker.getValue().toString(),
                 petList.getValue().toString(),
                 foodList.getValue().toString(),
-                selected.getText()
+                selected.getText(),dayNum.getText()+" วัน"
                 )));
         System.out.println(datePicker.getValue()+" "+petList.getValue()+" "+foodList.getValue()
-                +" "+((RadioButton)servicePackage.getSelectedToggle()).getText());
+                +" "+((RadioButton)servicePackage.getSelectedToggle()).getText()+" "+dayNum.getText()+" วัน");
     }
 
     public void handleOnClickedStep1NextBtn(ActionEvent actionEvent)throws Exception{
@@ -210,7 +225,6 @@ public class ReservedController extends PageSwitchController{
                     String name = petsDetail.get(i).get(1);
                     chooseRoomTabPane.getTabs().get(i).setText(name);
                 }
-
             }
             else {
                 String name = petsDetail.get(0).get(1);
@@ -419,5 +433,12 @@ public class ReservedController extends PageSwitchController{
     }
 
     public void handleOnClickedSelectedRoom(ActionEvent actionEvent) {
+    }
+
+    public Customer getCustomer() {
+        return cus;
+    }
+    public void setCustomer(Customer customer) {
+        this.cus = customer;
     }
 }
