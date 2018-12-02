@@ -182,46 +182,46 @@
                                                       <content>
                                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="292.0" prefWidth="533.0">
                                                                <children>
-                                                                  <ComboBox layoutX="43.0" layoutY="29.0" prefWidth="150.0" promptText="ชนิดห้อง" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="455.0" AnchorPane.topAnchor="30.0" />
+                                                                  <ComboBox layoutX="40.0" layoutY="30.0" prefWidth="150.0" promptText="ชนิดห้อง" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="455.0" AnchorPane.topAnchor="30.0" />
                                                                   <AnchorPane layoutX="41.0" layoutY="111.0" prefHeight="178.0" prefWidth="156.0" style="-fx-border-width: 2; -fx-border-color: grey;">
                                                                      <children>
-                                                                        <Button layoutX="15.0" layoutY="11.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="A1" />
-                                                                        <Button layoutX="13.0" layoutY="67.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="A2" />
-                                                                        <Button layoutX="12.0" layoutY="125.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="A3" />
-                                                                        <Button layoutX="84.0" layoutY="11.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="A4" />
-                                                                        <Button layoutX="86.0" layoutY="67.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="A5" />
-                                                                        <Button layoutX="85.0" layoutY="126.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="A6" />
+                                                                        <Button fx:id="a1" layoutX="15.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="A1" />
+                                                                        <Button fx:id="a2" layoutX="15.0" layoutY="65.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="A2" />
+                                                                        <Button fx:id="a3" layoutX="15.0" layoutY="125.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="A3" />
+                                                                        <Button fx:id="a4" layoutX="85.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="A4" />
+                                                                        <Button fx:id="a5" layoutX="85.0" layoutY="65.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="A5" />
+                                                                        <Button fx:id="a6" layoutX="85.0" layoutY="125.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="A6" />
                                                                      </children>
                                                                   </AnchorPane>
                                                                   <AnchorPane layoutX="207.0" layoutY="111.0" prefHeight="118.0" prefWidth="228.0" style="-fx-border-width: 2; -fx-border-color: grey;">
                                                                      <children>
-                                                                        <Button layoutX="9.0" layoutY="10.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="B1" />
-                                                                        <Button layoutX="85.0" layoutY="10.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="B2" />
-                                                                        <Button layoutX="161.0" layoutY="10.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="B3" />
-                                                                        <Button layoutX="8.0" layoutY="67.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="B4" />
-                                                                        <Button layoutX="85.0" layoutY="67.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="B5" />
-                                                                        <Button layoutX="160.0" layoutY="67.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="B6" />
+                                                                        <Button fx:id="b1" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="B1" />
+                                                                        <Button fx:id="b2" layoutX="85.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="B2" />
+                                                                        <Button fx:id="b3" layoutX="160.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="B3" />
+                                                                        <Button fx:id="b4" layoutX="10.0" layoutY="65.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="B4" />
+                                                                        <Button fx:id="b5" layoutX="85.0" layoutY="65.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="B5" />
+                                                                        <Button fx:id="b6" layoutX="160.0" layoutY="65.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="B6" />
                                                                      </children>
                                                                   </AnchorPane>
                                                                   <AnchorPane layoutX="444.0" layoutY="111.0" prefHeight="118.0" prefWidth="156.0" style="-fx-border-width: 2; -fx-border-color: grey;">
                                                                      <children>
-                                                                        <Button layoutX="11.0" layoutY="10.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="C1" />
-                                                                        <Button layoutX="86.0" layoutY="10.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="C2" />
-                                                                        <Button layoutX="11.0" layoutY="66.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="C3" />
-                                                                        <Button layoutX="86.0" layoutY="66.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="C4" />
+                                                                        <Button fx:id="c1" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="C1" />
+                                                                        <Button fx:id="c2" layoutX="85.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="C2" />
+                                                                        <Button fx:id="c3" layoutX="10.0" layoutY="65.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="C3" />
+                                                                        <Button fx:id="c4" layoutX="85.0" layoutY="65.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="C4" />
                                                                      </children>
                                                                   </AnchorPane>
                                                                   <AnchorPane layoutX="207.0" layoutY="231.0" prefHeight="58.0" prefWidth="228.0" style="-fx-border-width: 2; -fx-border-color: grey;">
                                                                      <children>
-                                                                        <Button layoutX="8.0" layoutY="8.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="D1" />
-                                                                        <Button layoutX="84.0" layoutY="8.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="D2" />
-                                                                        <Button layoutX="159.0" layoutY="8.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="D3" />
+                                                                        <Button fx:id="d1" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="D1" />
+                                                                        <Button fx:id="d2" layoutX="85.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="D2" />
+                                                                        <Button fx:id="d3" layoutX="160.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="D3" />
                                                                      </children>
                                                                   </AnchorPane>
                                                                   <AnchorPane layoutX="444.0" layoutY="232.0" prefHeight="58.0" prefWidth="156.0" style="-fx-border-width: 2; -fx-border-color: grey;">
                                                                      <children>
-                                                                        <Button layoutX="11.0" layoutY="8.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="E1" />
-                                                                        <Button layoutX="88.0" layoutY="8.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="E2" />
+                                                                        <Button fx:id="e1" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="E1" />
+                                                                        <Button fx:id="e2" layoutX="85.0" layoutY="8.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="E2" />
                                                                      </children>
                                                                   </AnchorPane>
                                                                </children>
