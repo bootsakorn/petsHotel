@@ -17,8 +17,8 @@ public class Customer {
         this.pets = new ArrayList<>();
     }
 
-    public void addPets(Pets newPets){
+    public void addPets(Pets newPets)
+    {
         this.pets.add(newPets);
     }
-
 }

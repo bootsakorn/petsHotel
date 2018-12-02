@@ -11,7 +11,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class CustomersDataController extends DatabaseConnection {
-
+    private PetsListDataController petsListDataController = new PetsListDataController();
     public ArrayList<Customer> getCustomers () {
         ArrayList<Customer> customers = new ArrayList<>();
         try {
@@ -20,11 +20,12 @@ public class CustomersDataController extends DatabaseConnection {
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
-                int id = resultSet.getInt("ig");
+                int id = resultSet.getInt("id");
                 String firstname = resultSet.getString("firstname");
                 String lastname = resultSet.getString("lastname");
                 String address = resultSet.getString("address");
                 Customer customer = new Customer(id, firstname, lastname, address);
+                customer.setPets(petsListDataController.getPetsIdListOfCustomer(id));
                 customers.add(customer);
             }
             disconnect();
