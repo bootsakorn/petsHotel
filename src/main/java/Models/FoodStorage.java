@@ -31,4 +31,8 @@ public class FoodStorage implements Stockable {
             }
         }
     }
+
+    public ArrayList<Food> getFoods() {
+        return foods;
+    }
 }
