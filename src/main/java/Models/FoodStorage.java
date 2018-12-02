@@ -10,7 +10,7 @@ public class FoodStorage implements Stockable {
     }
 
     public void insert(String name, String species, double price,int qualtity) {
-        Food newItem = new Food(name,species,price,qualtity);
+        Food newItem = new Food(1,"วิสกี้","แมว",300);
         foods.add(newItem);
     }
 
