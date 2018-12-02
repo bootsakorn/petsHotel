@@ -180,48 +180,60 @@
                                                   <tabs>
                                                     <Tab fx:id="petTab1" closable="false" text="สัตว์เลี้ยงตัวที่ 1">
                                                       <content>
-                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="292.0" prefWidth="533.0">
+                                                        <AnchorPane fx:id="pet1Pane" minHeight="0.0" minWidth="0.0" prefHeight="292.0" prefWidth="533.0">
                                                                <children>
-                                                                  <ComboBox layoutX="40.0" layoutY="30.0" prefWidth="150.0" promptText="ชนิดห้อง" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="455.0" AnchorPane.topAnchor="30.0" />
+                                                                  <ComboBox fx:id="roomType" layoutX="40.0" layoutY="30.0" onAction="#handleOnClickedSelectedRoomType" prefWidth="150.0" promptText="ชนิดห้อง" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="455.0" AnchorPane.topAnchor="30.0" />
                                                                   <AnchorPane layoutX="41.0" layoutY="111.0" prefHeight="178.0" prefWidth="156.0" style="-fx-border-width: 2; -fx-border-color: grey;">
                                                                      <children>
-                                                                        <Button fx:id="a1" layoutX="15.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="A1" />
-                                                                        <Button fx:id="a2" layoutX="15.0" layoutY="65.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="A2" />
-                                                                        <Button fx:id="a3" layoutX="15.0" layoutY="125.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="A3" />
-                                                                        <Button fx:id="a4" layoutX="85.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="A4" />
-                                                                        <Button fx:id="a5" layoutX="85.0" layoutY="65.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="A5" />
-                                                                        <Button fx:id="a6" layoutX="85.0" layoutY="125.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="A6" />
+                                                                        <Button fx:id="a1" layoutX="15.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="A1" />
+                                                                        <Button fx:id="a2" layoutX="85.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="A2" />
+                                                                        <Button fx:id="a3" layoutX="15.0" layoutY="65.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="A3" />
+                                                                        <Button fx:id="a4" layoutX="85.0" layoutY="65.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="A4" />
+                                                                        <Button fx:id="a5" layoutX="15.0" layoutY="125.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="A5" />
+                                                                        <Button fx:id="a6" layoutX="85.0" layoutY="125.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="A6" />
                                                                      </children>
                                                                   </AnchorPane>
-                                                                  <AnchorPane layoutX="207.0" layoutY="111.0" prefHeight="118.0" prefWidth="228.0" style="-fx-border-width: 2; -fx-border-color: grey;">
+                                                                  <AnchorPane layoutX="207.0" layoutY="111.0" prefHeight="118.0" prefWidth="235.0" style="-fx-border-width: 2; -fx-border-color: grey;">
                                                                      <children>
-                                                                        <Button fx:id="b1" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="B1" />
-                                                                        <Button fx:id="b2" layoutX="85.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="B2" />
-                                                                        <Button fx:id="b3" layoutX="160.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="B3" />
-                                                                        <Button fx:id="b4" layoutX="10.0" layoutY="65.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="B4" />
-                                                                        <Button fx:id="b5" layoutX="85.0" layoutY="65.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="B5" />
-                                                                        <Button fx:id="b6" layoutX="160.0" layoutY="65.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="B6" />
+                                                                        <Button fx:id="b1" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="B1" />
+                                                                        <Button fx:id="b2" layoutX="85.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="B2" />
+                                                                        <Button fx:id="b3" layoutX="160.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="B3" />
+                                                                        <Button fx:id="b4" layoutX="10.0" layoutY="65.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="B4" />
+                                                                        <Button fx:id="b5" layoutX="85.0" layoutY="65.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="B5" />
+                                                                        <Button fx:id="b6" layoutX="160.0" layoutY="65.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="B6" />
                                                                      </children>
                                                                   </AnchorPane>
-                                                                  <AnchorPane layoutX="444.0" layoutY="111.0" prefHeight="118.0" prefWidth="156.0" style="-fx-border-width: 2; -fx-border-color: grey;">
+                                                                  <AnchorPane layoutX="444.0" layoutY="111.0" prefHeight="118.0" prefWidth="158.0" style="-fx-border-width: 2; -fx-border-color: grey;">
                                                                      <children>
-                                                                        <Button fx:id="c1" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="C1" />
-                                                                        <Button fx:id="c2" layoutX="85.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="C2" />
-                                                                        <Button fx:id="c3" layoutX="10.0" layoutY="65.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="C3" />
-                                                                        <Button fx:id="c4" layoutX="85.0" layoutY="65.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="C4" />
+                                                                        <Button fx:id="c1" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="C1" />
+                                                                        <Button fx:id="c2" layoutX="85.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="C2" />
+                                                                        <Button fx:id="c3" layoutX="10.0" layoutY="65.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="C3" />
+                                                                        <Button fx:id="c4" layoutX="85.0" layoutY="65.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="C4" />
                                                                      </children>
                                                                   </AnchorPane>
-                                                                  <AnchorPane layoutX="207.0" layoutY="231.0" prefHeight="58.0" prefWidth="228.0" style="-fx-border-width: 2; -fx-border-color: grey;">
+                                                                  <AnchorPane layoutX="206.0" layoutY="230.0" prefHeight="58.0" prefWidth="80.0" style="-fx-border-width: 2; -fx-border-color: grey;">
                                                                      <children>
-                                                                        <Button fx:id="d1" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="D1" />
-                                                                        <Button fx:id="d2" layoutX="85.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="D2" />
-                                                                        <Button fx:id="d3" layoutX="160.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="D3" />
+                                                                        <Button fx:id="d1" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="D1" />
                                                                      </children>
                                                                   </AnchorPane>
-                                                                  <AnchorPane layoutX="444.0" layoutY="232.0" prefHeight="58.0" prefWidth="156.0" style="-fx-border-width: 2; -fx-border-color: grey;">
+                                                                  <AnchorPane layoutX="444.0" layoutY="230.0" prefHeight="58.0" prefWidth="80.0" style="-fx-border-width: 2; -fx-border-color: grey;">
                                                                      <children>
-                                                                        <Button fx:id="e1" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="E1" />
-                                                                        <Button fx:id="e2" layoutX="85.0" layoutY="8.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="E2" />
+                                                                        <Button fx:id="e1" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="E1" />
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                                  <AnchorPane layoutX="284.0" layoutY="230.0" prefHeight="58.0" prefWidth="80.0" style="-fx-border-width: 2; -fx-border-color: grey;">
+                                                                     <children>
+                                                                        <Button fx:id="d32" layoutX="13.0" layoutY="9.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="D3" AnchorPane.leftAnchor="10.0" />
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                                  <AnchorPane layoutX="362.0" layoutY="230.0" prefHeight="58.0" prefWidth="80.0" style="-fx-border-width: 2; -fx-border-color: grey;">
+                                                                     <children>
+                                                                        <Button fx:id="d21" layoutX="85.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="D2" AnchorPane.leftAnchor="10.0" />
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                                  <AnchorPane layoutX="522.0" layoutY="230.0" prefHeight="58.0" prefWidth="80.0" style="-fx-border-width: 2; -fx-border-color: grey;">
+                                                                     <children>
+                                                                        <Button fx:id="e2" layoutX="13.0" layoutY="7.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="E2" AnchorPane.leftAnchor="10.0" />
                                                                      </children>
                                                                   </AnchorPane>
                                                                </children>
@@ -240,14 +252,15 @@
                                        <content>
                                           <AnchorPane focusTraversable="true" prefHeight="200.0" prefWidth="200.0">
                                              <children>
-                                                <TextArea layoutX="42.0" layoutY="53.0" prefHeight="260.0" prefWidth="582.0" text="รายละเอียด" />
-                                                <Button layoutX="539.0" layoutY="366.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="106.0" text="Check In" />
-                                                <Label layoutX="48.0" layoutY="14.0" text="รายละเอียด :">
+                                                <TextArea fx:id="allDetails" layoutX="42.0" layoutY="53.0" prefHeight="260.0" prefWidth="582.0" text="รายละเอียด" />
+                                                <Button fx:id="checkInBtn" layoutX="524.0" layoutY="331.0" mnemonicParsing="false" onAction="#handleOnClickedCheckInBtn" prefHeight="34.0" prefWidth="100.0" text="Check In" />
+                                                <Label layoutX="42.0" layoutY="14.0" text="รายละเอียด">
                                                    <font>
                                                       <Font size="25.0" />
                                                    </font>
                                                 </Label>
-                                                <Button layoutX="293.0" layoutY="331.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="80.0" text="ยืนยัน" />
+                                                <Button fx:id="submitBtn" layoutX="283.0" layoutY="331.0" mnemonicParsing="false" onAction="#handleOnClickedSubmitBtn" prefHeight="34.0" prefWidth="100.0" text="ยืนยันการจอง" />
+                                                <Button fx:id="step3PreviousBtn" layoutX="42.0" layoutY="331.0" mnemonicParsing="false" onAction="#handleOnClickedStep3PreviousBtn" prefHeight="34.0" prefWidth="100.0" text="ย้อนกลับ" />
                                              </children>
                                           </AnchorPane>
                                        </content>

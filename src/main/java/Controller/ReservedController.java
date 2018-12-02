@@ -1,5 +1,8 @@
 package Controller;
 
+import Models.Customer;
+import Models.Pets;
+import Models.Room;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -29,7 +32,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class ReservedController extends PageSwitchController{
-    
+
     @FXML protected MenuItem home;
     @FXML protected MenuItem calendar;
     @FXML protected MenuItem logout;
@@ -58,24 +61,29 @@ public class ReservedController extends PageSwitchController{
     @FXML protected ListView addedListView;
     @FXML protected ToggleGroup servicePackage;
     //chooseRoomsTab
+    @FXML protected AnchorPane pet1Pane;
+    @FXML protected ComboBox roomType;
     @FXML protected Button step2NextBtn;
     @FXML protected Button step2PreviousBtn;
     @FXML protected Parent root;
-    @FXML protected ComboBox typeRooms;
     @FXML protected Button a1,a2,a3,a4,a5,a6;
     @FXML protected Button b1,b2,b3,b4,b5,b6;
     @FXML protected Button c1,c2,c3,c4;
     @FXML protected Button d1,d2,d3;
     @FXML protected Button e1,e2;
     // confirmDetailTab
+    @FXML protected Button checkInBtn;
+    @FXML protected Button submitBtn;
+    @FXML protected Button step3PreviousBtn;
     @FXML protected TextArea allDetails;
 
     private ArrayList<ArrayList<String>> petsDetail = new ArrayList();
     private ArrayList<Button> groupA = new ArrayList<>();
     private ArrayList<Button> groupB = new ArrayList<>();
     private ArrayList<Button> groupC = new ArrayList<>();
-    private ArrayList<Button> groupD = new ArrayList<>();
-    private ArrayList<Button> groupE = new ArrayList<>();
+    private ArrayList<AnchorPane> groupD = new ArrayList<>();
+    private ArrayList<AnchorPane> groupE = new ArrayList<>();
+    private ArrayList<Pets> pets = new ArrayList<>();
 
     @FXML private void initialize(){
         //prep Data
@@ -154,6 +162,13 @@ public class ReservedController extends PageSwitchController{
         foodList.setValue(foodName.get(0));
         foodList.setItems(foodName);
     }
+    public void manageRoom(AnchorPane pane){
+        pane.getChildren().get(1).setDisable(true);
+        AnchorPane roomA = (AnchorPane)pane.getChildren().get(1);
+        for (Node btn : roomA.getChildren() ) {
+            btn.setStyle("-fx-background-color: #e07d7d");
+        }
+    }
 
     //insert detail tab
     public void handleOnClickedAddPetBtn(){
@@ -174,44 +189,50 @@ public class ReservedController extends PageSwitchController{
     }
 
     public void handleOnClickedStep1NextBtn(ActionEvent actionEvent)throws Exception{
-        SingleSelectionModel<Tab> selectionModel = reservationTab.getSelectionModel();
-        selectionModel.select(chooseRooms);
-        insertDetail.setDisable(true);
-        chooseRooms.setDisable(false);
+        if (petsDetail.isEmpty()){
 
-        //setting tab for step2 (choose room)
-        if (petsDetail.size() == 1){
-            String name = petsDetail.get(0).get(1);
-            petTab1.setText(name);
-        }else if(petsDetail.size() == chooseRoomTabPane.getTabs().size()){
-            for (int i = 1 ; i < petsDetail.size() ; i++){
-                String name = petsDetail.get(i).get(1);
-                chooseRoomTabPane.getTabs().get(i).setText(name);
+        }else{
+            SingleSelectionModel<Tab> selectionModel = reservationTab.getSelectionModel();
+            selectionModel.select(chooseRooms);
+            insertDetail.setDisable(true);
+            chooseRooms.setDisable(false);
+            ObservableList<String> roomTypes = FXCollections.observableArrayList(
+                    "ห้องเดี่ยว","ห้องรวม"
+            );
+            roomType.setItems(roomTypes);
+
+            //setting tab for step2 (choose room)
+            if (petsDetail.size() == 1){
+                String name = petsDetail.get(0).get(1);
+                petTab1.setText(name);
+            }else if(petsDetail.size() == chooseRoomTabPane.getTabs().size()){
+                for (int i = 1 ; i < petsDetail.size() ; i++){
+                    String name = petsDetail.get(i).get(1);
+                    chooseRoomTabPane.getTabs().get(i).setText(name);
+                }
+
+            }
+            else {
+                String name = petsDetail.get(0).get(1);
+                petTab1.setText(name);
+                manageRoom(pet1Pane);
+                petTab1.setContent(pet1Pane);
+                for (int i = 1 ; i < petsDetail.size() ; i++){
+                    Tab tab = new Tab(petsDetail.get(i).get(1));
+                    AnchorPane pane = new AnchorPane();
+                    createTabContent(pane);
+                    manageRoom(pane);
+                    tab.setContent(pane);
+                    chooseRoomTabPane.getTabs().add(tab);
+                }
             }
         }
-        else {
-            String name = petsDetail.get(0).get(1);
-            petTab1.setText(name);
-            for (int i = 1 ; i < petsDetail.size() ; i++){
-                Tab tab = new Tab(petsDetail.get(i).get(1));
-                AnchorPane pane = new AnchorPane();
-                createTabContent(pane);
-//                load();
-                tab.setContent(pane);
-                chooseRoomTabPane.getTabs().add(tab);
-            }
-        }
-        manageRoom();
     }
 
-//    public void load() throws Exception{
-//        Stage stage = (Stage) root.getScene().getWindow();
-//        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/tabChooseRoom.fxml"));
-//        stage.setScene(new Scene((Parent) loader.load()));
-//        stage.show();
-//    }
-
     public void createTabContent(AnchorPane pane){
+        ObservableList<String> roomType = FXCollections.observableArrayList(
+                "ห้องเดี่ยว","ห้องรวม"
+        );
         pane.setPrefSize(655, 210);
         ComboBox cb = new ComboBox();
         cb.setMinWidth(160);
@@ -219,6 +240,7 @@ public class ReservedController extends PageSwitchController{
         cb.setLayoutY(30);
         cb.setPromptText("ชนิดห้อง");
         cb.setVisibleRowCount(10);
+        cb.setItems(roomType);
 
         createButton();
         settingButton();
@@ -250,34 +272,54 @@ public class ReservedController extends PageSwitchController{
             roomC.getChildren().add(btn);
         }
 
-        AnchorPane roomD = new AnchorPane();
-        roomD.setPrefSize(230, 60);
-        roomD.setLayoutX(205);
-        roomD.setLayoutY(230);
-        roomD.setStyle("-fx-border-width: 2; -fx-border-color: grey;");
-        for (Button btn : groupD) {
-            roomD.getChildren().add(btn);
+        for (int i = 0; i < 3; i++) {
+            groupD.add(new AnchorPane());
+            groupD.get(i).setPrefSize(80, 58);
+            if (i!=0){
+                groupD.get(i).setLayoutX(groupD.get(i-1).getLayoutX() + 74);
+                groupD.get(i).setLayoutY(groupD.get(i-1).getLayoutY());
+            }else{
+                groupD.get(i).setLayoutX(205);
+                groupD.get(i).setLayoutY(230);
+            }
+            groupD.get(i).setStyle("-fx-border-width: 2; -fx-border-color: grey;");
+            Button btn = new Button("D"+(i+1));
+            btn.setPrefSize(60,40);
+            btn.setStyle("-fx-background-color: #b4e5b5;");
+            btn.setLayoutX(10);
+            btn.setLayoutY(10);
+            groupD.get(i).getChildren().add(btn);
         }
 
-        AnchorPane roomE = new AnchorPane();
-        roomE.setPrefSize(156, 58);
-        roomE.setLayoutX(445);
-        roomE.setLayoutY(230);
-        roomE.setStyle("-fx-border-width: 2; -fx-border-color: grey;");
-        for (Button btn : groupE) {
-            roomE.getChildren().add(btn);
+        for (int i = 0; i < 2; i++) {
+            groupE.add(new AnchorPane());
+            groupE.get(i).setPrefSize(80, 58);
+            if (i!=0){
+                groupE.get(i).setLayoutX(groupE.get(i-1).getLayoutX() + 74);
+                groupE.get(i).setLayoutY(groupE.get(i-1).getLayoutY());
+            }else{
+                groupE.get(i).setLayoutX(445);
+                groupE.get(i).setLayoutY(230);
+            }
+            groupE.get(i).setStyle("-fx-border-width: 2; -fx-border-color: grey;");
+            Button btn = new Button("E"+(i+1));
+            btn.setPrefSize(60,40);
+            btn.setStyle("-fx-background-color: #b4e5b5;");
+            btn.setLayoutX(10);
+            btn.setLayoutY(10);
+            groupE.get(i).getChildren().add(btn);
         }
 
         pane.getChildren().add(cb);
         pane.getChildren().add(roomA);
         pane.getChildren().add(roomB);
         pane.getChildren().add(roomC);
-        pane.getChildren().add(roomD);
-        pane.getChildren().add(roomE);
-    }
-
-    public void manageRoom(){
-
+        for (AnchorPane d : groupD) {
+            pane.getChildren().add(d);
+        }
+        for (AnchorPane e : groupE) {
+            pane.getChildren().add(e);
+        }
     }
 
     public void createButton(){
@@ -287,12 +329,6 @@ public class ReservedController extends PageSwitchController{
         }
         for (int i = 1; i <= 4; i++) {
             groupC.add( new Button("C"+i));
-        }
-        for (int i = 1; i <= 3; i++) {
-            groupD.add( new Button("D"+i));
-        }
-        for (int i = 1; i <= 2; i++) {
-            groupE.add( new Button("E"+i));
         }
     }
 
@@ -350,31 +386,13 @@ public class ReservedController extends PageSwitchController{
                 }
             }
         }
-        for (int i = 0; i < 3; i++) {
-            groupD.get(i).setPrefSize(60,40);
-            groupD.get(i).setStyle("-fx-background-color: #b4e5b5;");
-            if (i!=0){
-                groupD.get(i).setLayoutX(groupD.get(i-1).getLayoutX() + left);
-                groupD.get(i).setLayoutY(groupD.get(i-1).getLayoutY());
-            }else{
-                groupD.get(i).setLayoutX(10);
-                groupD.get(i).setLayoutY(10);
-            }
-        }
-        for (int i = 0; i < 2; i++) {
-            groupE.get(i).setPrefSize(60,40);
-            groupE.get(i).setStyle("-fx-background-color: #b4e5b5;");
-            if (i!=0){
-                groupE.get(i).setLayoutX(groupE.get(i-1).getLayoutX() + left);
-                groupE.get(i).setLayoutY(groupE.get(i-1).getLayoutY());
-            }else{
-                groupE.get(i).setLayoutX(10);
-                groupE.get(i).setLayoutY(10);
-            }
-        }
     }
 
     public void handleOnClickedStep2NextBtn(ActionEvent actionEvent) {
+        SingleSelectionModel<Tab> selectionModel = reservationTab.getSelectionModel();
+        selectionModel.select(confirmDetail);
+        chooseRooms.setDisable(true);
+        confirmDetail.setDisable(false);
     }
 
     public void handleOnClickedStep2PreviousBtn(ActionEvent actionEvent) {
@@ -382,5 +400,24 @@ public class ReservedController extends PageSwitchController{
         selectionModel.select(insertDetail);
         insertDetail.setDisable(false);
         chooseRooms.setDisable(true);
+    }
+
+    public void handleOnClickedCheckInBtn(ActionEvent actionEvent) {
+    }
+
+    public void handleOnClickedSubmitBtn(ActionEvent actionEvent) {
+    }
+
+    public void handleOnClickedStep3PreviousBtn(ActionEvent actionEvent) {
+        SingleSelectionModel<Tab> selectionModel = reservationTab.getSelectionModel();
+        selectionModel.select(chooseRooms);
+        chooseRooms.setDisable(false);
+        confirmDetail.setDisable(true);
+    }
+
+    public void handleOnClickedSelectedRoomType(ActionEvent actionEvent) {
+    }
+
+    public void handleOnClickedSelectedRoom(ActionEvent actionEvent) {
     }
 }

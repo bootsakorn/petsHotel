@@ -44,19 +44,7 @@ public class CounterPageController extends PageSwitchController{
 
     //Button on center
     @FXML protected void handleOnClickSearchTextfield(ActionEvent e){
-//        FilteredList<BookingDataController> filteredData = new FilteredList<>(data, even -> true );
-//        searchTextField.setOnKeyReleased(event ->{
-//            searchTextField.textProperty().addListener(((observable, oldValue, newValue) ->
-//                    filteredData.setPredicate((Predicate<? super BookingDataController>) user ->{
-//                        if (newValue == null || newValue.isEmpty()){return  true;}
-//                        if (user.getCustomers().contains(newValue)){return  true;}
-//                        return false;
-//                    })
-//                    ));
-//            SortedList<BookingDataController> sortedData = new SortedList<>(filteredData);
-//            sortedData.comparatorProperty().bind(table.comparatorProperty());
-//            table.setItems(sortedData);
-//        });
+
     }
     @FXML protected void handleOnClickAddBtn(ActionEvent e) throws Exception{
         //add
