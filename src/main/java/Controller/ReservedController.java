@@ -89,7 +89,7 @@ public class ReservedController extends PageSwitchController{
     private FoodStorage fs = new FoodStorage();
     private String type = "ห้องเดี่ยว";
     private DataController data = new DataController();
-//    private ArrayList<Room> roomList = 
+//    private ArrayList<Room> roomList =
 
     @FXML private void initialize(){
         cus = new Customer(001,"ศศิธร", "สายพา", "88/131");
