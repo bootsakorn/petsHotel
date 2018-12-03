@@ -8,7 +8,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class PackageDataController extends DatabaseConnection {
-
+    public PackageDataController() throws ClassNotFoundException {
+        JdbcSQLiteConnection();
+    }
     public ArrayList<Package> getPackage (){
         ArrayList<Package> packages = new ArrayList<>();
         try {

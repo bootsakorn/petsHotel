@@ -12,6 +12,9 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class TodolistDataController extends DatabaseConnection{
+    public TodolistDataController() throws ClassNotFoundException {
+        JdbcSQLiteConnection();
+    }
     public ArrayList<Todolist> getTodoLists (){
         ArrayList<Todolist> todolists = new ArrayList<>();
         try {

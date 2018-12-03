@@ -13,6 +13,10 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class CheckoutDataController extends DatabaseConnection{
+    public CheckoutDataController() throws ClassNotFoundException {
+        JdbcSQLiteConnection();
+    }
+
     public ArrayList<CheckOut> getCheckoutArrayList (){
         ArrayList<CheckOut> checkOutsArrayList = new ArrayList<>();
         try{

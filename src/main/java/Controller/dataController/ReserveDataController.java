@@ -12,6 +12,9 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class ReserveDataController extends DatabaseConnection {
+    public ReserveDataController() throws ClassNotFoundException {
+        JdbcSQLiteConnection();
+    }
     TakingCarePetsListDataController takingCarePetsListDataController = new TakingCarePetsListDataController();
     public ArrayList<Reserve> getReserve() {
         ArrayList<Reserve> reserves = new ArrayList<>();

@@ -6,6 +6,9 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class PetsDataController extends DatabaseConnection{
+    public PetsDataController() throws ClassNotFoundException {
+        JdbcSQLiteConnection();
+    }
     private SpeciesDataController speciesDataController = new SpeciesDataController();
     public ArrayList<Pets> getPetsList (){
         ArrayList<Pets> petsList = new ArrayList<>();
