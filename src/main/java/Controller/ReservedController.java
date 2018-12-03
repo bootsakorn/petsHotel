@@ -93,12 +93,20 @@ public class ReservedController extends CounterPageController{
     private String selectedRoom2 = "";
     private DataController dataController;
     private ArrayList<Food> foods ;
-    private ArrayList<Room> rooms = dataController.getRooms();
-    private ArrayList<Package> packages = dataController.getPackages();
-    private ArrayList<Customer> customers = dataController.getCustomer();
+    private ArrayList<Room> rooms;
+    private ArrayList<Package> packages;
+    private ArrayList<Customer> customers;
 
-    public ReservedController() throws Exception {
-        dataController = new DataController();
+    public ReservedController(){
+        try {
+            dataController = new DataController();
+            customers = dataController.getCustomer();
+            packages = dataController.getPackages();
+            rooms = dataController.getRooms();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
     }
 
     @FXML private void initialize(){

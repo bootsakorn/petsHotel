@@ -37,11 +37,12 @@ public class CounterPageController extends PageSwitchController{
     private Customer cus;
     private FoodStorage fs = new FoodStorage();
     private DataController dataController;
-//    private ArrayList<Customer> customers = dataController.getCustomer();
+    private ArrayList<Customer> customers;
 
     public CounterPageController(){
         try {
             dataController = new DataController();
+            customers = dataController.getCustomer();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }

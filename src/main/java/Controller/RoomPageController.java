@@ -33,11 +33,12 @@ public class RoomPageController extends CounterPageController {
     private DataController dataController;
     private String selectedType = "";
     private String selectedSpecies = "";
-    private ArrayList<Room> rooms = dataController.getRooms();
+    private ArrayList<Room> rooms;
 
     public RoomPageController(){
         try {
             dataController = new DataController();
+            rooms = dataController.getRooms();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }

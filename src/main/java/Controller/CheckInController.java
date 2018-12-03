@@ -49,14 +49,17 @@ public class CheckInController extends CounterPageController{
     private Customer cus;
     private Package pack;
     private DataController dataController ;
-    private ArrayList<Pets> pets = dataController.getPets();
-    private ArrayList<Customer> customers = dataController.getCustomer();
+    private ArrayList<Pets> pets;
+    private ArrayList<Customer> customers;
     private ArrayList<ArrayList<String>> petsDetail = new ArrayList();
-    private ArrayList<Package> packages = dataController.getPackages();
+    private ArrayList<Package> packages;
 
     public CheckInController(){
         try {
             dataController = new DataController();
+            pets = dataController.getPets();
+            customers = dataController.getCustomer();
+            packages = dataController.getPackages();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
