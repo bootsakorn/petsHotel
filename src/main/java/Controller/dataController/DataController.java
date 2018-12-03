@@ -110,7 +110,7 @@ public class DataController {
         ArrayList<Pets> petsOfCustomer = new ArrayList<>();
         for (PetsList petsList : petsLists){
             if (customer.getId() == petsList.getCustomerId()){{
-                petsOfCustomer.add(this.getPet(petsList.getPetsListId()));
+                petsOfCustomer.add(this.getPet(petsList.getPetId()));
             }}
         }
         return petsOfCustomer;

@@ -4,18 +4,18 @@ import java.util.ArrayList;
 
 public class PetsList {
     private int customerId;
-    private int petsListId;
+    private int petId;
 
-    public PetsList (int customerId, int petsListId){
+    public PetsList (int customerId, int petsId){
         this.customerId = customerId;
-        this.petsListId = petsListId;
+        this.petId = petsId;
     }
 
     public int getCustomerId() {
         return customerId;
     }
 
-    public int getPetsListId() {
-        return petsListId;
+    public int getPetId() {
+        return petId;
     }
 }
