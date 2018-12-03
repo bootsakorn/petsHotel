@@ -1,5 +1,7 @@
 package Controller;
 
+import Controller.dataController.DataController;
+import Models.Customer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -9,6 +11,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
+import java.util.ArrayList;
+
 public class CheckOutController extends CounterPageController {
 
     public AnchorPane mainPane;
@@ -17,6 +21,8 @@ public class CheckOutController extends CounterPageController {
     public Button CheckOutBtn;
     public AnchorPane successPane;
     public Button okBtn;
+    private DataController dataController = new DataController();
+    private ArrayList<Customer> customers = dataController.getCustomer();
 
     @FXML
     private void initialize(){

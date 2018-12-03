@@ -1,5 +1,7 @@
 package Controller;
 
+import Controller.dataController.DataController;
+import Models.Room;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -8,6 +10,9 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.AnchorPane;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class RoomPageController extends CounterPageController {
 
@@ -25,8 +30,10 @@ public class RoomPageController extends CounterPageController {
                             b1,b2,b3,b4,b5,b6,
                             c1,c2,c3,c4,
                             d1,d2,d3,e1,e2;
+    private DataController dataController = new DataController();
     private String selectedType = "";
     private String selectedSpecies = "";
+    private ArrayList<Room> rooms = dataController.getRooms();
 
     @FXML private void initialize(){
         ObservableList<String> roomType = FXCollections.observableArrayList(

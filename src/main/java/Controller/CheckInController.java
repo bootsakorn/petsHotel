@@ -1,6 +1,8 @@
 package Controller;
 
+import Controller.dataController.DataController;
 import Models.Customer;
+import Models.Package;
 import Models.Pets;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -44,8 +46,11 @@ public class CheckInController extends CounterPageController{
     // use in class
     private Customer cus;
     private Package pack;
-    private ArrayList<Pets> pets;
+    private DataController dataController = new DataController();
+    private ArrayList<Pets> pets = dataController.getPets();
+    private ArrayList<Customer> customers = dataController.getCustomer();
     private ArrayList<ArrayList<String>> petsDetail = new ArrayList();
+    private ArrayList<Package> packages = dataController.getPackages();
 
     @FXML private void initialize(){
         cus = new Customer(001,"ศศิธร", "สายพา", "88/131");

@@ -6,13 +6,11 @@ public class AppointmentBill {
     private int id;
     private Date appointmentDate;
     private int takingCarePetsListId;
-    private double pledge;
 
-    public AppointmentBill(int id, Date appointmentDate, int takingCarePetsListId, double pledge) {
+    public AppointmentBill(int id, Date appointmentDate, int takingCarePetsListId) {
         this.id = id;
         this.appointmentDate = appointmentDate;
         this.takingCarePetsListId = takingCarePetsListId;
-        this.pledge = pledge;
     }
 
     public int getId() {
@@ -25,9 +23,5 @@ public class AppointmentBill {
 
     public int getTakingCarePetsListId() {
         return takingCarePetsListId;
-    }
-
-    public double getPledge() {
-        return pledge;
     }
 }

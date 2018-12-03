@@ -73,4 +73,21 @@ public class TakingCarePetsListDataController extends DatabaseConnection {
             e.printStackTrace();
         }
     }
+
+    public int getMaxId(){
+        int max_id = 0;
+        try {
+            connect();
+            String query = "Select MAX(id) AS max_id from taking_care_pets_list";
+            Statement statement = conn.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()){
+                max_id = resultSet.getInt("max_id");
+            }
+            disconnect();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return max_id;
+    }
 }
