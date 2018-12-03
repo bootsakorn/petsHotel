@@ -2,8 +2,6 @@ package Controller;
 
 import Controller.dataController.DataController;
 import Models.*;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,20 +16,15 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
-
-import java.awt.*;
-import java.io.IOException;
-import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class ReservedController extends PageSwitchController{
+public class ReservedController extends CounterPageController{
 
     @FXML protected MenuItem home;
     @FXML protected MenuItem calendar;
@@ -73,10 +66,11 @@ public class ReservedController extends PageSwitchController{
     @FXML protected Button d1,d2,d3;
     @FXML protected Button e1,e2;
     // confirmDetailTab
-    @FXML protected Button checkInBtn;
-    @FXML protected Button submitBtn;
-    @FXML protected Button step3PreviousBtn;
     @FXML protected TextArea allDetails;
+    @FXML protected Button step3PreviousBtn;
+    @FXML protected Button submitBtn;
+    @FXML protected Button checkInBtn;
+    @FXML protected Button cancelBtn;
 
     private ArrayList<ArrayList<String>> petsDetail = new ArrayList();
     private ArrayList<Button> groupA = new ArrayList<>();
@@ -88,7 +82,14 @@ public class ReservedController extends PageSwitchController{
     private ArrayList<Pets> pets;
     private FoodStorage fs = new FoodStorage();
     private String type = "ห้องเดี่ยว";
+    private String type2 = "ห้องเดี่ยว";
+    private String previousSelectedType = "ห้องเดี่ยว";
+    private String previousSelectedType2 = "ห้องเดี่ยว";
     private DataController data = new DataController();
+    private Button previousSelectedBtn = new Button();
+    private String selectedRoom = "";
+    private Button previousSelectedBtn2 = new Button();
+    private String selectedRoom2 = "";
 //    private ArrayList<Room> roomList =
 
     @FXML private void initialize(){
@@ -102,6 +103,197 @@ public class ReservedController extends PageSwitchController{
         manageFoodList();
     }
 
+    //insert detail tab
+    public void handleOnClickedAddPetBtn(){
+        RadioButton selected = (RadioButton)servicePackage.getSelectedToggle();
+        ObservableList<String> pet = addedListView.getItems();
+        pet.add(datePicker.getValue()+" | "+petList.getValue()+" | "+foodList.getValue()
+                +" | "+selected.getText()+" | "+dayNum.getText()+" วัน");
+        addedListView.setItems(pet);
+
+        petsDetail.add(new ArrayList(Arrays.asList(
+                datePicker.getValue().toString(),
+                petList.getValue().toString(),
+                foodList.getValue().toString(),
+                selected.getText(),dayNum.getText()+" วัน"
+                )));
+        System.out.println(datePicker.getValue()+" "+petList.getValue()+" "+foodList.getValue()
+                +" "+((RadioButton)servicePackage.getSelectedToggle()).getText()+" "+dayNum.getText()+" วัน");
+    }
+
+    public void handleOnClickedStep1NextBtn(ActionEvent actionEvent)throws Exception{
+        if (petsDetail.isEmpty()){
+            //dialog window alert
+        }else{
+            SingleSelectionModel<Tab> selectionModel = reservationTab.getSelectionModel();
+            selectionModel.select(chooseRooms);
+            insertDetail.setDisable(true);
+            chooseRooms.setDisable(false);
+            ObservableList<String> roomTypes = FXCollections.observableArrayList(
+                    "ห้องเดี่ยว","ห้องรวม"
+            );
+            roomType.setItems(roomTypes);
+            roomType.getSelectionModel().selectFirst();
+
+            //setting tab for step2 (choose room)
+            if (petsDetail.size() == 1){
+                String name = petsDetail.get(0).get(1);
+                petTab1.setText(name);
+            }else if(petsDetail.size() == chooseRoomTabPane.getTabs().size()){
+                for (int i = 1 ; i < petsDetail.size() ; i++){
+                    String name = petsDetail.get(i).get(1);
+                    chooseRoomTabPane.getTabs().get(i).setText(name);
+                }
+            }
+            else {
+                String name = petsDetail.get(0).get(1);
+                petTab1.setText(name);
+                manageRoom(pet1Pane, 0);
+                petTab1.setContent(pet1Pane);
+                for (int i = 1 ; i < petsDetail.size() ; i++){
+                    Tab tab = new Tab(petsDetail.get(i).get(1));
+                    AnchorPane pane = new AnchorPane();
+                    createTabContent(pane);
+                    manageRoom(pane,i);
+                    tab.setContent(pane);
+                    chooseRoomTabPane.getTabs().add(tab);
+                }
+            }
+        }
+    }
+
+    public void handleOnClickedStep2NextBtn(ActionEvent actionEvent) {
+        boolean canGoNext = false;
+        SingleSelectionModel<Tab> selectionModel = reservationTab.getSelectionModel();
+        for (ArrayList<String> pet: petsDetail) {
+            if (pet.size()== 7){
+                canGoNext = true;
+            }else {
+                canGoNext = false;
+            }
+            System.out.println(pet.size());
+        }
+
+        if (canGoNext){
+            selectionModel.select(confirmDetail);
+            chooseRooms.setDisable(true);
+            confirmDetail.setDisable(false);
+
+            //show detail in text area
+            String details = "ชื่อลูกค้า : คุณ"+cus.getFirstName()+" "+cus.getLastName()+"\n";
+            for (ArrayList<String> pet:petsDetail) {
+                details +=
+                        "วันที่จอง : " +pet.get(0)+"\tจำนวนวัน : " + pet.get(4)+"\n"+
+                        "ชื่อสัตว์เลี้ยง : " + pet.get(1)+"\n"+
+                        "อาหารยี่ห้อ : " + pet.get(2)+"\n"+
+                        "แพคเกจ : " + pet.get(3)+"\n"+
+                        "ชนิดห้อง : " + pet.get(5)+"\n"+
+                        "เลขที่ห้อง : " + pet.get(6)+"\n"+
+                        "\t\t\t\t\t-------------------------------------------\n";
+            }
+            allDetails.setText(details);
+        }
+    }
+
+    public void handleOnClickedStep2PreviousBtn(ActionEvent actionEvent) {
+        SingleSelectionModel<Tab> selectionModel = reservationTab.getSelectionModel();
+        selectionModel.select(insertDetail);
+        insertDetail.setDisable(false);
+        chooseRooms.setDisable(true);
+    }
+
+    public void handleOnClickedStep3PreviousBtn(ActionEvent actionEvent) {
+        SingleSelectionModel<Tab> selectionModel = reservationTab.getSelectionModel();
+        selectionModel.select(chooseRooms);
+        chooseRooms.setDisable(false);
+        confirmDetail.setDisable(true);
+    }
+
+    public void handleOnClickedSelectedRoomType() {
+        if (roomType.getSelectionModel().isSelected(0)){
+            type = "ห้องเดี่ยว";
+            manageRoom(pet1Pane,0);
+            previousSelectedType = "ห้องรวม";
+        }else if (roomType.getSelectionModel().isSelected(1)){
+            type = "ห้องรวม";
+            manageRoom(pet1Pane,0);
+            previousSelectedType = "ห้องเดี่ยว";
+        }
+
+        //add select room type in list
+        if (petsDetail.get(0).size() == 5){
+            petsDetail.get(0).add(type);
+        }else if (petsDetail.get(0).size() == 6){
+            petsDetail.get(0).set(5,type);
+        }
+
+    }
+
+    public void handleOnClickedSelectedRoom(ActionEvent event) {
+        Button button = (Button)event.getSource();
+        if (previousSelectedType.equalsIgnoreCase(type)){
+            previousSelectedBtn.setStyle("-fx-background-color: #e07d7d;");
+        }else{
+            previousSelectedBtn.setStyle("-fx-background-color: #b4e5b5;");
+        }
+        button.setStyle("-fx-background-color: #FFEE84;");
+        previousSelectedBtn = button;
+        selectedRoom = button.getText();
+
+        //add select room in list
+        if (petsDetail.get(0).size() == 5){
+            petsDetail.get(0).add(type);
+        }else if (petsDetail.get(0).size() == 6){
+            petsDetail.get(0).set(5,type);
+            if (!selectedRoom.equalsIgnoreCase("")){
+                petsDetail.get(0).add(selectedRoom);
+            }
+        }
+    }
+
+    public void handleOnClickedSelectedRoom2(ActionEvent event) {
+        Button button = (Button)event.getSource();
+        if (previousSelectedType2.equalsIgnoreCase(type)){
+            previousSelectedBtn2.setStyle("-fx-background-color: #e07d7d;");
+        }else{
+            previousSelectedBtn2.setStyle("-fx-background-color: #b4e5b5;");
+        }
+        button.setStyle("-fx-background-color: #FFEE84;");
+        previousSelectedBtn2 = button;
+        selectedRoom2 = button.getText();
+
+        //add select room in list
+        if (petsDetail.get(1).size() == 5){
+            petsDetail.get(1).add(type2);
+        }else if (petsDetail.get(1).size() == 6){
+            petsDetail.get(1).set(5,type2);
+            if (!selectedRoom2.equalsIgnoreCase("")){
+                petsDetail.get(1).add(selectedRoom2);
+            }
+        }
+    }
+
+    public void handleOnClickedSubmitBtn(ActionEvent actionEvent) {
+    }
+
+    public void handleOnClickedCheckInBtn(ActionEvent event) throws Exception{
+        Button button = (Button) event.getSource();
+        Stage stage = (Stage) button.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CheckInPage.fxml"));
+        stage.setScene(new Scene((Parent) loader.load()));
+        stage.show();
+    }
+
+    public void handleOnClickedCancelBtn(ActionEvent event) throws Exception{
+        Button button = (Button) event.getSource();
+        Stage stage = (Stage) button.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ReservedPage.fxml"));
+        stage.setScene(new Scene((Parent) loader.load()));
+        stage.show();
+    }
+
+
+    //method for prepare data and pane
     private void manageDatePicker(){
         // Converter
         StringConverter<LocalDate> converter = new StringConverter<LocalDate>() {
@@ -288,65 +480,6 @@ public class ReservedController extends PageSwitchController{
         }
     }
 
-    //insert detail tab
-    public void handleOnClickedAddPetBtn(){
-        RadioButton selected = (RadioButton)servicePackage.getSelectedToggle();
-        ObservableList<String> pet = addedListView.getItems();
-        pet.add(datePicker.getValue()+" | "+petList.getValue()+" | "+foodList.getValue()
-                +" | "+selected.getText()+" | "+dayNum.getText()+" วัน");
-        addedListView.setItems(pet);
-
-        petsDetail.add(new ArrayList(Arrays.asList(
-                datePicker.getValue().toString(),
-                petList.getValue().toString(),
-                foodList.getValue().toString(),
-                selected.getText(),dayNum.getText()+" วัน"
-                )));
-        System.out.println(datePicker.getValue()+" "+petList.getValue()+" "+foodList.getValue()
-                +" "+((RadioButton)servicePackage.getSelectedToggle()).getText()+" "+dayNum.getText()+" วัน");
-    }
-
-    public void handleOnClickedStep1NextBtn(ActionEvent actionEvent)throws Exception{
-        if (petsDetail.isEmpty()){
-
-        }else{
-            SingleSelectionModel<Tab> selectionModel = reservationTab.getSelectionModel();
-            selectionModel.select(chooseRooms);
-            insertDetail.setDisable(true);
-            chooseRooms.setDisable(false);
-            ObservableList<String> roomTypes = FXCollections.observableArrayList(
-                    "ห้องเดี่ยว","ห้องรวม"
-            );
-            roomType.setItems(roomTypes);
-            roomType.getSelectionModel().selectFirst();
-
-            //setting tab for step2 (choose room)
-            if (petsDetail.size() == 1){
-                String name = petsDetail.get(0).get(1);
-                petTab1.setText(name);
-            }else if(petsDetail.size() == chooseRoomTabPane.getTabs().size()){
-                for (int i = 1 ; i < petsDetail.size() ; i++){
-                    String name = petsDetail.get(i).get(1);
-                    chooseRoomTabPane.getTabs().get(i).setText(name);
-                }
-            }
-            else {
-                String name = petsDetail.get(0).get(1);
-                petTab1.setText(name);
-                manageRoom(pet1Pane, 0);
-                petTab1.setContent(pet1Pane);
-                for (int i = 1 ; i < petsDetail.size() ; i++){
-                    Tab tab = new Tab(petsDetail.get(i).get(1));
-                    AnchorPane pane = new AnchorPane();
-                    createTabContent(pane);
-                    manageRoom(pane,i);
-                    tab.setContent(pane);
-                    chooseRoomTabPane.getTabs().add(tab);
-                }
-            }
-        }
-    }
-
     public void createTabContent(AnchorPane pane){
         ObservableList<String> roomType = FXCollections.observableArrayList(
                 "ห้องเดี่ยว","ห้องรวม"
@@ -362,11 +495,22 @@ public class ReservedController extends PageSwitchController{
         cb.setId("roomType2");
         cb.getSelectionModel().selectFirst();
         cb.setOnAction( event -> {
-            if (cb.getValue().toString().equalsIgnoreCase("ห้องเดี่ยว")){
-                type = "ห้องเดี่ยว";
+            if (cb.getSelectionModel().isSelected(0)){
+                type2 = "ห้องเดี่ยว";
                 manageRoom(pane,1);
-            }else { type = "ห้องรวม"; }
-            manageRoom(pane,1);
+                previousSelectedType2 = "ห้องรวม";
+            }else if (cb.getSelectionModel().isSelected(1)){
+                type2 = "ห้องรวม";
+                manageRoom(pane,1);
+                previousSelectedType2 = "ห้องเดี่ยว";
+            }
+
+            //add select room type in list
+            if (petsDetail.get(1).size() == 5){
+                petsDetail.get(1).add(type2);
+            }else if (petsDetail.get(0).size() == 6){
+                petsDetail.get(1).set(5,type2);
+            }
         });
 
         createButton();
@@ -413,11 +557,17 @@ public class ReservedController extends PageSwitchController{
 
     public void createButton(){
         for (int i = 1; i <= 6; i++) {
-            groupA.add( new Button("A"+i)); //groupA
-            groupB.add( new Button("B"+i)); //groupB
+            Button a =  new Button("A"+i);
+            a.setOnAction(event -> handleOnClickedSelectedRoom2(event));
+            Button b =  new Button("B"+i);
+            b.setOnAction(event -> handleOnClickedSelectedRoom2(event));
+            groupA.add(a); //groupA
+            groupB.add(b); //groupB
         }
         for (int i = 1; i <= 4; i++) {
-            groupC.add( new Button("C"+i)); //groupC
+            Button c =  new Button("C"+i);
+            c.setOnAction(event -> handleOnClickedSelectedRoom2(event));
+            groupC.add(c); //groupC
         }
 
         for (int i = 0; i < 3; i++) {
@@ -432,6 +582,7 @@ public class ReservedController extends PageSwitchController{
             }
             groupD.get(i).setStyle("-fx-border-width: 2; -fx-border-color: grey;");
             Button btn = new Button("D"+(i+1));
+            btn.setOnAction(event -> handleOnClickedSelectedRoom2(event));
             btn.setPrefSize(60,40);
             btn.setStyle("-fx-background-color: #b4e5b5;");
             btn.setLayoutX(10);
@@ -451,6 +602,7 @@ public class ReservedController extends PageSwitchController{
             }
             groupE.get(i).setStyle("-fx-border-width: 2; -fx-border-color: grey;");
             Button btn = new Button("E"+(i+1));
+            btn.setOnAction(event -> handleOnClickedSelectedRoom2(event));
             btn.setPrefSize(60,40);
             btn.setStyle("-fx-background-color: #b4e5b5;");
             btn.setLayoutX(10);
@@ -513,46 +665,6 @@ public class ReservedController extends PageSwitchController{
                 }
             }
         }
-    }
-
-    public void handleOnClickedStep2NextBtn(ActionEvent actionEvent) {
-        SingleSelectionModel<Tab> selectionModel = reservationTab.getSelectionModel();
-        selectionModel.select(confirmDetail);
-        chooseRooms.setDisable(true);
-        confirmDetail.setDisable(false);
-    }
-
-    public void handleOnClickedStep2PreviousBtn(ActionEvent actionEvent) {
-        SingleSelectionModel<Tab> selectionModel = reservationTab.getSelectionModel();
-        selectionModel.select(insertDetail);
-        insertDetail.setDisable(false);
-        chooseRooms.setDisable(true);
-    }
-
-    public void handleOnClickedCheckInBtn(ActionEvent actionEvent) {
-    }
-
-    public void handleOnClickedSubmitBtn(ActionEvent actionEvent) {
-    }
-
-    public void handleOnClickedStep3PreviousBtn(ActionEvent actionEvent) {
-        SingleSelectionModel<Tab> selectionModel = reservationTab.getSelectionModel();
-        selectionModel.select(chooseRooms);
-        chooseRooms.setDisable(false);
-        confirmDetail.setDisable(true);
-    }
-
-    public void handleOnClickedSelectedRoomType() {
-        if (roomType.getSelectionModel().isSelected(0)){
-            type = "ห้องเดี่ยว";
-            manageRoom(pet1Pane,0);
-        }else if (roomType.getSelectionModel().isSelected(1)){
-            type = "ห้องรวม";
-            manageRoom(pet1Pane,0);
-        }
-    }
-
-    public void handleOnClickedSelectedRoom(ActionEvent actionEvent) {
     }
 
     public Customer getCustomer() {
