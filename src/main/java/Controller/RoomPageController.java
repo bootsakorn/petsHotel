@@ -1,5 +1,7 @@
 package Controller;
 
+import Controller.dataController.DataController;
+import Models.Room;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -28,13 +30,10 @@ public class RoomPageController extends CounterPageController {
                             b1,b2,b3,b4,b5,b6,
                             c1,c2,c3,c4,
                             d1,d2,d3,e1,e2;
+    private DataController dataController = new DataController();
     private String selectedType = "";
     private String selectedSpecies = "";
-//    private ArrayList<Button> groupA = new ArrayList<>(Arrays.asList(a1,a2,a3,a4,a5,a6));
-//    private ArrayList<Button> groupB = new ArrayList<>(Arrays.asList(b1,b2,b3,b4,b5,b6));
-//    private ArrayList<Button> groupC = new ArrayList<>(Arrays.asList(c1,c2,c3,c4));
-//    private ArrayList<Button> groupD = new ArrayList<>(Arrays.asList(d1,d2,d3));
-//    private ArrayList<Button> groupE = new ArrayList<>(Arrays.asList(e1,e2));
+    private ArrayList<Room> rooms = dataController.getRooms();
 
     @FXML private void initialize(){
         ObservableList<String> roomType = FXCollections.observableArrayList(

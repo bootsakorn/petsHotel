@@ -75,6 +75,9 @@ public class DataController {
         this.packages = packageDataController.getPackage();
         this.takingCarePetsLists = takingCarePetsListDataController.getTakingCarePetsList();
         this.reserves = reserveDataController.getReserve();
+        this.rooms = roomDataController.getRooms();
+        this.pets = petsDataController.getPetsList();
+        this.appointmentBills = appointmentBillDataController.getAppointmentBills();
     }
 
     public String getPassword (String username){
@@ -112,10 +115,10 @@ public class DataController {
         return petsOfCustomer;
     }
 
-    public ArrayList<Food> getFoods (int speciesId){
+    public ArrayList<Food> getFoods (String species){
         ArrayList<Food> foodOfSpecies = new ArrayList<>();
         for (Food food : foods){
-            if (speciesDataController.convertSpeciesNameToId(food.getSpecies()) == speciesId){
+            if (food.getSpecies() == species){
                 foodOfSpecies.add(food);
             }
         }
@@ -174,6 +177,18 @@ public class DataController {
 
     public void setTotalPrice (Reserve reserve, double totalPrice){
 
+    }
+
+    public ArrayList<Room> getRooms(){
+        return rooms;
+    }
+
+    public ArrayList<Pets> getPets() {
+        return pets;
+    }
+
+    public ArrayList<AppointmentBill> getAppointmentBills() {
+        return appointmentBills;
     }
 }
 

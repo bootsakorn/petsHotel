@@ -1,5 +1,7 @@
 package Controller;
 
+import Controller.dataController.DataController;
+import Models.Reserve;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,6 +24,8 @@ public class CalendarPageController extends PageSwitchController{
 
     private ArrayList<DateNodeController> allCalendarDays = new ArrayList<>(35);
     private YearMonth currentYearMonth;
+    private DataController dataController = new DataController();
+    private ArrayList<Reserve> reserves = dataController.getReserves();
 
     @FXML private void initialize(){
         currentYearMonth = YearMonth.now();

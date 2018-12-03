@@ -1,5 +1,6 @@
 package Controller;
 
+import Controller.dataController.DataController;
 import Models.Customer;
 import Models.FoodStorage;
 import Models.Pets;
@@ -35,6 +36,8 @@ public class CounterPageController extends PageSwitchController{
     private ArrayList<Customer> cusList = new ArrayList<>();
     private Customer cus;
     private FoodStorage fs = new FoodStorage();
+    private DataController dataController = new DataController();
+    private ArrayList<Customer> customers = dataController.getCustomer();
 
     @FXML private void initialize(){
         fs.add("วิสกัส",100);

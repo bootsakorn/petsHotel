@@ -2,6 +2,7 @@ package Controller;
 
 import Controller.dataController.DataController;
 import Models.*;
+import Models.Package;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -19,6 +20,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -90,6 +92,12 @@ public class ReservedController extends CounterPageController{
     private String selectedRoom = "";
     private Button previousSelectedBtn2 = new Button();
     private String selectedRoom2 = "";
+    private DataController dataController = new DataController();
+    private ArrayList<Food> foods ;
+    private ArrayList<Room> rooms = dataController.getRooms();
+    private ArrayList<Package> packages = dataController.getPackages();
+    private ArrayList<Customer> customers = dataController.getCustomer();
+
 //    private ArrayList<Room> roomList =
 
     @FXML private void initialize(){
