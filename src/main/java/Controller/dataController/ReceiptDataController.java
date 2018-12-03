@@ -43,7 +43,7 @@ public class ReceiptDataController extends DatabaseConnection {
     public void insertReceipt (String date, int checkinId, double totalPrice, double recieve, double change){
         try {
             connect();
-            String query = "INSERT INTO receipt (date, checkin_id, total_price, recieve, change) VALUE (?,?,?,?,?)";
+            String query = "INSERT INTO receipt (date, checkin_id, total_price, recieve, change) VALUES (?,?,?,?,?)";
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, date);
             stmt.setInt(2, checkinId);

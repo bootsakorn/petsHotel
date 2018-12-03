@@ -40,7 +40,7 @@ public class AppointmentBillDataController extends DatabaseConnection {
     public void insertAppointmentBill (String appointmentDate, int takingCarePetsId, double pledge) {
         try {
             connect();
-            String query = "INSERT INTO appointment_bill(appointment_date, taking_care_pets_id, pledge)";
+            String query = "INSERT INTO appointment_bill(appointment_date, taking_care_pets_id, pledge) VALUES (?,?,?)";
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, appointmentDate);
             stmt.setInt(2, takingCarePetsId);

@@ -2,22 +2,25 @@ package Models;
 
 public class Appliance {
     private String name;
-    private int qualtity;
+    private int quantity;
     private int id;
 
-    public Appliance(int id, String name, int qualtity){
+    public Appliance(int id, String name, int quantity){
         this.id = id;
         this.name = name;
-        this.qualtity = qualtity;
+        this.quantity = quantity;
     }
 
     public String getName() {
         return name;
     }
-    public int getQualtity() {
-        return qualtity;
+    public int getQuantity() {
+        return quantity;
     }
-    public void setQualtity(int qualtity) {
-        this.qualtity = qualtity;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+    public int getId() {
+        return this.id;
     }
 }

@@ -9,27 +9,22 @@ public class FoodStorage implements Stockable {
         this.foods = new ArrayList<>();
     }
 
-    public void insert(String name, String species, double price,int qualtity) {
-        Food newItem = new Food(1,"วิสกี้","แมว",300);
-        foods.add(newItem);
+    public void setFoods(ArrayList<Food> foods) {
+        foods = foods;
     }
 
     @Override
-    public void add(String name, int qualtity) {
-        for (Food item:foods) {
-            if (item.getName().equalsIgnoreCase(name)){
-                item.setQuantity(item.getQuantity() + qualtity);
-            }
-        }
+    public void add(Object o, int quantity) {
+         for (int i=0; i<foods.size(); i++){
+             if (foods.get(i).getId()==((Food) o).getId()){
+                 foods.get(i).setQuantity(foods.get(i).getQuantity() + quantity);
+             }
+         }
     }
 
     @Override
-    public void remove(String name, int qualtity) {
-        for (Food item:foods) {
-            if (item.getName().equalsIgnoreCase(name)){
-                item.setQuantity(item.getQuantity() - qualtity);
-            }
-        }
+    public void remove(Object o, int qualtity) {
+        this.add(o, qualtity*-1);
     }
 
     public ArrayList<Food> getFoods() {
