@@ -1,5 +1,6 @@
 package Controller;
 
+import Controller.dataController.DataController;
 import Models.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -86,11 +87,15 @@ public class ReservedController extends PageSwitchController{
     private Customer cus;
     private ArrayList<Pets> pets;
     private FoodStorage fs = new FoodStorage();
+    private String type = "ห้องเดี่ยว";
+    private DataController data = new DataController();
+//    private ArrayList<Room> roomList = 
 
     @FXML private void initialize(){
         cus = new Customer(001,"ศศิธร", "สายพา", "88/131");
         cus.addPets(new Pets(001,"น้องโตโต้","ตัวผู้",2,"ไซบีเรีย","-","-","สุนัข"));
         cus.addPets(new Pets(002,"น้องปอย","ตัวเมีย",2,"เปอร์เซีย","-","-","แมว"));
+        cus.addPets(new Pets(003,"น้องโอ๋เอ๋","ตัวผู้",1,"แคระ","-","-","กระต่าย"));
         //prep Data
         manageDatePicker();
         managePetList();
@@ -177,11 +182,109 @@ public class ReservedController extends PageSwitchController{
         foodList.setValue(foodName.get(0));
         foodList.setItems(foodName);
     }
-    public void manageRoom(AnchorPane pane){
-        pane.getChildren().get(1).setDisable(true);
-        AnchorPane roomA = (AnchorPane)pane.getChildren().get(1);
-        for (Node btn : roomA.getChildren() ) {
-            btn.setStyle("-fx-background-color: #e07d7d");
+    public void manageRoom(AnchorPane pane,int petIndex){
+        String species = pets.get(petIndex).getSpecies();
+        AnchorPane roomA = (AnchorPane) pane.getChildren().get(1);
+        AnchorPane roomB = (AnchorPane) pane.getChildren().get(2);
+        AnchorPane roomC = (AnchorPane) pane.getChildren().get(3);
+        AnchorPane roomD1 = (AnchorPane) pane.getChildren().get(4);
+        AnchorPane roomD2 = (AnchorPane) pane.getChildren().get(5);
+        AnchorPane roomD3 = (AnchorPane) pane.getChildren().get(6);
+        AnchorPane roomE1 = (AnchorPane) pane.getChildren().get(7);
+        AnchorPane roomE2 = (AnchorPane) pane.getChildren().get(8);
+        if (species.equalsIgnoreCase("แมว")) {
+            roomA.setDisable(true);
+            roomC.setDisable(true);
+            roomE1.setDisable(true);
+            roomE2.setDisable(true);
+            for (Node btn : roomA.getChildren()) {
+                btn.setStyle("-fx-background-color: #e07d7d");
+            }
+            for (Node btn : roomC.getChildren()) {
+                btn.setStyle("-fx-background-color: #e07d7d");
+            }
+            roomE1.getChildren().get(0).setStyle("-fx-background-color: #e07d7d");
+            roomE2.getChildren().get(0).setStyle("-fx-background-color: #e07d7d");
+
+            if (type.equalsIgnoreCase("ห้องเดี่ยว")){
+                roomB.setDisable(true);
+                for (Node btn : roomB.getChildren()) {
+                    btn.setStyle("-fx-background-color: #e07d7d");
+                }
+                roomD1.setDisable(false);
+                roomD2.setDisable(false);
+                roomD3.setDisable(false);
+                roomD1.getChildren().get(0).setStyle("-fx-background-color: #b4e5b5");
+                roomD2.getChildren().get(0).setStyle("-fx-background-color: #b4e5b5");
+                roomD3.getChildren().get(0).setStyle("-fx-background-color: #b4e5b5");
+            }else {
+                roomB.setDisable(false);
+                for (Node btn : roomB.getChildren()) {
+                    btn.setStyle("-fx-background-color: #b4e5b5");
+                }
+                roomD1.setDisable(true);
+                roomD2.setDisable(true);
+                roomD3.setDisable(true);
+                roomD1.getChildren().get(0).setStyle("-fx-background-color: #e07d7d");
+                roomD2.getChildren().get(0).setStyle("-fx-background-color: #e07d7d");
+                roomD3.getChildren().get(0).setStyle("-fx-background-color: #e07d7d");
+            }
+        } else if (species.equalsIgnoreCase("สุนัข")) {
+            roomB.setDisable(true);
+            roomC.setDisable(true);
+            roomD1.setDisable(true);
+            roomD2.setDisable(true);
+            roomD3.setDisable(true);
+            for (Node btn : roomB.getChildren()) {
+                btn.setStyle("-fx-background-color: #e07d7d");
+            }
+            for (Node btn : roomC.getChildren()) {
+                btn.setStyle("-fx-background-color: #e07d7d");
+            }
+            roomD1.getChildren().get(0).setStyle("-fx-background-color: #e07d7d");
+            roomD2.getChildren().get(0).setStyle("-fx-background-color: #e07d7d");
+            roomD3.getChildren().get(0).setStyle("-fx-background-color: #e07d7d");
+
+            if (type.equalsIgnoreCase("ห้องเดี่ยว")){
+                roomA.setDisable(true);
+                for (Node btn : roomA.getChildren()) {
+                    btn.setStyle("-fx-background-color: #e07d7d");
+
+                }
+                roomE1.setDisable(false);
+                roomE2.setDisable(false);
+                roomE1.getChildren().get(0).setStyle("-fx-background-color: #b4e5b5");
+                roomE2.getChildren().get(0).setStyle("-fx-background-color: #b4e5b5");
+            }else {
+                roomA.setDisable(false);
+                for (Node btn : roomA.getChildren()) {
+                    btn.setStyle("-fx-background-color: #b4e5b5");
+
+                }
+                roomE1.setDisable(true);
+                roomE2.setDisable(true);
+                roomE1.getChildren().get(0).setStyle("-fx-background-color: #e07d7d");
+                roomE2.getChildren().get(0).setStyle("-fx-background-color: #e07d7d");
+            }
+        }else if (species.equalsIgnoreCase("กระต่าย")){
+            roomA.setDisable(true);
+            roomB.setDisable(true);
+            roomC.setDisable(true);
+            roomD1.setDisable(true);
+            roomD2.setDisable(true);
+            roomD3.setDisable(true);
+            for (Node btn : roomA.getChildren()) {
+                btn.setStyle("-fx-background-color: #e07d7d");
+            }
+            for (Node btn : roomB.getChildren()) {
+                btn.setStyle("-fx-background-color: #e07d7d");
+            }
+            for (Node btn : roomC.getChildren()) {
+                btn.setStyle("-fx-background-color: #e07d7d");
+            }
+            roomD1.getChildren().get(0).setStyle("-fx-background-color: #e07d7d");
+            roomD2.getChildren().get(0).setStyle("-fx-background-color: #e07d7d");
+            roomD3.getChildren().get(0).setStyle("-fx-background-color: #e07d7d");
         }
     }
 
@@ -215,6 +318,7 @@ public class ReservedController extends PageSwitchController{
                     "ห้องเดี่ยว","ห้องรวม"
             );
             roomType.setItems(roomTypes);
+            roomType.getSelectionModel().selectFirst();
 
             //setting tab for step2 (choose room)
             if (petsDetail.size() == 1){
@@ -229,13 +333,13 @@ public class ReservedController extends PageSwitchController{
             else {
                 String name = petsDetail.get(0).get(1);
                 petTab1.setText(name);
-                manageRoom(pet1Pane);
+                manageRoom(pet1Pane, 0);
                 petTab1.setContent(pet1Pane);
                 for (int i = 1 ; i < petsDetail.size() ; i++){
                     Tab tab = new Tab(petsDetail.get(i).get(1));
                     AnchorPane pane = new AnchorPane();
                     createTabContent(pane);
-                    manageRoom(pane);
+                    manageRoom(pane,i);
                     tab.setContent(pane);
                     chooseRoomTabPane.getTabs().add(tab);
                 }
@@ -255,6 +359,15 @@ public class ReservedController extends PageSwitchController{
         cb.setPromptText("ชนิดห้อง");
         cb.setVisibleRowCount(10);
         cb.setItems(roomType);
+        cb.setId("roomType2");
+        cb.getSelectionModel().selectFirst();
+        cb.setOnAction( event -> {
+            if (cb.getValue().toString().equalsIgnoreCase("ห้องเดี่ยว")){
+                type = "ห้องเดี่ยว";
+                manageRoom(pane,1);
+            }else { type = "ห้องรวม"; }
+            manageRoom(pane,1);
+        });
 
         createButton();
         settingButton();
@@ -284,6 +397,27 @@ public class ReservedController extends PageSwitchController{
         roomC.setStyle("-fx-border-width: 2; -fx-border-color: grey;");
         for (Button btn : groupC) {
             roomC.getChildren().add(btn);
+        }
+
+        pane.getChildren().add(cb);
+        pane.getChildren().add(roomA);
+        pane.getChildren().add(roomB);
+        pane.getChildren().add(roomC);
+        for (AnchorPane d : groupD) {
+            pane.getChildren().add(d);
+        }
+        for (AnchorPane e : groupE) {
+            pane.getChildren().add(e);
+        }
+    }
+
+    public void createButton(){
+        for (int i = 1; i <= 6; i++) {
+            groupA.add( new Button("A"+i)); //groupA
+            groupB.add( new Button("B"+i)); //groupB
+        }
+        for (int i = 1; i <= 4; i++) {
+            groupC.add( new Button("C"+i)); //groupC
         }
 
         for (int i = 0; i < 3; i++) {
@@ -322,27 +456,6 @@ public class ReservedController extends PageSwitchController{
             btn.setLayoutX(10);
             btn.setLayoutY(10);
             groupE.get(i).getChildren().add(btn);
-        }
-
-        pane.getChildren().add(cb);
-        pane.getChildren().add(roomA);
-        pane.getChildren().add(roomB);
-        pane.getChildren().add(roomC);
-        for (AnchorPane d : groupD) {
-            pane.getChildren().add(d);
-        }
-        for (AnchorPane e : groupE) {
-            pane.getChildren().add(e);
-        }
-    }
-
-    public void createButton(){
-        for (int i = 1; i <= 6; i++) {
-            groupA.add( new Button("A"+i));
-            groupB.add( new Button("B"+i));
-        }
-        for (int i = 1; i <= 4; i++) {
-            groupC.add( new Button("C"+i));
         }
     }
 
@@ -429,7 +542,14 @@ public class ReservedController extends PageSwitchController{
         confirmDetail.setDisable(true);
     }
 
-    public void handleOnClickedSelectedRoomType(ActionEvent actionEvent) {
+    public void handleOnClickedSelectedRoomType() {
+        if (roomType.getSelectionModel().isSelected(0)){
+            type = "ห้องเดี่ยว";
+            manageRoom(pet1Pane,0);
+        }else if (roomType.getSelectionModel().isSelected(1)){
+            type = "ห้องรวม";
+            manageRoom(pet1Pane,0);
+        }
     }
 
     public void handleOnClickedSelectedRoom(ActionEvent actionEvent) {
