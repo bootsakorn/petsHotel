@@ -30,10 +30,18 @@ public class RoomPageController extends CounterPageController {
                             b1,b2,b3,b4,b5,b6,
                             c1,c2,c3,c4,
                             d1,d2,d3,e1,e2;
-    private DataController dataController = new DataController();
+    private DataController dataController;
     private String selectedType = "";
     private String selectedSpecies = "";
     private ArrayList<Room> rooms = dataController.getRooms();
+
+    public RoomPageController(){
+        try {
+            dataController = new DataController();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML private void initialize(){
         ObservableList<String> roomType = FXCollections.observableArrayList(

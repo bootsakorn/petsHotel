@@ -21,6 +21,9 @@ public class AddCustomerPageController extends CounterPageController {
     public ComboBox sexComboBox;
     public ComboBox speciesComboBox;
 
+    public AddCustomerPageController(){
+    }
+
     public void handleOnClickedSubmitBtn(ActionEvent event) {
     }
 

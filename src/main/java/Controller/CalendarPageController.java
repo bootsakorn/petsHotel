@@ -24,10 +24,18 @@ public class CalendarPageController extends PageSwitchController{
 
     private ArrayList<DateNodeController> allCalendarDays = new ArrayList<>(35);
     private YearMonth currentYearMonth;
-    private DataController dataController = new DataController();
+    private DataController dataController;
     private ArrayList<Reserve> reserves = dataController.getReserves();
 
-    @FXML private void initialize(){
+    public CalendarPageController(){
+        try {
+            dataController = new DataController();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML private void initialize()throws ClassNotFoundException {
         currentYearMonth = YearMonth.now();
 
         // Create rows and columns with anchor panes for the calendar

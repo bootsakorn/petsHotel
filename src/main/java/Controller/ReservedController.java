@@ -87,16 +87,19 @@ public class ReservedController extends CounterPageController{
     private String type2 = "ห้องเดี่ยว";
     private String previousSelectedType = "ห้องเดี่ยว";
     private String previousSelectedType2 = "ห้องเดี่ยว";
-    private DataController data = new DataController();
     private Button previousSelectedBtn = new Button();
     private String selectedRoom = "";
     private Button previousSelectedBtn2 = new Button();
     private String selectedRoom2 = "";
-    private DataController dataController = new DataController();
+    private DataController dataController;
     private ArrayList<Food> foods ;
     private ArrayList<Room> rooms = dataController.getRooms();
     private ArrayList<Package> packages = dataController.getPackages();
     private ArrayList<Customer> customers = dataController.getCustomer();
+
+    public ReservedController() throws Exception {
+        dataController = new DataController();
+    }
 
     @FXML private void initialize(){
         cus = new Customer(001,"ศศิธร", "สายพา", "88/131");

@@ -36,8 +36,16 @@ public class CounterPageController extends PageSwitchController{
     private ArrayList<Customer> cusList = new ArrayList<>();
     private Customer cus;
     private FoodStorage fs = new FoodStorage();
-    private DataController dataController = new DataController();
-    private ArrayList<Customer> customers = dataController.getCustomer();
+    private DataController dataController;
+//    private ArrayList<Customer> customers = dataController.getCustomer();
+
+    public CounterPageController(){
+        try {
+            dataController = new DataController();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML private void initialize(){
         fs.add("วิสกัส",100);

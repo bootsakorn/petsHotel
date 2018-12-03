@@ -48,11 +48,19 @@ public class CheckInController extends CounterPageController{
     // use in class
     private Customer cus;
     private Package pack;
-    private DataController dataController = new DataController();
+    private DataController dataController ;
     private ArrayList<Pets> pets = dataController.getPets();
     private ArrayList<Customer> customers = dataController.getCustomer();
     private ArrayList<ArrayList<String>> petsDetail = new ArrayList();
     private ArrayList<Package> packages = dataController.getPackages();
+
+    public CheckInController(){
+        try {
+            dataController = new DataController();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML private void initialize(){
 //        cus = new Customer(001,"ศศิธร", "สายพา", "88/131");

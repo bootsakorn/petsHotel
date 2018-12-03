@@ -18,14 +18,14 @@ public class PetsDataController extends DatabaseConnection{
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
-                Integer id = resultSet.getInt("pet_id");
+                Integer id = resultSet.getInt("id");
                 String name = resultSet.getString("name");
                 String sex = resultSet.getString("sex");
                 int age = resultSet.getInt("age");
                 String breed = resultSet.getString("breed");
                 String disease = resultSet.getString("disease");
                 String allergy = resultSet.getString("allergy");
-                int species_id = resultSet.getInt("species");
+                int species_id = resultSet.getInt("species_id");
                 String species = speciesDataController.convertSpeciesIdToName(species_id);
                 Pets pet = new Pets(id, name, sex, age, breed, disease, allergy, species);
                 petsList.add(pet);

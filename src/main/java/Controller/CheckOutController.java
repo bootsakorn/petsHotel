@@ -21,11 +21,19 @@ public class CheckOutController extends CounterPageController {
     public Button CheckOutBtn;
     public AnchorPane successPane;
     public Button okBtn;
-    private DataController dataController = new DataController();
+    private DataController dataController;
     private ArrayList<Customer> customers = dataController.getCustomer();
 
+    public CheckOutController(){
+        try {
+            dataController = new DataController();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
     @FXML
-    private void initialize(){
+    private void initialize() {
 
     }
 
