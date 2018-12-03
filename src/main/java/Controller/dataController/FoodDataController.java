@@ -9,6 +9,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class FoodDataController extends DatabaseConnection{
+    public FoodDataController() throws ClassNotFoundException {
+        JdbcSQLiteConnection();
+    }
+
     private SpeciesDataController speciesDataController = new SpeciesDataController();
     public ArrayList<Food> getFoods () {
         ArrayList<Food> foods = new ArrayList<>();

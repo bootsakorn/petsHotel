@@ -6,6 +6,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class SpeciesDataController extends DatabaseConnection {
+    public SpeciesDataController() throws ClassNotFoundException {
+        JdbcSQLiteConnection();
+    }
     public ArrayList<String> getSpecies () {
         ArrayList<String> species = new ArrayList<>();
         try {

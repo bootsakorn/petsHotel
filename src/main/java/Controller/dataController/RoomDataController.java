@@ -8,6 +8,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class RoomDataController extends DatabaseConnection {
+    public RoomDataController() throws ClassNotFoundException {
+        JdbcSQLiteConnection();
+    }
     public ArrayList<Room> getRooms(){
         ArrayList<Room> rooms = new ArrayList<>();
         try{

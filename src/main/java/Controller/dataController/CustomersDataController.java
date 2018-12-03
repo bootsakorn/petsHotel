@@ -11,6 +11,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class CustomersDataController extends DatabaseConnection {
+    public CustomersDataController() throws ClassNotFoundException {
+        JdbcSQLiteConnection();
+    }
+
     private PetsListDataController petsListDataController = new PetsListDataController();
     public ArrayList<Customer> getCustomers () {
         ArrayList<Customer> customers = new ArrayList<>();
