@@ -9,8 +9,8 @@ public class ApplianceStorage implements Stockable {
         this.appliances = new ArrayList<>();
     }
 
-    public void insert(String name, int qualtity) {
-        Appliance newItem = new Appliance(name, qualtity);
+    public void insert(int id, String name, int qualtity) {
+        Appliance newItem = new Appliance(id, name, qualtity);
         this.appliances.add(newItem);
     }
 
