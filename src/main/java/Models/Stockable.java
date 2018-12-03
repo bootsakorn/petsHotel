@@ -1,6 +1,6 @@
 package Models;
 
 public interface Stockable {
-    void add(String name, int qualtity);
-    void remove(String name, int qualtity);
+    void add(Object o, int quantity);
+    void remove(Object o, int quantity);
 }

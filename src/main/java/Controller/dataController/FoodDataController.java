@@ -22,8 +22,8 @@ public class FoodDataController extends DatabaseConnection{
                 String name = resultSet.getString("firstname");
                 String species = speciesDataController.convertSpeciesIdToName(resultSet.getInt("species_id"));
                 double price = resultSet.getDouble("price");
-                Food food = new Food(id, name, species, price);
-                food.setPrice(getQuantity(id));
+                int quantity = resultSet.getInt("quantity");
+                Food food = new Food(id, name, species, price, quantity);
                 foods.add(food);
             }
             disconnect();
@@ -33,31 +33,16 @@ public class FoodDataController extends DatabaseConnection{
         return foods;
     }
 
-    public int getQuantity (int id){
-        int quantity = 0;
-        try {
-            connect();
-            String query = "Select * from food_storage where food_id = '"+id+"'";
-            Statement statement = conn.createStatement();
-            ResultSet resultSet = statement.executeQuery(query);
-            while (resultSet.next()) {
-                quantity = resultSet.getInt("quantity");
-            }
-            disconnect();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return quantity;
-    }
 
-    public void insertFood (String name , String species, double price){
+    public void insertFood (String name , String species, double price, int quantity){
         try {
             connect();
-            String query = "INSERT INTO food (name,species_id,price) VALUES (?,?,?)";
+            String query = "INSERT INTO food (name,species_id,price,quantity) VALUES (?,?,?,?)";
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, name);
             stmt.setInt(2, speciesDataController.convertSpeciesNameToId(species));
             stmt.setDouble(3, price);
+            stmt.setInt(4, quantity);
             stmt.execute();
             disconnect();
         } catch (SQLException e) {
@@ -65,11 +50,11 @@ public class FoodDataController extends DatabaseConnection{
         }
     }
 
-    public void setFoodQuantity (Food food, int newQuantity){
+    public void editFoodQuantity (int id, int newQuantity){
         try {
             connect();
             Statement stmt = conn.createStatement();
-            String query = ("UPDATE food_storage SET quantity = "+newQuantity+" WHERE food_id = '"+food.getId()+"'");
+            String query = ("UPDATE food SET quantity = "+newQuantity+" WHERE id = "+id);
             stmt.execute(query);
             disconnect();
         } catch (SQLException e) {

@@ -7,19 +7,19 @@ public class Food {
     private double price;
     private int quantity;
 
-    public Food(int id, String name, String species, double price){
+    public Food(int id, String name, String species, double price, int quantity){
         this.id = id;
         this.name = name;
         this.species = species;
         this.price = price;
-        this.quantity = 0;
+        this.quantity = quantity;
     }
 
-    public String getName() {
-        return name;
-    }
     public int getId() {
         return id;
+    }
+    public String getName() {
+        return name;
     }
     public void setName(String name) {
         this.name = name;
