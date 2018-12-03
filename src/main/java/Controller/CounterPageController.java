@@ -54,8 +54,12 @@ public class CounterPageController extends PageSwitchController{
     @FXML protected void handleOnClickSearchTextfield(ActionEvent e){
 
     }
-    @FXML protected void handleOnClickAddBtn(ActionEvent e) throws Exception{
-        //add
+    @FXML protected void handleOnClickAddBtn(ActionEvent event) throws Exception{
+        Button button = (Button) event.getSource();
+        Stage stage = (Stage) button.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AddCustomerPage.fxml"));
+        stage.setScene(new Scene((Parent) loader.load()));
+        stage.show();
     }
     @FXML protected void handleOnClickReserveBtn(ActionEvent e) throws Exception{
         Button button = (Button) e.getSource();
@@ -75,10 +79,20 @@ public class CounterPageController extends PageSwitchController{
 
     }
 
-    public void handleOnClickedReservationBtn(ActionEvent event) {
+    public void handleOnClickedReservationBtn(ActionEvent event) throws Exception{
+        Button button = (Button) event.getSource();
+        Stage stage = (Stage) button.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CounterPage.fxml"));
+        stage.setScene(new Scene((Parent) loader.load()));
+        stage.show();
     }
 
-    public void handleOnClickedCheckOutPageBtn(ActionEvent event) {
+    public void handleOnClickedCheckOutPageBtn(ActionEvent event) throws Exception{
+        Button button = (Button) event.getSource();
+        Stage stage = (Stage) button.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CheckOutPage.fxml"));
+        stage.setScene(new Scene((Parent) loader.load()));
+        stage.show();
     }
 
     public void handleOnClickedCheckInPageBtn(ActionEvent event) throws Exception{
@@ -89,9 +103,14 @@ public class CounterPageController extends PageSwitchController{
         stage.show();
     }
 
-    public void handleOnClickedRoomBtn(ActionEvent event) {
+    public void handleOnClickedRoomBtn(ActionEvent event) throws Exception {
+        Button button = (Button) event.getSource();
+        Stage stage = (Stage) button.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/RoomPage.fxml"));
+        stage.setScene(new Scene((Parent) loader.load()));
+        stage.show();
     }
 
-    public void handleOnClickedSearchBtn(ActionEvent event) {
+    public void handleOnClickedSearchBtn(ActionEvent event) throws Exception{
     }
 }
