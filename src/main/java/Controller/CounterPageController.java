@@ -27,8 +27,8 @@ public class CounterPageController extends PageSwitchController{
     @FXML protected Button reserveBtn;
     @FXML protected Button searchBtn;
     @FXML protected ListView customerList;
-    @FXML protected Button checkInBtn;
-    @FXML protected Button checkOutBtn;
+    @FXML protected Button checkInPageBtn;
+    @FXML protected Button checkOutPageBtn;
     @FXML protected Button roomBtn;
     @FXML private Parent root ;
 
@@ -54,8 +54,12 @@ public class CounterPageController extends PageSwitchController{
     @FXML protected void handleOnClickSearchTextfield(ActionEvent e){
 
     }
-    @FXML protected void handleOnClickAddBtn(ActionEvent e) throws Exception{
-        //add
+    @FXML protected void handleOnClickAddBtn(ActionEvent event) throws Exception{
+        Button button = (Button) event.getSource();
+        Stage stage = (Stage) button.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AddCustomerPage.fxml"));
+        stage.setScene(new Scene((Parent) loader.load()));
+        stage.show();
     }
     @FXML protected void handleOnClickReserveBtn(ActionEvent e) throws Exception{
         Button button = (Button) e.getSource();
@@ -73,5 +77,40 @@ public class CounterPageController extends PageSwitchController{
 
         stage.show();
 
+    }
+
+    public void handleOnClickedReservationBtn(ActionEvent event) throws Exception{
+        Button button = (Button) event.getSource();
+        Stage stage = (Stage) button.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CounterPage.fxml"));
+        stage.setScene(new Scene((Parent) loader.load()));
+        stage.show();
+    }
+
+    public void handleOnClickedCheckOutPageBtn(ActionEvent event) throws Exception{
+        Button button = (Button) event.getSource();
+        Stage stage = (Stage) button.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CheckOutPage.fxml"));
+        stage.setScene(new Scene((Parent) loader.load()));
+        stage.show();
+    }
+
+    public void handleOnClickedCheckInPageBtn(ActionEvent event) throws Exception{
+        Button button = (Button) event.getSource();
+        Stage stage = (Stage) button.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CheckInPage.fxml"));
+        stage.setScene(new Scene((Parent) loader.load()));
+        stage.show();
+    }
+
+    public void handleOnClickedRoomBtn(ActionEvent event) throws Exception {
+        Button button = (Button) event.getSource();
+        Stage stage = (Stage) button.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/RoomPage.fxml"));
+        stage.setScene(new Scene((Parent) loader.load()));
+        stage.show();
+    }
+
+    public void handleOnClickedSearchBtn(ActionEvent event) throws Exception{
     }
 }

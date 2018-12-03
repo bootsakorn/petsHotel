@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CheckOutController">
+   <children>
+      <SplitPane dividerPositions="0.2140468227424749" orientation="VERTICAL" prefHeight="600.0" prefWidth="800.0">
+         <items>
+            <AnchorPane fx:id="root" minHeight="100.0" minWidth="0.0" prefHeight="194.0" prefWidth="798.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="14.0" layoutY="13.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
+                     <image>
+                        <Image url="@../image/logo.png" />
+                     </image>
+                  </ImageView>
+                  <Pane layoutX="115.0" layoutY="9.0" minHeight="100.0" prefHeight="110.0" prefWidth="309.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="10.0">
+                     <children>
+                        <GridPane layoutX="14.0" layoutY="50.0" prefHeight="52.0" prefWidth="300.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label text="ร้านเพ็ดโฮเทล เลขที่ 50 ถนนงามวงศ์วาน">
+                                 <font>
+                                    <Font name="Angsana New" size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label text="แขวงลาดยาว เขตจตุจักร กรุงเทพฯ 10900" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Angsana New" size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label text="โทรศัพท์ : 090-9786039" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="Angsana New" size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </GridPane>
+                        <Label layoutX="14.0" layoutY="-13.0" text="PetsHotel" textFill="#0066cc">
+                           <font>
+                              <Font name="Angsana New Bold" size="55.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <MenuButton layoutX="720.0" layoutY="9.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="43.0" textAlignment="CENTER">
+                     <items>
+                        <MenuItem fx:id="home" mnemonicParsing="false" onAction="#handleOnClickHomeMenuItem" text="หน้าหลัก">
+                           <graphic>
+                              <ImageView fitHeight="26.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../image/Home.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </MenuItem>
+                        <MenuItem fx:id="calendar" mnemonicParsing="false" onAction="#handleOnClickCalendarMenuItem" text="ปฎิทิน">
+                           <graphic>
+                              <ImageView fitHeight="26.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../image/calendar.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </MenuItem>
+                        <MenuItem fx:id="logout" mnemonicParsing="false" onAction="#handleOnClickLogOutMenuItem" text="Log Out">
+                           <graphic>
+                              <ImageView fitHeight="26.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../image/logout.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </MenuItem>
+                     </items>
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/Gear.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </MenuButton>
+                  <AnchorPane layoutX="431.0" layoutY="79.0">
+                     <children>
+                        <Button fx:id="reservationBtn" mnemonicParsing="false" onAction="#handleOnClickedReservationBtn" text="จอง" />
+                        <Button fx:id="checkOutPageBtn" layoutX="126.0" mnemonicParsing="false" onAction="#handleOnClickedCheckOutPageBtn" text="เช็คเอาท์" />
+                        <Button fx:id="checkInPageBtn" layoutX="55.0" mnemonicParsing="false" onAction="#handleOnClickedCheckInPageBtn" text="เช็คอิน" />
+                        <Button fx:id="roomBtn" layoutX="210.0" mnemonicParsing="false" onAction="#handleOnClickedRoomBtn" text="ห้อง" />
+                        <Button fx:id="searchBtn2" layoutX="265.0" mnemonicParsing="false" onAction="#handleOnClickedSearchBtn" text="ค้นหา" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <SplitPane dividerPositions="0.16040100250626566" prefHeight="467.0" prefWidth="800.0">
+                     <items>
+                        <AnchorPane minHeight="0.0" minWidth="100.0" prefHeight="465.0" prefWidth="100.0">
+                           <children>
+                              <Button fx:id="counterBtn" layoutX="22.0" layoutY="9.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#handleOnClickCounterBtn" prefHeight="80.0" prefWidth="80.0" text="เคาท์เตอร์" AnchorPane.topAnchor="10.0">
+                                 <font>
+                                    <Font name="Angsana New" size="19.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="serviceBtn" layoutX="22.0" layoutY="97.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#handleOnClickServiceBtn" prefHeight="80.0" prefWidth="80.0" text="บริการ" AnchorPane.topAnchor="100.0" />
+                              <Button fx:id="salonBtn" layoutX="22.0" layoutY="185.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#handleOnClickSalonBtn" prefHeight="80.0" prefWidth="80.0" text="ซาลอน" AnchorPane.topAnchor="190.0" />
+                              <Button fx:id="stockBtn" layoutX="22.0" layoutY="272.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#handleOnClickStockBtn" prefHeight="80.0" prefWidth="80.0" text="คลัง" AnchorPane.topAnchor="280.0" />
+                              <Button fx:id="paperBtn" layoutX="23.0" layoutY="371.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#handleOnClickPaperBtn" prefHeight="80.0" prefWidth="80.0" text="รายงาน" AnchorPane.topAnchor="370.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                           <children>
+                              <AnchorPane fx:id="mainPane" prefHeight="465.0" prefWidth="666.0">
+                                 <children>
+                                    <Group layoutX="195.0" layoutY="39.0">
+                                       <children>
+                                          <TextField fx:id="searchTextField" focusTraversable="false" layoutX="-14.0" prefHeight="32.0" prefWidth="301.0" text="ค้นหาหมายเลขใบรับตัว" />
+                                          <Button fx:id="searchBtn" graphicTextGap="0.0" layoutX="248.0" mnemonicParsing="false" onAction="#handleOnClickSearchBtn" prefHeight="31.0" prefWidth="38.0">
+                                             <graphic>
+                                                <ImageView fitHeight="23.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../image/Search-button.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                       </children>
+                                    </Group>
+                                    <TitledPane alignment="CENTER" animated="false" contentDisplay="CENTER" layoutX="84.0" layoutY="84.0" prefHeight="306.0" prefWidth="499.0" text="รายการหมายเลขใบรับตัว" textAlignment="CENTER">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <ListView fx:id="recieveBillNumList" prefHeight="298.0" prefWidth="498.0" />
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </TitledPane>
+                                    <Button fx:id="CheckOutBtn" layoutX="283.0" layoutY="412.0" mnemonicParsing="false" onAction="#handleOnClickedCheckOutBtn" prefHeight="39.0" prefWidth="100.0" text="เช็คเอาท์">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="successPane" layoutX="123.0" layoutY="98.0" prefHeight="224.0" prefWidth="420.0" visible="false">
+                                 <children>
+                                    <TitledPane prefHeight="224.0" prefWidth="420.0" text="เช็คเอาท์">
+                                       <content>
+                                          <AnchorPane>
+                                             <children>
+                                                <Text layoutX="88.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ทำรายการเรียบร้อย">
+                                                   <font>
+                                                      <Font size="36.0" />
+                                                   </font>
+                                                </Text>
+                                                <Button fx:id="okBtn" layoutX="189.0" layoutY="125.0" mnemonicParsing="false" onAction="#handleOnClickedOkBtn" text="OK" />
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                    </TitledPane>
+                                 </children>
+                              </AnchorPane>
+                           </children></AnchorPane>
+                     </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+         </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

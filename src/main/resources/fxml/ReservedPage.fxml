@@ -111,6 +111,15 @@
                                 </ImageView>
                             </graphic>
                         </MenuButton>
+                  <AnchorPane layoutX="431.0" layoutY="79.0">
+                     <children>
+                        <Button fx:id="reservationBtn" mnemonicParsing="false" onAction="#handleOnClickedReservationBtn" text="จอง" />
+                        <Button fx:id="checkOutPageBtn" layoutX="126.0" mnemonicParsing="false" onAction="#handleOnClickedCheckOutPageBtn" text="เช็คเอาท์" />
+                        <Button fx:id="checkInPageBtn" layoutX="55.0" mnemonicParsing="false" onAction="#handleOnClickedCheckInPageBtn" text="เช็คอิน" />
+                        <Button fx:id="roomBtn" layoutX="210.0" mnemonicParsing="false" onAction="#handleOnClickedRoomBtn" text="ห้อง" />
+                        <Button fx:id="searchBtn2" layoutX="265.0" mnemonicParsing="false" onAction="#handleOnClickedSearchBtn" text="ค้นหา" />
+                     </children>
+                  </AnchorPane>
                     </children>
                 </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #ffffff;">
@@ -256,15 +265,16 @@
                                        <content>
                                           <AnchorPane focusTraversable="true" prefHeight="200.0" prefWidth="200.0">
                                              <children>
-                                                <TextArea fx:id="allDetails" layoutX="42.0" layoutY="53.0" prefHeight="260.0" prefWidth="582.0" text="รายละเอียด" />
-                                                <Button fx:id="checkInBtn" layoutX="524.0" layoutY="331.0" mnemonicParsing="false" onAction="#handleOnClickedCheckInBtn" prefHeight="34.0" prefWidth="100.0" text="Check In" />
-                                                <Label layoutX="42.0" layoutY="14.0" text="รายละเอียด">
+                                                <TextArea fx:id="allDetails" layoutX="42.0" layoutY="53.0" prefHeight="260.0" prefWidth="582.0" text="รายละเอียด" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="55.0" />
+                                                <Button fx:id="checkInBtn" layoutX="339.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleOnClickedCheckInBtn" prefHeight="34.0" prefWidth="100.0" text="เช็คอิน" AnchorPane.rightAnchor="230.0" AnchorPane.topAnchor="330.0" />
+                                                <Label layoutX="42.0" layoutY="14.0" text="รายละเอียด" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="520.0" AnchorPane.topAnchor="15.0">
                                                    <font>
                                                       <Font size="25.0" />
                                                    </font>
                                                 </Label>
-                                                <Button fx:id="submitBtn" layoutX="283.0" layoutY="331.0" mnemonicParsing="false" onAction="#handleOnClickedSubmitBtn" prefHeight="34.0" prefWidth="100.0" text="ยืนยันการจอง" />
-                                                <Button fx:id="step3PreviousBtn" layoutX="42.0" layoutY="331.0" mnemonicParsing="false" onAction="#handleOnClickedStep3PreviousBtn" prefHeight="34.0" prefWidth="100.0" text="ย้อนกลับ" />
+                                                <Button fx:id="submitBtn" layoutX="220.0" layoutY="331.0" mnemonicParsing="false" onAction="#handleOnClickedSubmitBtn" prefHeight="34.0" prefWidth="100.0" text="ยืนยันการจอง" AnchorPane.leftAnchor="220.0" AnchorPane.topAnchor="330.0" />
+                                                <Button fx:id="step3PreviousBtn" layoutX="42.0" layoutY="331.0" mnemonicParsing="false" onAction="#handleOnClickedStep3PreviousBtn" prefHeight="34.0" prefWidth="100.0" text="ย้อนกลับ" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="330.0" />
+                                                <Button fx:id="cancelBtn" layoutX="524.0" layoutY="331.0" mnemonicParsing="false" onAction="#handleOnClickedCancelBtn" prefHeight="34.0" prefWidth="100.0" text="ยกเลิก" AnchorPane.leftAnchor="525.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="330.0" />
                                              </children>
                                           </AnchorPane>
                                        </content>
