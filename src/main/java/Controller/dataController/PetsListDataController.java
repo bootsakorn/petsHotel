@@ -21,6 +21,7 @@ public class PetsListDataController extends DatabaseConnection{
                 PetsList petsList = new PetsList(customerId, petId);
                 petsIdList.add(petsList);
             }
+            disconnect();
         }
         catch (SQLException e) {
             e.printStackTrace();

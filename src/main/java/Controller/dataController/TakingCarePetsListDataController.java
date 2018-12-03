@@ -24,6 +24,7 @@ public class TakingCarePetsListDataController extends DatabaseConnection {
                 TakingCarePetsList takingCarePetsList = new TakingCarePetsList(id, petId, foodId, packageId, roomId);
                 takingCarePetsLists.add(takingCarePetsList);
             }
+            disconnect();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -47,6 +48,7 @@ public class TakingCarePetsListDataController extends DatabaseConnection {
                 TakingCarePetsList takingCarePetsList = new TakingCarePetsList(id, petId, foodId, packageId, roomId);
                 takingCarePetsLists.add(takingCarePetsList);
             }
+            disconnect();
         } catch (SQLException e) {
             e.printStackTrace();
         }

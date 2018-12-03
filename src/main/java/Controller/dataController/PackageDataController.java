@@ -17,13 +17,14 @@ public class PackageDataController extends DatabaseConnection {
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
+                int id = resultSet.getInt("id");
                 String name = resultSet.getString("name");
                 int shower = resultSet.getInt("shower");
                 int salon = resultSet.getInt("salon");
                 int swim = resultSet.getInt("swim");
                 int walk = resultSet.getInt("walk");
                 double price = resultSet.getDouble("price");
-                Package packge = new Package(name, price, shower, salon, swim, walk);
+                Package packge = new Package(id, name, price, shower, salon, swim, walk);
                 packages.add(packge);
             }
             disconnect();

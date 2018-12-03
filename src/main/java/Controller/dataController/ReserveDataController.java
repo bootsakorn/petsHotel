@@ -1,9 +1,8 @@
 package Controller.dataController;
 
-import Models.Pets;
 import Models.Reserve;
-import Models.TakingCarePetsList;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -42,6 +41,24 @@ public class ReserveDataController extends DatabaseConnection {
             e.printStackTrace();
         }
         return reserves;
+    }
+
+    public void insertReserve (String reserveDate, String startDate, int numberOfReserve, int customerId, int tackingCarePetsId, double pledge, double totalPrice){
+        try{
+            String query = "INSERT INTO reseve (reserve_date, start_date, number_of_reserve, customer_id, pets_id, pledge, total_price) VALUES (?,?,?,?,?,?,?)";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setString(1, reserveDate);
+            stmt.setString(2, startDate);
+            stmt.setInt(3, numberOfReserve);
+            stmt.setInt(4, customerId);
+            stmt.setInt(5, tackingCarePetsId);
+            stmt.setDouble(6, pledge);
+            stmt.setDouble(7, totalPrice);
+            stmt.execute();
+            disconnect();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 }
