@@ -7,8 +7,13 @@ import java.sql.SQLException;
 public class DatabaseConnection {
     protected Connection conn;
     protected final String DBURL = "jdbc:sqlite:petshotel.db";
-    public void JdbcSQLiteConnection () throws ClassNotFoundException {
-        Class.forName("org.sqlite.JDBC");
+    public void JdbcSQLiteConnection () {
+        try{
+            Class.forName("org.sqlite.JDBC");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
     }
     protected void connect() throws SQLException {
         conn = DriverManager.getConnection(DBURL);

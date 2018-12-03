@@ -4,7 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class LoginDataController extends DatabaseConnection {
-    public LoginDataController() throws ClassNotFoundException {
+    public LoginDataController() {
         JdbcSQLiteConnection();
     }
 

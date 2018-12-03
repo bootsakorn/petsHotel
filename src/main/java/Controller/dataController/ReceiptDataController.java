@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class ReceiptDataController extends DatabaseConnection {
-    public ReceiptDataController() throws ClassNotFoundException {
+    public ReceiptDataController() {
         JdbcSQLiteConnection();
     }
     public ArrayList<Receipt> getReceipts (){
