@@ -25,7 +25,6 @@ public class CustomersDataController extends DatabaseConnection {
                 String lastname = resultSet.getString("lastname");
                 String address = resultSet.getString("address");
                 Customer customer = new Customer(id, firstname, lastname, address);
-                customer.setPets(petsListDataController.getPetsIdListOfCustomer(id));
                 customers.add(customer);
             }
             disconnect();
