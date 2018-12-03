@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
@@ -17,7 +19,7 @@
    <children>
       <SplitPane dividerPositions="0.2140468227424749" orientation="VERTICAL" prefHeight="600.0" prefWidth="800.0">
         <items>
-          <AnchorPane minHeight="100.0" minWidth="0.0" prefHeight="194.0" prefWidth="798.0" style="-fx-background-color: #ffffff;">
+          <AnchorPane minHeight="100.0" minWidth="0.0" prefHeight="194.0" prefWidth="802.0" style="-fx-background-color: #ffffff;">
                <children>
                   <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="14.0" layoutY="13.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
                      <image>
@@ -62,8 +64,19 @@
                   </Pane>
                </children>
             </AnchorPane>
-          <AnchorPane id="logInPage" snapToPixel="false" style="-fx-background-color: #ffffff;">
+          <AnchorPane id="logInPage" prefHeight="479.0" prefWidth="757.0" snapToPixel="false" style="-fx-background-color: #ffffff;">
                <children>
+                  <ImageView blendMode="OVERLAY" fitHeight="798.0" fitWidth="808.0" layoutY="-79.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../petsHotel/src/main/resources/image/posters-pet-theme-seamless-pattern-with-heart-shaped-animal-paw-footprints-and-clew-of-threads.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                  </ImageView>
                   <Pane layoutX="212.0" layoutY="118.0" prefHeight="200.0" prefWidth="432.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="120.0">
                      <children>
                         <GridPane layoutX="49.0" layoutY="34.0" minHeight="100.0" minWidth="300.0" prefHeight="100.0" prefWidth="300.0">
