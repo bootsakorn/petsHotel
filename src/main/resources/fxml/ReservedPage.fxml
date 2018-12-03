@@ -220,19 +220,19 @@
                                                                         <Button fx:id="d1" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="D1" />
                                                                      </children>
                                                                   </AnchorPane>
-                                                                  <AnchorPane layoutX="444.0" layoutY="230.0" prefHeight="58.0" prefWidth="80.0" style="-fx-border-width: 2; -fx-border-color: grey;">
+                                                                  <AnchorPane layoutX="285.0" layoutY="230.0" prefHeight="58.0" prefWidth="80.0" style="-fx-border-width: 2; -fx-border-color: grey;">
                                                                      <children>
-                                                                        <Button fx:id="e1" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="E1" />
-                                                                     </children>
-                                                                  </AnchorPane>
-                                                                  <AnchorPane layoutX="284.0" layoutY="230.0" prefHeight="58.0" prefWidth="80.0" style="-fx-border-width: 2; -fx-border-color: grey;">
-                                                                     <children>
-                                                                        <Button fx:id="d32" layoutX="13.0" layoutY="9.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="D3" AnchorPane.leftAnchor="10.0" />
+                                                                        <Button fx:id="d21" layoutX="85.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="D2" AnchorPane.leftAnchor="10.0" />
                                                                      </children>
                                                                   </AnchorPane>
                                                                   <AnchorPane layoutX="362.0" layoutY="230.0" prefHeight="58.0" prefWidth="80.0" style="-fx-border-width: 2; -fx-border-color: grey;">
                                                                      <children>
-                                                                        <Button fx:id="d21" layoutX="85.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="D2" AnchorPane.leftAnchor="10.0" />
+                                                                        <Button fx:id="d32" layoutX="13.0" layoutY="9.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="D3" AnchorPane.leftAnchor="10.0" />
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                                  <AnchorPane layoutX="444.0" layoutY="230.0" prefHeight="58.0" prefWidth="80.0" style="-fx-border-width: 2; -fx-border-color: grey;">
+                                                                     <children>
+                                                                        <Button fx:id="e1" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="E1" />
                                                                      </children>
                                                                   </AnchorPane>
                                                                   <AnchorPane layoutX="522.0" layoutY="230.0" prefHeight="58.0" prefWidth="80.0" style="-fx-border-width: 2; -fx-border-color: grey;">
