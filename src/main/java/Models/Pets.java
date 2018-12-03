@@ -21,6 +21,10 @@ public class Pets {
         this.species = species;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }

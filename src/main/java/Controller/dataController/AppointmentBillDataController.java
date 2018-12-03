@@ -25,8 +25,7 @@ public class AppointmentBillDataController extends DatabaseConnection {
                 String date_str = resultSet.getString("appointment_date");
                 Date appointmentDate = format.parse(date_str);
                 int takingCarePetsId = resultSet.getInt("taking_care_pets_id");
-                double pledge = resultSet.getDouble("pledge");
-                AppointmentBill appointmentBill = new AppointmentBill(id, appointmentDate, takingCarePetsId, pledge);
+                AppointmentBill appointmentBill = new AppointmentBill(id, appointmentDate, takingCarePetsId);
                 appointmentBills.add(appointmentBill);
             }
         } catch (SQLException e) {
@@ -37,14 +36,13 @@ public class AppointmentBillDataController extends DatabaseConnection {
         return appointmentBills;
     }
 
-    public void insertAppointmentBill (String appointmentDate, int takingCarePetsId, double pledge) {
+    public void insertAppointmentBill (String appointmentDate, int takingCarePetsId) {
         try {
             connect();
-            String query = "INSERT INTO appointment_bill(appointment_date, taking_care_pets_id, pledge) VALUES (?,?,?)";
+            String query = "INSERT INTO appointment_bill(appointment_date, taking_care_pets_id) VALUES (?,?)";
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, appointmentDate);
             stmt.setInt(2, takingCarePetsId);
-            stmt.setDouble(3, pledge);
             stmt.execute();
             disconnect();
         } catch (SQLException e) {
