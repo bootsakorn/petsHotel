@@ -4,6 +4,8 @@ import Controller.dataController.DataController;
 import Models.Customer;
 import Models.Package;
 import Models.Pets;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -53,12 +55,14 @@ public class CheckInController extends CounterPageController{
     private ArrayList<Package> packages = dataController.getPackages();
 
     @FXML private void initialize(){
-        cus = new Customer(001,"ศศิธร", "สายพา", "88/131");
-        cus.addPets(new Pets(001,"น้องโตโต้","ตัวผู้",2,"ไซบีเรีย","-","-","สุนัข"));
-        cus.addPets(new Pets(002,"น้องปอย","ตัวเมีย",2,"เปอร์เซีย","-","-","แมว"));
-        cus.addPets(new Pets(003,"น้องโอ๋เอ๋","ตัวผู้",1,"แคระ","-","-","กระต่าย"));
+//        cus = new Customer(001,"ศศิธร", "สายพา", "88/131");
+//        cus.addPets(new Pets(001,"น้องโตโต้","ตัวผู้",2,"ไซบีเรีย","-","-","สุนัข"));
+//        cus.addPets(new Pets(002,"น้องปอย","ตัวเมีย",2,"เปอร์เซีย","-","-","แมว"));
+//        cus.addPets(new Pets(003,"น้องโอ๋เอ๋","ตัวผู้",1,"แคระ","-","-","กระต่าย"));
         petsDetail.add(new ArrayList(Arrays.asList("2018-12-03","น้องโตโต้", "วิสกัส", "Normal Package", "1", "ห้องเดี่ยว","E1")));
         petsDetail.add(new ArrayList(Arrays.asList("2018-12-03","น้องปอย", "วิสกัส", "Normal Package", "1", "ห้องเดี่ยว","D1")));
+        cus = customers.get(0);
+
         settingMainPage();
     }
 
@@ -100,7 +104,10 @@ public class CheckInController extends CounterPageController{
     }
 
     private void settingMainPage(){
-
+        ObservableList<String> cus = reservedNumList.getItems();
+        for (Customer c:customers) {
+            cus.add(c.getId() + " " + c.getFirstName() + " " + c.getLastName());
+        }
     }
 
     private double calculator(double total, double recieve){

@@ -98,8 +98,6 @@ public class ReservedController extends CounterPageController{
     private ArrayList<Package> packages = dataController.getPackages();
     private ArrayList<Customer> customers = dataController.getCustomer();
 
-//    private ArrayList<Room> roomList =
-
     @FXML private void initialize(){
         cus = new Customer(001,"ศศิธร", "สายพา", "88/131");
         cus.addPets(new Pets(001,"น้องโตโต้","ตัวผู้",2,"ไซบีเรีย","-","-","สุนัข"));

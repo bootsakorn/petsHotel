@@ -65,6 +65,7 @@ public class DataController {
         this.storageDataController = new StorageDataController();
         this.takingCarePetsListDataController = new TakingCarePetsListDataController();
         this.todolistDataController = new TodolistDataController();
+        this.getData();
     }
 
     private void getData() {
