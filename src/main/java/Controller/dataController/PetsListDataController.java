@@ -2,6 +2,7 @@ package Controller.dataController;
 
 import Models.PetsList;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -27,5 +28,19 @@ public class PetsListDataController extends DatabaseConnection{
             e.printStackTrace();
         }
         return petsIdList;
+    }
+
+    public void insertPetsList(int petId, int customerId){
+        try{
+            connect();
+            String query = "INSERT INTO petslist (pet_id, customer_id) VALUES (?,?)";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setInt(1, petId);
+            stmt.setInt(2, customerId);
+            stmt.execute();
+            disconnect();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
