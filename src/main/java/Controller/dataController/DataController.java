@@ -65,6 +65,7 @@ public class DataController {
         this.storageDataController = new StorageDataController();
         this.takingCarePetsListDataController = new TakingCarePetsListDataController();
         this.todolistDataController = new TodolistDataController();
+        this.getData();
     }
 
     private void getData() {
@@ -86,6 +87,17 @@ public class DataController {
     }
 
     public ArrayList<Customer> getCustomer () {
+        for (PetsList petsList: petsLists){
+            for (Customer c : customers){
+                if (petsList.getCustomerId() == c.getId()){
+                    for (Pets pet : pets){
+                        if (petsList.getPetId()==pet.getId()){
+                            c.addPets(pet);
+                        }
+                    }
+                }
+            }
+        }
         return customers;
     }
 
@@ -104,15 +116,6 @@ public class DataController {
             }
         }
         return null;
-    }
-    public ArrayList<Pets> getPetsOfCustomer (Customer customer){
-        ArrayList<Pets> petsOfCustomer = new ArrayList<>();
-        for (PetsList petsList : petsLists){
-            if (customer.getId() == petsList.getCustomerId()){{
-                petsOfCustomer.add(this.getPet(petsList.getPetsListId()));
-            }}
-        }
-        return petsOfCustomer;
     }
 
     public ArrayList<Food> getFoods (String species){
