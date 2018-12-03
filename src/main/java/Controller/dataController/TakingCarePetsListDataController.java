@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class TakingCarePetsListDataController extends DatabaseConnection {
-    public TakingCarePetsListDataController() throws ClassNotFoundException {
+    public TakingCarePetsListDataController() {
         JdbcSQLiteConnection();
     }
     public ArrayList<TakingCarePetsList> getTakingCarePetsList (){

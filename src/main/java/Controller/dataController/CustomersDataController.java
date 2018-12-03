@@ -11,7 +11,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class CustomersDataController extends DatabaseConnection {
-    public CustomersDataController() throws ClassNotFoundException {
+    public CustomersDataController() {
         JdbcSQLiteConnection();
     }
 

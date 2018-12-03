@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class ReserveDataController extends DatabaseConnection {
-    public ReserveDataController() throws ClassNotFoundException {
+    public ReserveDataController(){
         JdbcSQLiteConnection();
     }
     TakingCarePetsListDataController takingCarePetsListDataController = new TakingCarePetsListDataController();

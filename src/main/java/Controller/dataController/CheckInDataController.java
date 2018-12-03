@@ -14,7 +14,7 @@ import java.util.Date;
 import java.util.SplittableRandom;
 
 public class CheckInDataController extends DatabaseConnection {
-    public CheckInDataController() throws ClassNotFoundException {
+    public CheckInDataController(){
         JdbcSQLiteConnection();
     }
 
