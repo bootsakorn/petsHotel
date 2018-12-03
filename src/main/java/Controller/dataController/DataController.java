@@ -48,7 +48,7 @@ public class DataController {
     private ArrayList<TakingCarePetsList> takingCarePetsLists;
     private ArrayList<Todolist> todolists;
 
-    public DataController() {
+    public DataController() throws ClassNotFoundException {
         this.appointmentBillDataController = new AppointmentBillDataController();
         this.checkInDataController = new CheckInDataController();
         this.checkoutDataController = new CheckoutDataController();
