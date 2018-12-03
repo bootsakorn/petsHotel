@@ -10,4 +10,12 @@ public class PetsList {
         this.customerId = customerId;
         this.petsListId = petsListId;
     }
+
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public int getPetsListId() {
+        return petsListId;
+    }
 }
