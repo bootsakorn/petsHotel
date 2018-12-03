@@ -23,7 +23,7 @@ public class FoodDataController extends DatabaseConnection{
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
-                String name = resultSet.getString("firstname");
+                String name = resultSet.getString("name");
                 String species = speciesDataController.convertSpeciesIdToName(resultSet.getInt("species_id"));
                 double price = resultSet.getDouble("price");
                 int quantity = resultSet.getInt("quantity");

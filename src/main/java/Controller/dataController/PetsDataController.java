@@ -14,7 +14,7 @@ public class PetsDataController extends DatabaseConnection{
         ArrayList<Pets> petsList = new ArrayList<>();
         try {
             connect();
-            String query = "Select * from pets_list";
+            String query = "Select * from pets";
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
