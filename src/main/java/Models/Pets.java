@@ -4,12 +4,14 @@ public class Pets {
     private String name;
     private String sex;
     private int age;
+    private int id;
     private String breed;
     private String disease;
     private String allergy;
     private String species;
 
-    public Pets(String name, String sex, int age, String breed, String disease, String allergy, String species){
+    public Pets(int id, String name, String sex, int age, String breed, String disease, String allergy, String species){
+        this.id = id;
         this.name = name;
         this.sex = sex;
         this.age = age;

@@ -6,14 +6,17 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -27,7 +30,7 @@
     <children>
         <SplitPane dividerPositions="0.2140468227424749" orientation="VERTICAL" prefHeight="600.0" prefWidth="800.0">
             <items>
-                <AnchorPane minHeight="100.0" minWidth="0.0" prefHeight="194.0" prefWidth="798.0" style="-fx-background-color: #ffffff;">
+                <AnchorPane fx:id="root" minHeight="100.0" minWidth="0.0" prefHeight="194.0" prefWidth="798.0" style="-fx-background-color: #ffffff;">
                     <children>
                         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="14.0" layoutY="13.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
                             <image>
@@ -72,7 +75,7 @@
                         </Pane>
                         <MenuButton layoutX="720.0" layoutY="9.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="43.0" textAlignment="CENTER">
                             <items>
-                                <MenuItem fx:id="home" mnemonicParsing="false" onAction="#handleOnClickHomeMenuItem" text="Home">
+                                <MenuItem fx:id="home" mnemonicParsing="false" onAction="#handleOnClickHomeMenuItem" text="หน้าหลัก">
                                     <graphic>
                                         <ImageView fitHeight="26.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
@@ -81,7 +84,7 @@
                                         </ImageView>
                                     </graphic>
                                 </MenuItem>
-                                <MenuItem fx:id="calendar" mnemonicParsing="false" onAction="#handleOnClickCalendarMenuItem" text="Calendar">
+                                <MenuItem fx:id="calendar" mnemonicParsing="false" onAction="#handleOnClickCalendarMenuItem" text="ปฎิทิน">
                                     <graphic>
                                         <ImageView fitHeight="26.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
@@ -108,6 +111,15 @@
                                 </ImageView>
                             </graphic>
                         </MenuButton>
+                  <AnchorPane layoutX="431.0" layoutY="79.0">
+                     <children>
+                        <Button fx:id="reservationBtn" mnemonicParsing="false" onAction="#handleOnClickedReservationBtn" text="จอง" />
+                        <Button fx:id="checkOutPageBtn" layoutX="126.0" mnemonicParsing="false" onAction="#handleOnClickedCheckOutPageBtn" text="เช็คเอาท์" />
+                        <Button fx:id="checkInPageBtn" layoutX="55.0" mnemonicParsing="false" onAction="#handleOnClickedCheckInPageBtn" text="เช็คอิน" />
+                        <Button fx:id="roomBtn" layoutX="210.0" mnemonicParsing="false" onAction="#handleOnClickedRoomBtn" text="ห้อง" />
+                        <Button fx:id="searchBtn2" layoutX="265.0" mnemonicParsing="false" onAction="#handleOnClickedSearchBtn" text="ค้นหา" />
+                     </children>
+                  </AnchorPane>
                     </children>
                 </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #ffffff;">
@@ -129,84 +141,112 @@
                                 </AnchorPane>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                            <children>
-                              <TabPane layoutY="-5.0" prefHeight="465.0" prefWidth="667.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <TabPane fx:id="reservationTab" layoutY="-5.0" prefHeight="465.0" prefWidth="667.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <tabs>
-                                  <Tab text="กรอกรายละเอียด">
+                                  <Tab fx:id="insertDetail" text="กรอกรายละเอียด &gt;&gt;">
                                     <content>
                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="415.0" prefWidth="667.0">
                                              <children>
                                                 <Group layoutX="65.0" layoutY="54.0" AnchorPane.leftAnchor="65.0" AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="20.0">
                                                    <children>
-                                                      <DatePicker prefHeight="26.0" prefWidth="218.0" />
-                                                      <ChoiceBox fx:id="petName" layoutX="358.0" layoutY="-1.0" prefWidth="150.0" />
-                                                      <ChoiceBox layoutX="358.0" layoutY="45.0" prefWidth="150.0" />
-                                                      <AnchorPane layoutX="377.0" layoutY="112.0" prefHeight="97.0" prefWidth="137.0">
+                                                      <DatePicker fx:id="datePicker" prefHeight="26.0" prefWidth="218.0" promptText="เลือกวันที่ต้องการจอง" />
+                                                      <ChoiceBox fx:id="petList" layoutX="358.0" layoutY="-1.0" prefWidth="150.0" />
+                                                      <ChoiceBox fx:id="foodList" layoutX="358.0" layoutY="45.0" prefWidth="150.0" />
+                                                      <AnchorPane layoutX="379.0" layoutY="97.0" prefHeight="97.0" prefWidth="137.0">
                                                          <children>
-                                                            <RadioButton layoutY="4.0" mnemonicParsing="false" text="Normal Package" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                                            <RadioButton layoutY="41.0" mnemonicParsing="false" text="Silver Package" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="35.0" />
-                                                            <RadioButton layoutX="2.0" layoutY="76.0" mnemonicParsing="false" text="Gold Package" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="70.0" />
+                                                            <RadioButton fx:id="normalPackage" layoutY="4.0" mnemonicParsing="false" selected="true" text="Normal Package" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                               <toggleGroup>
+                                                                  <ToggleGroup fx:id="servicePackage" />
+                                                               </toggleGroup></RadioButton>
+                                                            <RadioButton fx:id="silverPackage" layoutY="41.0" mnemonicParsing="false" text="Silver Package" toggleGroup="$servicePackage" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="35.0" />
+                                                            <RadioButton fx:id="goldPackage" layoutX="2.0" layoutY="76.0" mnemonicParsing="false" text="Gold Package" toggleGroup="$servicePackage" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="70.0" />
                                                          </children>
                                                       </AnchorPane>
                                                       <Label layoutX="261.0" layoutY="6.0" text="เลือกสัตว์เลี้ยง :" />
                                                       <Label layoutX="261.0" layoutY="50.0" text="เลือกอาหาร :" />
-                                                      <Label layoutX="256.0" layoutY="110.0" text="เลือกโปรโมชั่นเสริม :" />
-                                                      <Button layoutX="205.0" layoutY="207.0" mnemonicParsing="false" text="เพิ่มสัตว์เลี้ยง" />
+                                                      <Label layoutX="261.0" layoutY="96.0" text="เลือกโปรโมชั่นเสริม :" />
+                                                      <Button fx:id="addPetBtn" layoutX="205.0" layoutY="219.0" mnemonicParsing="false" onAction="#handleOnClickedAddPetBtn" text="เพิ่มสัตว์เลี้ยง" />
+                                                      <Button fx:id="step1NextBtn" layoutX="461.0" layoutY="219.0" mnemonicParsing="false" onAction="#handleOnClickedStep1NextBtn" text="ถัดไป" />
+                                                      <TextField fx:id="dayNum" alignment="CENTER_RIGHT" layoutX="80.0" layoutY="91.0" prefHeight="31.0" prefWidth="110.0" text="1" />
+                                                      <Label layoutY="96.0" text="จำนวนวัน :" />
+                                                      <Label layoutX="197.0" layoutY="96.0" prefHeight="21.0" prefWidth="22.0" text="วัน" />
                                                    </children>
                                                 </Group>
+                                                <ScrollPane layoutX="64.0" layoutY="279.0" prefHeight="109.0" prefWidth="510.0" AnchorPane.leftAnchor="65.0" AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="280.0">
+                                                  <content>
+                                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="109.0" prefWidth="491.0">
+                                                         <children>
+                                                            <ListView fx:id="addedListView" layoutY="-2.0" prefHeight="109.0" prefWidth="498.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                  </content>
+                                                </ScrollPane>
                                              </children>
                                           </AnchorPane>
                                     </content>
                                   </Tab>
-                                  <Tab text="เลือกห้อง">
+                                  <Tab fx:id="chooseRooms" disable="true" text="เลือกห้อง &gt;&gt;">
                                     <content>
                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                              <children>
-                                                <TabPane layoutX="13.0" layoutY="13.0" prefHeight="392.0" prefWidth="636.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                                <TabPane fx:id="chooseRoomTabPane" layoutX="-1.0" layoutY="-2.0" prefHeight="348.0" prefWidth="657.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                   <tabs>
-                                                    <Tab text="สัตว์เลี้ยงตัวที่ 1">
+                                                    <Tab fx:id="petTab1" closable="false" text="สัตว์เลี้ยงตัวที่ 1">
                                                       <content>
-                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="292.0" prefWidth="533.0">
+                                                        <AnchorPane fx:id="pet1Pane" minHeight="0.0" minWidth="0.0" prefHeight="292.0" prefWidth="533.0">
                                                                <children>
-                                                                  <ComboBox layoutX="43.0" layoutY="29.0" prefWidth="150.0" promptText="ชนิดห้อง" />
-                                                                  <AnchorPane layoutX="38.0" layoutY="109.0" prefHeight="182.0" prefWidth="160.0">
+                                                                  <ComboBox fx:id="roomType" layoutX="40.0" layoutY="30.0" onAction="#handleOnClickedSelectedRoomType" prefWidth="150.0" promptText="ชนิดห้อง" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="455.0" AnchorPane.topAnchor="30.0" />
+                                                                  <AnchorPane layoutX="41.0" layoutY="111.0" prefHeight="178.0" prefWidth="156.0" style="-fx-border-width: 2; -fx-border-color: grey;">
                                                                      <children>
-                                                                        <Button layoutX="14.0" layoutY="16.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="A1" />
-                                                                        <Button layoutX="14.0" layoutY="71.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="A2" />
-                                                                        <Button layoutX="14.0" layoutY="129.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="A3" />
-                                                                        <Button layoutX="88.0" layoutY="16.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="A4" />
-                                                                        <Button layoutX="88.0" layoutY="71.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="A5" />
-                                                                        <Button layoutX="88.0" layoutY="129.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="A6" />
+                                                                        <Button fx:id="a1" layoutX="15.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="A1" />
+                                                                        <Button fx:id="a2" layoutX="85.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="A2" />
+                                                                        <Button fx:id="a3" layoutX="15.0" layoutY="65.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="A3" />
+                                                                        <Button fx:id="a4" layoutX="85.0" layoutY="65.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="A4" />
+                                                                        <Button fx:id="a5" layoutX="15.0" layoutY="125.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="A5" />
+                                                                        <Button fx:id="a6" layoutX="85.0" layoutY="125.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="A6" />
                                                                      </children>
                                                                   </AnchorPane>
-                                                                  <AnchorPane layoutX="213.0" layoutY="121.0" prefHeight="111.0" prefWidth="210.0">
+                                                                  <AnchorPane layoutX="207.0" layoutY="111.0" prefHeight="118.0" prefWidth="235.0" style="-fx-border-width: 2; -fx-border-color: grey;">
                                                                      <children>
-                                                                        <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="B1" />
-                                                                        <Button layoutX="77.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="B2" />
-                                                                        <Button layoutX="152.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="B3" />
-                                                                        <Button layoutY="57.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="B4" />
-                                                                        <Button layoutX="77.0" layoutY="57.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="B5" />
-                                                                        <Button layoutX="152.0" layoutY="57.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="B6" />
+                                                                        <Button fx:id="b1" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="B1" />
+                                                                        <Button fx:id="b2" layoutX="85.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="B2" />
+                                                                        <Button fx:id="b3" layoutX="160.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="B3" />
+                                                                        <Button fx:id="b4" layoutX="10.0" layoutY="65.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="B4" />
+                                                                        <Button fx:id="b5" layoutX="85.0" layoutY="65.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="B5" />
+                                                                        <Button fx:id="b6" layoutX="160.0" layoutY="65.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="B6" />
                                                                      </children>
                                                                   </AnchorPane>
-                                                                  <AnchorPane layoutX="448.0" layoutY="121.0" prefHeight="98.0" prefWidth="130.0">
+                                                                  <AnchorPane layoutX="444.0" layoutY="111.0" prefHeight="118.0" prefWidth="158.0" style="-fx-border-width: 2; -fx-border-color: grey;">
                                                                      <children>
-                                                                        <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="C1" />
-                                                                        <Button layoutX="75.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="C2" />
-                                                                        <Button layoutY="56.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="C3" />
-                                                                        <Button layoutX="75.0" layoutY="56.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="C4" />
+                                                                        <Button fx:id="c1" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="C1" />
+                                                                        <Button fx:id="c2" layoutX="85.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="C2" />
+                                                                        <Button fx:id="c3" layoutX="10.0" layoutY="65.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="C3" />
+                                                                        <Button fx:id="c4" layoutX="85.0" layoutY="65.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="C4" />
                                                                      </children>
                                                                   </AnchorPane>
-                                                                  <AnchorPane layoutX="198.0" layoutY="223.0" prefHeight="58.0" prefWidth="193.0">
+                                                                  <AnchorPane layoutX="206.0" layoutY="230.0" prefHeight="58.0" prefWidth="80.0" style="-fx-border-width: 2; -fx-border-color: grey;">
                                                                      <children>
-                                                                        <Button layoutX="14.0" layoutY="16.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="D1" />
-                                                                        <Button layoutX="88.0" layoutY="16.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="D2" />
-                                                                        <Button layoutX="162.0" layoutY="16.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="D3" />
+                                                                        <Button fx:id="d1" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="D1" />
                                                                      </children>
                                                                   </AnchorPane>
-                                                                  <AnchorPane layoutX="431.0" layoutY="239.0" prefHeight="52.0" prefWidth="150.0">
+                                                                  <AnchorPane layoutX="285.0" layoutY="230.0" prefHeight="58.0" prefWidth="80.0" style="-fx-border-width: 2; -fx-border-color: grey;">
                                                                      <children>
-                                                                        <Button layoutX="14.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="E1" />
-                                                                        <Button layoutX="92.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="58.0" text="E2" />
+                                                                        <Button fx:id="d21" layoutX="85.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="D2" AnchorPane.leftAnchor="10.0" />
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                                  <AnchorPane layoutX="362.0" layoutY="230.0" prefHeight="58.0" prefWidth="80.0" style="-fx-border-width: 2; -fx-border-color: grey;">
+                                                                     <children>
+                                                                        <Button fx:id="d32" layoutX="13.0" layoutY="9.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="D3" AnchorPane.leftAnchor="10.0" />
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                                  <AnchorPane layoutX="444.0" layoutY="230.0" prefHeight="58.0" prefWidth="80.0" style="-fx-border-width: 2; -fx-border-color: grey;">
+                                                                     <children>
+                                                                        <Button fx:id="e1" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="E1" />
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                                  <AnchorPane layoutX="522.0" layoutY="230.0" prefHeight="58.0" prefWidth="80.0" style="-fx-border-width: 2; -fx-border-color: grey;">
+                                                                     <children>
+                                                                        <Button fx:id="e2" layoutX="13.0" layoutY="7.0" mnemonicParsing="false" onAction="#handleOnClickedSelectedRoom" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #b4e5b5;" text="E2" AnchorPane.leftAnchor="10.0" />
                                                                      </children>
                                                                   </AnchorPane>
                                                                </children>
@@ -214,26 +254,27 @@
                                                       </content>
                                                     </Tab>
                                                   </tabs>
-                                                   <effect>
-                                                      <Glow />
-                                                   </effect>
                                                 </TabPane>
+                                                <Button fx:id="step2NextBtn" layoutX="549.0" layoutY="362.0" mnemonicParsing="false" onAction="#handleOnClickedStep2NextBtn" text="ถัดไป" />
+                                                <Button fx:id="step2PreviousBtn" layoutX="42.0" layoutY="362.0" mnemonicParsing="false" onAction="#handleOnClickedStep2PreviousBtn" text="ย้อนกลับ" />
                                              </children>
                                           </AnchorPane>
                                     </content>
                                   </Tab>
-                                    <Tab text="ยืนยันรายละเอียด">
+                                    <Tab fx:id="confirmDetail" disable="true" text="ยืนยันรายละเอียด">
                                        <content>
-                                          <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                          <AnchorPane focusTraversable="true" prefHeight="200.0" prefWidth="200.0">
                                              <children>
-                                                <TextArea layoutX="42.0" layoutY="53.0" prefHeight="260.0" prefWidth="582.0" text="รายละเอียด" />
-                                                <Button layoutX="539.0" layoutY="366.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="106.0" text="Check In" />
-                                                <Label layoutX="48.0" layoutY="14.0" text="รายละเอียด :">
+                                                <TextArea fx:id="allDetails" layoutX="42.0" layoutY="53.0" prefHeight="260.0" prefWidth="582.0" text="รายละเอียด" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="55.0" />
+                                                <Button fx:id="checkInBtn" layoutX="339.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleOnClickedCheckInBtn" prefHeight="34.0" prefWidth="100.0" text="เช็คอิน" AnchorPane.rightAnchor="230.0" AnchorPane.topAnchor="330.0" />
+                                                <Label layoutX="42.0" layoutY="14.0" text="รายละเอียด" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="520.0" AnchorPane.topAnchor="15.0">
                                                    <font>
                                                       <Font size="25.0" />
                                                    </font>
                                                 </Label>
-                                                <Button layoutX="293.0" layoutY="331.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="80.0" text="ยืนยัน" />
+                                                <Button fx:id="submitBtn" layoutX="220.0" layoutY="331.0" mnemonicParsing="false" onAction="#handleOnClickedSubmitBtn" prefHeight="34.0" prefWidth="100.0" text="ยืนยันการจอง" AnchorPane.leftAnchor="220.0" AnchorPane.topAnchor="330.0" />
+                                                <Button fx:id="step3PreviousBtn" layoutX="42.0" layoutY="331.0" mnemonicParsing="false" onAction="#handleOnClickedStep3PreviousBtn" prefHeight="34.0" prefWidth="100.0" text="ย้อนกลับ" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="330.0" />
+                                                <Button fx:id="cancelBtn" layoutX="524.0" layoutY="331.0" mnemonicParsing="false" onAction="#handleOnClickedCancelBtn" prefHeight="34.0" prefWidth="100.0" text="ยกเลิก" AnchorPane.leftAnchor="525.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="330.0" />
                                              </children>
                                           </AnchorPane>
                                        </content>

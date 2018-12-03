@@ -8,8 +8,12 @@ public class Room {
     private String type;
     private String species;
     private double price;
+    private int id;
+    private int status;
 
-    public Room(String name, int number, int type, int species, double price){
+    public Room(int id, String name, int number, int type, int species, double price, int status){
+        this.id = id;
+        this.status = status;
         this.name = name;
         this.number = number;
         this.type = this.type_list[type];

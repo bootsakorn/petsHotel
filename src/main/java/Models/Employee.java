@@ -1,6 +1,7 @@
 package Models;
 
 public class Employee {
+    private int id;
     private String username;
     private String password;
     private String firstName;
@@ -12,8 +13,9 @@ public class Employee {
     private String education;
     private String position;
 
-    public Employee(String username, String password, String firstName, String lastName, String address, double salary, int
+    public Employee(int id, String username, String password, String firstName, String lastName, String address, double salary, int
                     age, String sex, String education, String position){
+        this.id = id;
         this.username = username;
         this.password = password;
         this.firstName = firstName;
