@@ -164,7 +164,7 @@ public class DataController {
             takingCarePetsListDataController.insertTakingCarePetsList(id, customer_id, pet_id, packageId, foodId, room_id);
         }
         String[] strtDateSplit = startDate.split("-");
-        LocalDate localDate = LocalDate.of(Integer.valueOf(strtDateSplit[2]), Integer.valueOf(strtDateSplit[1]), Integer.valueOf(strtDateSplit[0]));
+        LocalDate localDate = LocalDate.of(Integer.valueOf(strtDateSplit[0]), Integer.valueOf(strtDateSplit[1]), Integer.valueOf(strtDateSplit[2]));
         LocalDate strtLocalDate = localDate.plusDays(numberOfReserve);
         String strtDate = strtLocalDate.getDayOfMonth()+"-"+strtLocalDate.getMonthValue()+"-"+strtLocalDate.getYear();
         appointmentBillDataController.insertAppointmentBill(strtDate, takingCarePetsId);

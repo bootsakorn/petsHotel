@@ -48,7 +48,8 @@ public class ReserveDataController extends DatabaseConnection {
 
     public void insertReserve (String reserveDate, String startDate, int numberOfReserve, int customerId, int takingCarePetsId){
         try{
-            String query = "INSERT INTO reserve (reserve_date, start_date, number_of_reserve, customer_id, pets_id) VALUES (?,?,?,?,?)";
+            connect();
+            String query = "INSERT INTO reserve (reserve_date, start_date, number_of_reserve, customer_id, taking_care_pets_id) VALUES (?,?,?,?,?)";
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, reserveDate);
             stmt.setString(2, startDate);

@@ -129,8 +129,9 @@ public class ReservedController extends CounterPageController{
                 +" | "+selected.getText()+" | "+dayNum.getText()+" วัน");
         addedListView.setItems(pet);
 
+
         petsDetail.add(new ArrayList(Arrays.asList(
-                datePicker.getValue().toString(),
+                datePicker.getValue()+"",
                 petList.getValue().toString(),
                 foodList.getValue().toString(),
                 selected.getText(),dayNum.getText()+" วัน"
@@ -200,8 +201,9 @@ public class ReservedController extends CounterPageController{
             //show detail in text area
             String details = "ชื่อลูกค้า : คุณ"+cus.getFirstName()+" "+cus.getLastName()+"\n";
             for (ArrayList<String> pet:petsDetail) {
+                String date = pet.get(0);
                 details +=
-                        "วันที่จอง : " +pet.get(0)+"\tจำนวนวัน : " + pet.get(4)+"\n"+
+                        "วันที่จอง : " + date +"\tจำนวนวัน : " + pet.get(4)+"\n"+
                         "ชื่อสัตว์เลี้ยง : " + pet.get(1)+"\n"+
                         "อาหารยี่ห้อ : " + pet.get(2)+"\n"+
                         "แพคเกจ : " + pet.get(3)+"\n"+
@@ -292,14 +294,8 @@ public class ReservedController extends CounterPageController{
     }
 
     public void handleOnClickedSubmitBtn(ActionEvent actionEvent) {
-        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
-        String reserveDate = null;
         LocalDate localDate = LocalDate.now();
-        try {
-            reserveDate = format.parse(localDate.getDayOfMonth()+"-"+localDate.getMonthValue()+"-"+localDate.getYear()).toString();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        String reserveDate = localDate.getDayOfMonth()+"-"+localDate.getMonthValue()+"-"+localDate.getYear();
         int takingCarePetsListId = dataController.getIdTakingCarePetsListNext();
         ArrayList<TakingCarePetsList> takingCarePetsList = new ArrayList<>();
         String startDate = petsDetail.get(0).get(0);
@@ -310,18 +306,10 @@ public class ReservedController extends CounterPageController{
             int foodId = dataController.getFoodId(l.get(2));
             int packageId = dataController.getPackageId(l.get(3));
             int roomId = dataController.getRoomId(l.get(6));
-            System.out.println(takingCarePetsListId);
-            System.out.println("cusId"+ cusId);
-            System.out.println(" pet id : "+ dataController.getPet(l.get(1)).getId());
-            System.out.println(" food id :  "+ foodId);
-            System.out.println(" pack id : "+ packageId);
-            System.out.println(" room id : " + roomId);
-            System.out.println(" food id :  "+ foodId);
-            System.out.println(" pack id : "+ packageId);
-            System.out.println(" room id : " + roomId);
             TakingCarePetsList tcpl = new TakingCarePetsList(takingCarePetsListId, cusId,dataController.getPet(l.get(1)).getId(), foodId, packageId ,roomId);
             takingCarePetsList.add(tcpl);
         }
+        System.out.println(reserveDate);
         dataController.insertReserve(reserveDate, startDate, numberOfReserve, cusId, takingCarePetsList);
     }
 
