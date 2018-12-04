@@ -231,5 +231,7 @@ public class DataController {
     public ArrayList<AppointmentBill> getAppointmentBills() {
         return appointmentBills;
     }
+
+
 }
 

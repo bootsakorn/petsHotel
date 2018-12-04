@@ -70,10 +70,6 @@ public class CheckInController extends CounterPageController{
     }
 
     @FXML private void initialize(){
-//        cus = new Customer(001,"ศศิธร", "สายพา", "88/131");
-//        cus.addPets(new Pets(001,"น้องโตโต้","ตัวผู้",2,"ไซบีเรีย","-","-","สุนัข"));
-//        cus.addPets(new Pets(002,"น้องปอย","ตัวเมีย",2,"เปอร์เซีย","-","-","แมว"));
-//        cus.addPets(new Pets(003,"น้องโอ๋เอ๋","ตัวผู้",1,"แคระ","-","-","กระต่าย"));
         cus = customers.get(0);
         Pets pet1 = cus.getPets().get(0);
         Pets pet2 = cus.getPets().get(1);
@@ -113,6 +109,7 @@ public class CheckInController extends CounterPageController{
         }else{
             changePane.setVisible(true);
             changeField.setText(calculator(total,recieve)+"");
+
         }
     }
 
