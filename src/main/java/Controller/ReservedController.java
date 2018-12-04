@@ -294,8 +294,9 @@ public class ReservedController extends CounterPageController{
     public void handleOnClickedSubmitBtn(ActionEvent actionEvent) {
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
         String reserveDate = null;
+        LocalDate localDate = LocalDate.now();
         try {
-            reserveDate = format.parse(new Date().toString()).toString();
+            reserveDate = format.parse(localDate.getDayOfMonth()+"-"+localDate.getMonthValue()+"-"+localDate.getYear()).toString();
         } catch (ParseException e) {
             e.printStackTrace();
         }
