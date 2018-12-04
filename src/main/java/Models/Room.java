@@ -48,7 +48,12 @@ public class Room {
     public double getPrice() {
         return price;
     }
-    public void setPrice(double price) {
+    public void setPrice(double price)
+    {
         this.price = price;
+    }
+
+    public int getStatus() {
+        return status;
     }
 }

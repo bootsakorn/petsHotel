@@ -22,11 +22,12 @@ public class CheckOutController extends CounterPageController {
     public AnchorPane successPane;
     public Button okBtn;
     private DataController dataController;
-    private ArrayList<Customer> customers = dataController.getCustomer();
+    private ArrayList<Customer> customers;
 
     public CheckOutController(){
         try {
             dataController = new DataController();
+            customers = dataController.getCustomer();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }

@@ -25,11 +25,12 @@ public class CalendarPageController extends PageSwitchController{
     private ArrayList<DateNodeController> allCalendarDays = new ArrayList<>(35);
     private YearMonth currentYearMonth;
     private DataController dataController;
-    private ArrayList<Reserve> reserves = dataController.getReserves();
+    private ArrayList<Reserve> reserves;
 
     public CalendarPageController(){
         try {
             dataController = new DataController();
+            reserves = dataController.getReserves();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
