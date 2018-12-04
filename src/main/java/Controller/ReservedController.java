@@ -310,6 +310,15 @@ public class ReservedController extends CounterPageController{
             int foodId = dataController.getFoodId(l.get(2));
             int packageId = dataController.getPackageId(l.get(3));
             int roomId = dataController.getRoomId(l.get(6));
+            System.out.println(takingCarePetsListId);
+            System.out.println("cusId"+ cusId);
+            System.out.println(" pet id : "+ dataController.getPet(l.get(1)).getId());
+            System.out.println(" food id :  "+ foodId);
+            System.out.println(" pack id : "+ packageId);
+            System.out.println(" room id : " + roomId);
+            System.out.println(" food id :  "+ foodId);
+            System.out.println(" pack id : "+ packageId);
+            System.out.println(" room id : " + roomId);
             TakingCarePetsList tcpl = new TakingCarePetsList(takingCarePetsListId, cusId,dataController.getPet(l.get(1)).getId(), foodId, packageId ,roomId);
             takingCarePetsList.add(tcpl);
         }

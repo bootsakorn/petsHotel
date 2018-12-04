@@ -135,8 +135,7 @@ public class DataController {
     }
 
     public int getPackageId (String packageName) {
-        for (Package p : packages){
-            System.out.println(p.getName());
+        for (Package p : packages) {
             if (p.getName().equalsIgnoreCase(packageName)){
                 return p.getId();
             }
@@ -145,7 +144,11 @@ public class DataController {
     }
 
     public int getIdTakingCarePetsListNext(){
-        return takingCarePetsListDataController.getMaxId()+1;
+        int id = 0;
+        if (null == (Integer)takingCarePetsListDataController.getMaxId()){
+            id = 0;
+        }
+        return id+1;
     }
 
     public void insertReserve (String reserveDate, String startDate, int numberOfReserve, int customerId, ArrayList<TakingCarePetsList> takingCarePetsLists) {
