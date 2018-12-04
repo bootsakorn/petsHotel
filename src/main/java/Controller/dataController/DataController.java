@@ -70,6 +70,7 @@ public class DataController {
 
     private void getData() {
         this.pets = petsDataController.getPetsList();
+        System.out.print(pets.size());
         this.petsLists = petsListDataController.getPetsIdList();
         this.customers = customersDataController.getCustomers();
         this.foods = foodDataController.getFoods();
@@ -77,7 +78,6 @@ public class DataController {
         this.takingCarePetsLists = takingCarePetsListDataController.getTakingCarePetsList();
         this.reserves = reserveDataController.getReserve();
         this.rooms = roomDataController.getRooms();
-        this.pets = petsDataController.getPetsList();
         this.appointmentBills = appointmentBillDataController.getAppointmentBills();
     }
 
@@ -107,15 +107,6 @@ public class DataController {
         String address = customer.getAddress();
         customersDataController.insertCustomer(firstname, lastname, address);
         getData();
-    }
-
-    private Pets getPet (int petId){
-        for (Pets pet : pets){
-            if (pet.getId() == petId){
-                return pet;
-            }
-        }
-        return null;
     }
 
     public ArrayList<Food> getFoods (String species){
@@ -159,9 +150,9 @@ public class DataController {
         return reserves;
     }
 
-    public Reserve getReserve (int id){
+    public Reserve getReserve (int customerId){
         for (Reserve r : reserves){
-            if (r.getId() == id){
+            if (r.getCustomer_id() == customerId){
                 return r;
             }
         }
@@ -187,7 +178,10 @@ public class DataController {
     }
 
     public ArrayList<Pets> getPets() {
-        return pets;
+        for (Pets p : this.pets){
+            System.out.print(p.getId());
+        }
+        return this.pets;
     }
 
     public ArrayList<AppointmentBill> getAppointmentBills() {
