@@ -73,7 +73,6 @@ public class DataController {
 
     private void getData() {
         this.pets = petsDataController.getPetsList();
-        System.out.print(pets.size());
         this.petsLists = petsListDataController.getPetsIdList();
         this.customers = customersDataController.getCustomers();
         this.foods = foodDataController.getFoods();
@@ -137,7 +136,8 @@ public class DataController {
 
     public int getPackageId (String packageName) {
         for (Package p : packages){
-            if (p.getName().equals(packageName)){
+            System.out.println(p.getName());
+            if (p.getName().equalsIgnoreCase(packageName)){
                 return p.getId();
             }
         }
@@ -200,8 +200,9 @@ public class DataController {
     }
 
     public int getRoomId (String name) {
+        System.out.println(rooms.size());
         for (Room r : rooms){
-            if (r.getName().equals(name)){
+            if (r.getName().equalsIgnoreCase(name)){
                 return r.getId();
             }
         }
