@@ -87,9 +87,32 @@ public class RoomPageController extends CounterPageController {
                 groupD1.getChildren().get(0).setStyle("-fx-background-color: #b4e5b5;"); //green
                 groupD2.getChildren().get(0).setStyle("-fx-background-color: #b4e5b5;"); //green
                 groupD3.getChildren().get(0).setStyle("-fx-background-color: #b4e5b5;"); //green
+                if (rooms.get(16).getStatus() == 0){
+                    groupD1.getChildren().get(0).setStyle("-fx-background-color: #e07d7d;"); //red
+                }else if (rooms.get(17).getStatus() == 0){
+                    groupD2.getChildren().get(0).setStyle("-fx-background-color: #e07d7d;"); //red
+                }else if (rooms.get(18).getStatus() == 0){
+                    groupD3.getChildren().get(0).setStyle("-fx-background-color: #e07d7d;"); //red
+                }else if (rooms.get(16).getStatus() == 1){
+                    groupD1.getChildren().get(0).setStyle("-fx-background-color: #b4e5b5;"); //green
+                }else if (rooms.get(17).getStatus() == 1){
+                    groupD2.getChildren().get(0).setStyle("-fx-background-color: #b4e5b5;"); //green
+                }else if (rooms.get(18).getStatus() == 1){
+                    groupD3.getChildren().get(0).setStyle("-fx-background-color: #b4e5b5;"); //green
+                }
+
             }else if (selectedType.equalsIgnoreCase("ห้องรวม")){
                 for (Node btn: groupB.getChildren()) {
                     btn.setStyle("-fx-background-color: #b4e5b5;"); //green
+                }
+                int count = 6;
+                for (Node btn: groupB.getChildren()) {
+                    if (rooms.get(count).getStatus() == 0){
+                        btn.setStyle("-fx-background-color: #e07d7d;"); //red
+                    }else if (rooms.get(count).getStatus() == 1){
+                        btn.setStyle("-fx-background-color: #b4e5b5;"); //green
+                    }
+                    count++;
                 }
                 groupD1.getChildren().get(0).setStyle("-fx-background-color: #b7b7b7;"); //grey
                 groupD2.getChildren().get(0).setStyle("-fx-background-color: #b7b7b7;"); //grey
@@ -118,9 +141,27 @@ public class RoomPageController extends CounterPageController {
                 }
                 groupE1.getChildren().get(0).setStyle("-fx-background-color: #b4e5b5;"); //green
                 groupE2.getChildren().get(0).setStyle("-fx-background-color: #b4e5b5;"); //green
+                if (rooms.get(19).getStatus() == 0){
+                    groupE1.getChildren().get(0).setStyle("-fx-background-color: #e07d7d;"); //red
+                }else if (rooms.get(20).getStatus() == 0){
+                    groupE2.getChildren().get(0).setStyle("-fx-background-color: #e07d7d;"); //red
+                }else if (rooms.get(19).getStatus() == 1){
+                    groupE1.getChildren().get(0).setStyle("-fx-background-color: #b4e5b5;"); //green
+                }else if (rooms.get(20).getStatus() == 1){
+                    groupE2.getChildren().get(0).setStyle("-fx-background-color: #b4e5b5;"); //green
+                }
             }else if (selectedType.equalsIgnoreCase("ห้องรวม")){
                 for (Node btn: groupA.getChildren()) {
                     btn.setStyle("-fx-background-color: #b4e5b5;"); //green
+                }
+                int count = 0;
+                for (Node btn: groupA.getChildren()) {
+                    if (rooms.get(count).getStatus() == 0){
+                        btn.setStyle("-fx-background-color: #e07d7d;"); //red
+                    }else if (rooms.get(count).getStatus() == 1){
+                        btn.setStyle("-fx-background-color: #b4e5b5;"); //green
+                    }
+                    count++;
                 }
                 groupE1.getChildren().get(0).setStyle("-fx-background-color: #b7b7b7;"); //grey
                 groupE2.getChildren().get(0).setStyle("-fx-background-color: #b7b7b7;"); //grey
@@ -150,6 +191,15 @@ public class RoomPageController extends CounterPageController {
             }
             for (Node btn: groupC.getChildren()) {
                 btn.setStyle("-fx-background-color: #b4e5b5;"); //green
+            }
+            int count = 12;
+            for (Node btn: groupC.getChildren()) {
+                if (rooms.get(count).getStatus() == 0){
+                    btn.setStyle("-fx-background-color: #e07d7d;"); //red
+                }else if (rooms.get(count).getStatus() == 1){
+                    btn.setStyle("-fx-background-color: #b4e5b5;"); //green
+                }
+                count++;
             }
             groupE1.getChildren().get(0).setStyle("-fx-background-color: #b7b7b7;"); //grey
             groupE2.getChildren().get(0).setStyle("-fx-background-color: #b7b7b7;"); //grey

@@ -4,7 +4,7 @@ public class Room {
     private String name;
     private int number;
     private String[] type_list = {"ห้องเดี่ยว", "ห้องรวม"};
-    private String[] species_list = {"สุนัข", "แมว", "กระต่าย"};
+    private String[] species_list = {"แมว", "สุนัข", "กระต่าย"};
     private String type;
     private String species;
     private double price;

@@ -4,6 +4,7 @@ import Controller.dataController.DataController;
 import Models.Customer;
 import Models.Package;
 import Models.Pets;
+import Models.Reserve;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -51,7 +52,8 @@ public class CheckInController extends CounterPageController{
     private DataController dataController ;
     private ArrayList<Pets> pets;
     private ArrayList<Customer> customers;
-    private ArrayList<ArrayList<String>> petsDetail = new ArrayList();
+    private ArrayList<Reserve> reserves;
+    private ArrayList<ArrayList<String>> petsDetail;
     private ArrayList<Package> packages;
 
     public CheckInController(){
@@ -60,6 +62,8 @@ public class CheckInController extends CounterPageController{
             pets = dataController.getPets();
             customers = dataController.getCustomer();
             packages = dataController.getPackages();
+            reserves = dataController.getReserves();
+            petsDetail = new ArrayList();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -113,12 +117,15 @@ public class CheckInController extends CounterPageController{
     }
 
     public void handleOnClickedPrintBtn(ActionEvent event) {
+        mainPane.setVisible(true);
+        checkInPane.setVisible(false);
+        changePane.setVisible(false);
     }
 
     private void settingMainPage(){
         ObservableList<String> cus = reservedNumList.getItems();
-        for (Customer c:customers) {
-            cus.add(c.getId() + " " + c.getFirstName() + " " + c.getLastName());
+        for (Reserve r:reserves) {
+            cus.add(r.getId() + " " + r.getNumber_of_reserve());
         }
     }
 

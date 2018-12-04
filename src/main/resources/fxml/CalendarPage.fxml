@@ -154,7 +154,7 @@
                                  </children>
                               </AnchorPane>
                               <Separator layoutX="459.0" layoutY="89.0" orientation="VERTICAL" prefHeight="322.0" prefWidth="1.0" AnchorPane.leftAnchor="465.0" AnchorPane.topAnchor="90.0" />
-                              <ListView fx:id="listView" layoutX="482.0" layoutY="140.0" prefHeight="271.0" prefWidth="149.0" AnchorPane.leftAnchor="490.0" AnchorPane.topAnchor="140.0" />
+                              <ListView fx:id="listView" layoutX="482.0" layoutY="174.0" prefHeight="237.0" prefWidth="149.0" AnchorPane.leftAnchor="490.0" AnchorPane.topAnchor="174.0" />
                               <Text fx:id="monthText" layoutX="89.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="เดือน" textAlignment="CENTER" wrappingWidth="289.9999952316284" AnchorPane.leftAnchor="90.0" AnchorPane.rightAnchor="285.0" AnchorPane.topAnchor="90.0">
                                  <font>
                                     <Font name="System Bold" size="20.0" />
@@ -162,6 +162,7 @@
                               </Text>
                               <Button fx:id="previousBtn" layoutX="25.0" layoutY="89.0" mnemonicParsing="false" onAction="#handleOnclickPreviousBtn" text="&lt;&lt;" />
                               <Button fx:id="nextBtn" layoutX="403.0" layoutY="89.0" mnemonicParsing="false" onAction="#handleOnclickNextBtn" text="&gt;&gt;" />
+                              <Text fx:id="dateInList" layoutX="490.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="dateInList" />
                            </children>
                         </AnchorPane>
                      </items>
