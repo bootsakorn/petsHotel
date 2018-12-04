@@ -302,7 +302,8 @@ public class ReservedController extends CounterPageController{
         int takingCarePetsListId = dataController.getIdTakingCarePetsListNext();
         ArrayList<TakingCarePetsList> takingCarePetsList = new ArrayList<>();
         String startDate = petsDetail.get(0).get(0);
-        int numberOfReserve = Integer.valueOf(petsDetail.get(0).get(4));
+        String[] numSplit = petsDetail.get(0).get(4).split(" ");
+        int numberOfReserve = Integer.valueOf(numSplit[0]);
         int cusId = cus.getId();
         for (ArrayList<String> l : petsDetail){
             int foodId = dataController.getFoodId(l.get(2));
