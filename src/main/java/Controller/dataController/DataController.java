@@ -3,6 +3,9 @@ package Controller.dataController;
 import Models.*;
 import Models.Package;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -119,19 +122,33 @@ public class DataController {
         return foodOfSpecies;
     }
 
+    public int getFoodId (String food) {
+        for (Food f : foods){
+            if (f.getName().equals(food)){
+                return f.getId();
+            }
+        }
+        return Integer.parseInt(null);
+    }
+
     public ArrayList<Package> getPackages (){
         return packages;
+    }
+
+    public int getPackageId (String packageName) {
+        for (Package p : packages){
+            if (p.getName().equals(packageName)){
+                return p.getId();
+            }
+        }
+        return Integer.parseInt(null);
     }
 
     public int getIdTakingCarePetsListNext(){
         return takingCarePetsListDataController.getMaxId()+1;
     }
 
-    public void insertReserve (Reserve reserve, ArrayList<TakingCarePetsList> takingCarePetsLists) {
-        String reserveDate = reserve.getReserve_date().toString();
-        String startDate = reserve.getStart_date().toString();
-        int numberOfReserve = reserve.getNumber_of_reserve();
-        int customerId = reserve.getCustomer_id();
+    public void insertReserve (String reserveDate, String startDate, int numberOfReserve, int customerId, ArrayList<TakingCarePetsList> takingCarePetsLists) {
         int takingCarePetsId = takingCarePetsLists.get(0).getId();
         reserveDataController.insertReserve(reserveDate, startDate, numberOfReserve, customerId, takingCarePetsId);
         for (TakingCarePetsList t: takingCarePetsLists) {
@@ -143,6 +160,11 @@ public class DataController {
             int room_id = t.getRoomId();
             takingCarePetsListDataController.insertTakingCarePetsList(id, customer_id, pet_id, packageId, foodId, room_id);
         }
+        String[] strtDateSplit = startDate.split("-");
+        LocalDate localDate = LocalDate.of(Integer.valueOf(strtDateSplit[2]), Integer.valueOf(strtDateSplit[1]), Integer.valueOf(strtDateSplit[0]));
+        LocalDate strtLocalDate = localDate.plusDays(numberOfReserve);
+        String strtDate = strtLocalDate.getDayOfMonth()+"-"+strtLocalDate.getMonthValue()+"-"+strtLocalDate.getYear();
+        appointmentBillDataController.insertAppointmentBill(strtDate, takingCarePetsId);
         this.getData();
     }
 
@@ -177,11 +199,29 @@ public class DataController {
         return rooms;
     }
 
+    public int getRoomId (int number) {
+        for (Room r : rooms){
+            if (r.getNumber() == number){
+                return r.getId();
+            }
+        }
+        return Integer.valueOf(null);
+    }
+
     public ArrayList<Pets> getPets() {
         for (Pets p : this.pets){
             System.out.print(p.getId());
         }
         return this.pets;
+    }
+
+    public Pets getPet(String name){
+        for (Pets p : pets){
+            if (p.getName().equals(name)){
+                return p;
+            }
+        }
+        return null;
     }
 
     public ArrayList<AppointmentBill> getAppointmentBills() {

@@ -21,10 +21,13 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 
 public class ReservedController extends CounterPageController{
 
@@ -100,8 +103,6 @@ public class ReservedController extends CounterPageController{
     public ReservedController(){
         try {
             dataController = new DataController();
-            customers = dataController.getCustomer();
-            packages = dataController.getPackages();
             rooms = dataController.getRooms();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
@@ -291,6 +292,26 @@ public class ReservedController extends CounterPageController{
     }
 
     public void handleOnClickedSubmitBtn(ActionEvent actionEvent) {
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+        String reserveDate = null;
+        try {
+            reserveDate = format.parse(new Date().toString()).toString();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        int takingCarePetsListId = dataController.getIdTakingCarePetsListNext();
+        ArrayList<TakingCarePetsList> takingCarePetsList = new ArrayList<>();
+        String startDate = petsDetail.get(0).get(0);
+        int numberOfReserve = Integer.valueOf(petsDetail.get(0).get(4));
+        int cusId = cus.getId();
+        for (ArrayList<String> l : petsDetail){
+            int foodId = dataController.getFoodId(l.get(2));
+            int packageId = dataController.getPackageId(l.get(3));
+            int roomId = dataController.getRoomId(Integer.valueOf(l.get(6)));
+            TakingCarePetsList tcpl = new TakingCarePetsList(takingCarePetsListId, cusId,dataController.getPet(l.get(1)).getId(), foodId, packageId ,roomId);
+            takingCarePetsList.add(tcpl);
+        }
+        dataController.insertReserve(reserveDate, startDate, numberOfReserve, cusId, takingCarePetsList);
     }
 
     public void handleOnClickedCheckInBtn(ActionEvent event) throws Exception{

@@ -19,4 +19,31 @@ public class Package {
         this.walk = walk;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public int getShower() {
+        return shower;
+    }
+
+    public int getSalon() {
+        return salon;
+    }
+
+    public int getSwim() {
+        return swim;
+    }
+
+    public int getWalk() {
+        return walk;
+    }
 }
