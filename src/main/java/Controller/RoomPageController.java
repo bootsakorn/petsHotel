@@ -149,10 +149,10 @@ public class RoomPageController extends CounterPageController {
                 btn.setStyle("-fx-background-color: #b7b7b7;"); //grey
             }
             for (Node btn: groupC.getChildren()) {
-                btn.setStyle("-fx-background-color: #b7b7b7;"); //grey
+                btn.setStyle("-fx-background-color: #b4e5b5;"); //green
             }
-            groupE1.getChildren().get(0).setStyle("-fx-background-color: #b4e5b5;"); //green
-            groupE2.getChildren().get(0).setStyle("-fx-background-color: #b4e5b5;"); //green
+            groupE1.getChildren().get(0).setStyle("-fx-background-color: #b7b7b7;"); //grey
+            groupE2.getChildren().get(0).setStyle("-fx-background-color: #b7b7b7;"); //grey
             groupD1.getChildren().get(0).setStyle("-fx-background-color: #b7b7b7;"); //grey
             groupD2.getChildren().get(0).setStyle("-fx-background-color: #b7b7b7;"); //grey
             groupD3.getChildren().get(0).setStyle("-fx-background-color: #b7b7b7;"); //grey

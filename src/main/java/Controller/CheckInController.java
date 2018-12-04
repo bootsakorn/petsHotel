@@ -70,9 +70,11 @@ public class CheckInController extends CounterPageController{
 //        cus.addPets(new Pets(001,"น้องโตโต้","ตัวผู้",2,"ไซบีเรีย","-","-","สุนัข"));
 //        cus.addPets(new Pets(002,"น้องปอย","ตัวเมีย",2,"เปอร์เซีย","-","-","แมว"));
 //        cus.addPets(new Pets(003,"น้องโอ๋เอ๋","ตัวผู้",1,"แคระ","-","-","กระต่าย"));
-        petsDetail.add(new ArrayList(Arrays.asList("2018-12-03","น้องโตโต้", "วิสกัส", "Normal Package", "1", "ห้องเดี่ยว","E1")));
-        petsDetail.add(new ArrayList(Arrays.asList("2018-12-03","น้องปอย", "วิสกัส", "Normal Package", "1", "ห้องเดี่ยว","D1")));
         cus = customers.get(0);
+        Pets pet1 = cus.getPets().get(0);
+        Pets pet2 = cus.getPets().get(1);
+        petsDetail.add(new ArrayList(Arrays.asList("2018-12-03",pet1.getName(), "วิสกัส", "Normal Package", "1", "ห้องเดี่ยว","E1")));
+        petsDetail.add(new ArrayList(Arrays.asList("2018-12-03",pet2.getName(), "วิสกัส", "Normal Package", "1", "ห้องเดี่ยว","D1")));
 
         settingMainPage();
     }
@@ -108,7 +110,6 @@ public class CheckInController extends CounterPageController{
             changePane.setVisible(true);
             changeField.setText(calculator(total,recieve)+"");
         }
-
     }
 
     public void handleOnClickedPrintBtn(ActionEvent event) {

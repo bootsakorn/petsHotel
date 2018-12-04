@@ -51,13 +51,14 @@ public class CounterPageController extends PageSwitchController{
     @FXML private void initialize(){
         fs.add("วิสกัส",100);
         fs.add("เพ็ดดีกรี",100);
-        cus = new Customer(001,"ศศิธร", "สายพา", "88/131");
-        cus.addPets(new Pets(001,"น้องโตโต้","ตัวผู้",2,"ไซบีเรีย","-","-","สุนัข"));
-        cus.addPets(new Pets(002,"น้องปอย","ตัวเมีย",2,"เปอร์เซีย","-","-","แมว"));
-        cusList.add(cus);
-        ObservableList<String> cusL = FXCollections.observableArrayList(
-                cus.getId()+" "+cus.getFirstName()
-        );
+//        cus = new Customer(001,"ศศิธร", "สายพา", "88/131");
+//        cus.addPets(new Pets(001,"น้องโตโต้","ตัวผู้",2,"ไซบีเรีย","-","-","สุนัข"));
+//        cus.addPets(new Pets(002,"น้องปอย","ตัวเมีย",2,"เปอร์เซีย","-","-","แมว"));
+//        cusList.add(cus);]
+        ObservableList<String> cusL = customerList.getItems();
+        for (Customer c:customers) {
+            cusL.add(c.getId() + "\t" + c.getFirstName() + " " + c.getLastName());
+        }
         customerList.setItems(cusL);
         customerList.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
     }
