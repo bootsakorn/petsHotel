@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
@@ -16,11 +17,13 @@ import java.time.YearMonth;
 import java.util.ArrayList;
 
 public class CalendarPageController extends PageSwitchController{
+    @FXML protected Text dateInList;
     @FXML protected GridPane calendarTable;
     @FXML protected ListView listView;
     @FXML protected Button previousBtn;
     @FXML protected Button nextBtn;
     @FXML protected Text monthText;
+    @FXML protected AnchorPane previousPane;
 
     private ArrayList<DateNodeController> allCalendarDays = new ArrayList<>(35);
     private YearMonth currentYearMonth;
@@ -31,12 +34,14 @@ public class CalendarPageController extends PageSwitchController{
         try {
             dataController = new DataController();
             reserves = dataController.getReserves();
+            previousPane = new AnchorPane();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
 
     @FXML private void initialize()throws ClassNotFoundException {
+        dateInList.setText(LocalDate.now().toString());
         currentYearMonth = YearMonth.now();
 
         // Create rows and columns with anchor panes for the calendar
@@ -52,6 +57,7 @@ public class CalendarPageController extends PageSwitchController{
             ap.setPrefSize(200, 50);
             ap.setTopAnchor(txt, 8.0);
             ap.setLeftAnchor(txt, 15.0);
+            ap.setStyle("-fx-background-color: #dcddff;");
             ap.getChildren().add(txt);
             calendarTable.add(ap, col++, 0);
         }
@@ -63,7 +69,7 @@ public class CalendarPageController extends PageSwitchController{
         for (int i = 1; i <= 5; i++)
             for (int j = 0; j < 7; j++) {
                 DateNodeController ap = new DateNodeController();
-                ap.setOnMouseClicked(event -> showListOnSelectedDate(ap.getDate()));
+                ap.setOnMouseClicked((MouseEvent event) -> showListOnSelectedDate(ap.getDate(),event));
                 ap.setPrefSize(200, 200);
                 calendarTable.add(ap, j, i);
                 allCalendarDays.add(ap);
@@ -91,6 +97,7 @@ public class CalendarPageController extends PageSwitchController{
             ap.setTopAnchor(txt, 5.0);
             ap.setRightAnchor(txt, 5.0);
             ap.getChildren().add(txt);
+
             calendarDate = calendarDate.plusDays(1);
         }
         // Change the title of the calendar
@@ -108,11 +115,16 @@ public class CalendarPageController extends PageSwitchController{
         populateCalendar(currentYearMonth);
     }
 
-    public void showListOnSelectedDate(LocalDate date){
+    public void showListOnSelectedDate(LocalDate date, MouseEvent event){
+        AnchorPane pane = (AnchorPane) event.getSource();
+        previousPane.setStyle("");
+        pane.setStyle("-fx-background-color: #ffdab9;");
         ObservableList<String> list = FXCollections.observableArrayList(
               "น้องโตโต้เช็คอิน", "น้องไอซ์เช็คอิน", "น้องฟุ้คเช็คเอ้าท์"
         );
         listView.setItems(list);
+        dateInList.setText(date.toString());
         System.out.println("This pane's date is: " + date);
+        previousPane = pane;
     }
 }

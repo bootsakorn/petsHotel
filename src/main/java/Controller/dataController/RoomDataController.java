@@ -26,7 +26,7 @@ public class RoomDataController extends DatabaseConnection {
                 int speciesId = resultSet.getInt("species_id");
                 double price = resultSet.getDouble("price");
                 int status = resultSet.getInt("status");
-                Room room = new Room(id, name, number, typeId, speciesId,price, status);
+                Room room = new Room(id, name, number, typeId-1, speciesId-1,price, status);
                 rooms.add(room);
             }
             disconnect();

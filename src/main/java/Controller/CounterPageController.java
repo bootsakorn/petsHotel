@@ -33,7 +33,6 @@ public class CounterPageController extends PageSwitchController{
     @FXML protected Button roomBtn;
     @FXML private Parent root ;
 
-    private ArrayList<Customer> cusList = new ArrayList<>();
     private Customer cus;
     private FoodStorage fs = new FoodStorage();
     private DataController dataController;
