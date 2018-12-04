@@ -128,7 +128,7 @@ public class DataController {
                 return f.getId();
             }
         }
-        return Integer.parseInt(null);
+        return 1;
     }
 
     public ArrayList<Package> getPackages (){
@@ -199,13 +199,13 @@ public class DataController {
         return rooms;
     }
 
-    public int getRoomId (int number) {
+    public int getRoomId (String name) {
         for (Room r : rooms){
-            if (r.getNumber() == number){
+            if (r.getName().equals(name)){
                 return r.getId();
             }
         }
-        return Integer.valueOf(null);
+        return Integer.parseInt(null);
     }
 
     public ArrayList<Pets> getPets() {

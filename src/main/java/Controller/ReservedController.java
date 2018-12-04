@@ -309,7 +309,7 @@ public class ReservedController extends CounterPageController{
         for (ArrayList<String> l : petsDetail){
             int foodId = dataController.getFoodId(l.get(2));
             int packageId = dataController.getPackageId(l.get(3));
-            int roomId = dataController.getRoomId(Integer.valueOf(l.get(6)));
+            int roomId = dataController.getRoomId(l.get(6));
             TakingCarePetsList tcpl = new TakingCarePetsList(takingCarePetsListId, cusId,dataController.getPet(l.get(1)).getId(), foodId, packageId ,roomId);
             takingCarePetsList.add(tcpl);
         }
