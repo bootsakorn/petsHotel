@@ -114,7 +114,7 @@ public class DataController {
     public ArrayList<Food> getFoods (String species){
         ArrayList<Food> foodOfSpecies = new ArrayList<>();
         for (Food food : foods){
-            if (food.getSpecies() == species){
+            if (food.getSpecies().equalsIgnoreCase(species)){
                 foodOfSpecies.add(food);
             }
         }

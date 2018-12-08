@@ -50,10 +50,6 @@ public class CounterPageController extends PageSwitchController{
     @FXML private void initialize(){
         fs.add("วิสกัส",100);
         fs.add("เพ็ดดีกรี",100);
-//        cus = new Customer(001,"ศศิธร", "สายพา", "88/131");
-//        cus.addPets(new Pets(001,"น้องโตโต้","ตัวผู้",2,"ไซบีเรีย","-","-","สุนัข"));
-//        cus.addPets(new Pets(002,"น้องปอย","ตัวเมีย",2,"เปอร์เซีย","-","-","แมว"));
-//        cusList.add(cus);]
         ObservableList<String> cusL = customerList.getItems();
         for (Customer c:customers) {
             cusL.add(c.getId() + "\t" + c.getFirstName() + " " + c.getLastName());
@@ -74,20 +70,24 @@ public class CounterPageController extends PageSwitchController{
         stage.show();
     }
     @FXML protected void handleOnClickReserveBtn(ActionEvent e) throws Exception{
-        Button button = (Button) e.getSource();
-        Stage stage = (Stage) button.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ReservedPage.fxml"));
-        stage.setScene(new Scene((Parent) loader.load()));
+        if (!customerList.getSelectionModel().getSelectedItems().isEmpty()){
 
-//        ReservedController rc = loader.getController();
-//        String[] c = customerList.getSelectionModel().getSelectedItems().get(0).toString().split(" ");
-//        for (Customer cus:cusList) {
-//            if (cus.getFirstName() == c[1]){
-//                rc.setCustomer(cus);
-//            }
-//        }
+            Button button = (Button) e.getSource();
+            Stage stage = (Stage) button.getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ReservedPage.fxml"));
+            stage.setScene(new Scene((Parent) loader.load()));
 
-        stage.show();
+            String[] c = customerList.getSelectionModel().getSelectedItems().get(0).toString().split(" ");
+            String[] c2 = c[0].split("\t");
+            ReservedController rc = loader.getController();
+            for (Customer cus:customers) {
+                if (cus.getFirstName().equalsIgnoreCase(c2[1])){
+                    rc.setCustomer(cus);
+                }
+            }
+
+            stage.show();
+        }
 
     }
 

@@ -50,7 +50,7 @@ public class ReservedController extends CounterPageController{
     //insertDetailTab
     @FXML protected DatePicker datePicker;
     @FXML protected TextField dayNum;
-    @FXML protected ChoiceBox petList;
+    @FXML protected ComboBox petList;
     @FXML protected ChoiceBox foodList;
     @FXML protected RadioButton normalPackage;
     @FXML protected RadioButton silverPackage;
@@ -95,7 +95,9 @@ public class ReservedController extends CounterPageController{
     private Button previousSelectedBtn2 = new Button();
     private String selectedRoom2 = "";
     private DataController dataController;
-    private ArrayList<Food> foods ;
+    private ArrayList<Food> catFoods ;
+    private ArrayList<Food> dogFoods ;
+    private ArrayList<Food> rabbitFoods ;
     private ArrayList<Room> rooms;
     private ArrayList<Package> packages;
     private ArrayList<Customer> customers;
@@ -104,24 +106,23 @@ public class ReservedController extends CounterPageController{
         try {
             dataController = new DataController();
             rooms = dataController.getRooms();
+            catFoods = dataController.getFoods("แมว");
+            dogFoods = dataController.getFoods("สุนัข");
+            rabbitFoods = dataController.getFoods("กระต่าย");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-
     }
 
     @FXML private void initialize(){
-        cus = new Customer(001,"ศศิธร", "สายพา", "88/131");
-        cus.addPets(new Pets(001,"น้องโตโต้","ตัวผู้",2,"ไซบีเรีย","-","-","สุนัข"));
-        cus.addPets(new Pets(002,"น้องปอย","ตัวเมีย",2,"เปอร์เซีย","-","-","แมว"));
-        cus.addPets(new Pets(003,"น้องโอ๋เอ๋","ตัวผู้",1,"แคระ","-","-","กระต่าย"));
-        //prep Data
-        manageDatePicker();
-        managePetList();
-        manageFoodList();
     }
 
     //insert detail tab
+
+    public void handleSelectedPet(){
+        manageFoodList();
+    }
+
     public void handleOnClickedAddPetBtn(){
         RadioButton selected = (RadioButton)servicePackage.getSelectedToggle();
         ObservableList<String> pet = addedListView.getItems();
@@ -294,30 +295,19 @@ public class ReservedController extends CounterPageController{
     }
 
     public void handleOnClickedSubmitBtn(ActionEvent actionEvent) {
-        LocalDate localDate = LocalDate.now();
-        String reserveDate = localDate.getDayOfMonth()+"-"+localDate.getMonthValue()+"-"+localDate.getYear();
-        int takingCarePetsListId = dataController.getIdTakingCarePetsListNext();
-        ArrayList<TakingCarePetsList> takingCarePetsList = new ArrayList<>();
-        String startDate = petsDetail.get(0).get(0);
-        String[] numSplit = petsDetail.get(0).get(4).split(" ");
-        int numberOfReserve = Integer.valueOf(numSplit[0]);
-        int cusId = cus.getId();
-        for (ArrayList<String> l : petsDetail){
-            int foodId = dataController.getFoodId(l.get(2));
-            int packageId = dataController.getPackageId(l.get(3));
-            int roomId = dataController.getRoomId(l.get(6));
-            TakingCarePetsList tcpl = new TakingCarePetsList(takingCarePetsListId, cusId,dataController.getPet(l.get(1)).getId(), foodId, packageId ,roomId);
-            takingCarePetsList.add(tcpl);
-        }
-        System.out.println(reserveDate);
-        dataController.insertReserve(reserveDate, startDate, numberOfReserve, cusId, takingCarePetsList);
+        insertData();
     }
 
     public void handleOnClickedCheckInBtn(ActionEvent event) throws Exception{
+        insertData();
         Button button = (Button) event.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CheckInPage.fxml"));
         stage.setScene(new Scene((Parent) loader.load()));
+
+        CheckInController controller = loader.getController();
+        controller.setData(cus,petsDetail);
+
         stage.show();
     }
 
@@ -394,22 +384,31 @@ public class ReservedController extends CounterPageController{
             petNames.add(p.getName());
         }
         ObservableList<String> petName = FXCollections.observableArrayList(petNames);
-//        ObservableList<String> petName = FXCollections.observableArrayList("น้องโตโต้","น้องปอย");
         petList.setValue(petName.get(0));
         petList.setItems(petName);
     }
 
     public void manageFoodList(){
-//        fs.add("วิสกัส",100);
-//        fs.add("เพ็ดดีกรี",100);
-//        ArrayList foodNames = new ArrayList();
-//        for (Food f: fs.getFoods()){
-//            foodNames.add(f.getName());
-//        }
-//        ObservableList<String> foodName = FXCollections.observableArrayList(foodNames);
-        ObservableList<String> foodName = FXCollections.observableArrayList("วิสกัส","เพ็ดดีกรี");
-        foodList.setValue(foodName.get(0));
-        foodList.setItems(foodName);
+        ArrayList foodNames = new ArrayList();
+        int i = petList.getSelectionModel().getSelectedIndex();
+        if (i != (-1)){
+            if (cus.getPets().get(i).getSpecies().equalsIgnoreCase("แมว")){
+                for (Food f:catFoods){
+                    foodNames.add(f.getName());
+                }
+            }else if (cus.getPets().get(i).getSpecies().equalsIgnoreCase("สุนัข")){
+                for (Food f:dogFoods){
+                    foodNames.add(f.getName());
+                }
+            }else if (cus.getPets().get(i).getSpecies().equalsIgnoreCase("กระต่าย")){
+                for (Food f:rabbitFoods){
+                    foodNames.add(f.getName());
+                }
+            }
+            ObservableList<String> foodName = FXCollections.observableArrayList(foodNames);
+            foodList.setValue(foodName.get(0));
+            foodList.setItems(foodName);
+        }
     }
     public void manageRoom(AnchorPane pane,int petIndex){
         String species = pets.get(petIndex).getSpecies();
@@ -704,10 +703,36 @@ public class ReservedController extends CounterPageController{
         }
     }
 
+    public void insertData(){
+        LocalDate localDate = LocalDate.now();
+        String reserveDate = localDate.getDayOfMonth()+"-"+localDate.getMonthValue()+"-"+localDate.getYear();
+        int takingCarePetsListId = dataController.getIdTakingCarePetsListNext();
+        ArrayList<TakingCarePetsList> takingCarePetsList = new ArrayList<>();
+        String startDate = petsDetail.get(0).get(0);
+        String[] numSplit = petsDetail.get(0).get(4).split(" ");
+        int numberOfReserve = Integer.valueOf(numSplit[0]);
+        int cusId = cus.getId();
+        for (ArrayList<String> l : petsDetail){
+            int foodId = dataController.getFoodId(l.get(2));
+            int packageId = dataController.getPackageId(l.get(3));
+            int roomId = dataController.getRoomId(l.get(6));
+            TakingCarePetsList tcpl = new TakingCarePetsList(takingCarePetsListId, cusId,dataController.getPet(l.get(1)).getId(), foodId, packageId ,roomId);
+            takingCarePetsList.add(tcpl);
+        }
+        System.out.println(reserveDate);
+        dataController.insertReserve(reserveDate, startDate, numberOfReserve, cusId, takingCarePetsList);
+    }
+
     public Customer getCustomer() {
         return cus;
     }
+    @FXML
     public void setCustomer(Customer customer) {
         this.cus = customer;
+        //prep Data
+        System.out.println(cus.getFirstName());
+        manageDatePicker();
+        managePetList();
+        manageFoodList();
     }
 }

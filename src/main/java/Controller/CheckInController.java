@@ -1,21 +1,14 @@
 package Controller;
 
 import Controller.dataController.DataController;
-import Models.Customer;
+import Models.*;
 import Models.Package;
-import Models.Pets;
-import Models.Reserve;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -36,7 +29,7 @@ public class CheckInController extends CounterPageController{
     // main pane
     @FXML protected TextField searchTextField;
     @FXML protected Button searchBtn;
-    @FXML protected ListView reservedNumList;
+    @FXML protected TableView reservedNumList;
     @FXML protected Button goToCheckInBtn;
     // check in pane
     @FXML protected TextArea allDetails;
@@ -50,7 +43,9 @@ public class CheckInController extends CounterPageController{
     private Customer cus;
     private Package pack;
     private DataController dataController ;
-    private ArrayList<Pets> pets;
+    private ArrayList<Food> catFoods;
+    private ArrayList<Food> dogFoods;
+    private ArrayList<Food> rabbitFoods;
     private ArrayList<Customer> customers;
     private ArrayList<Reserve> reserves;
     private ArrayList<ArrayList<String>> petsDetail;
@@ -59,7 +54,9 @@ public class CheckInController extends CounterPageController{
     public CheckInController(){
         try {
             dataController = new DataController();
-            pets = dataController.getPets();
+            catFoods = dataController.getFoods("แมว");
+            dogFoods = dataController.getFoods("สุนัข");
+            rabbitFoods = dataController.getFoods("กระต่าย");
             customers = dataController.getCustomer();
             packages = dataController.getPackages();
             reserves = dataController.getReserves();
@@ -76,7 +73,11 @@ public class CheckInController extends CounterPageController{
         petsDetail.add(new ArrayList(Arrays.asList("2018-12-03",pet1.getName(), "วิสกัส", "Normal Package", "1", "ห้องเดี่ยว","E1")));
         petsDetail.add(new ArrayList(Arrays.asList("2018-12-03",pet2.getName(), "วิสกัส", "Normal Package", "1", "ห้องเดี่ยว","D1")));
 
-        settingMainPage();
+        ObservableList<String> list = reservedNumList.getItems();
+        for (Reserve r:reserves) {
+            list.add(r.getId()+ " " + r.getStart_date() + " " + customers.get(r.getNumber_of_reserve()-1).getFirstName());
+        }
+        reservedNumList.setItems(list);
     }
 
     public void handleOnClickSearchBtn(ActionEvent event) {
@@ -87,6 +88,8 @@ public class CheckInController extends CounterPageController{
         checkInPane.setVisible(true);
 
         String details = "ชื่อลูกค้า : คุณ"+cus.getFirstName()+" "+cus.getLastName()+"\n";
+        double price = 0;
+        int i = 0;
         for (ArrayList<String> pet:petsDetail) {
             details +=
                     "วันที่จอง : " +pet.get(0)+"\tจำนวนวัน : " + pet.get(4)+"\n"+
@@ -96,9 +99,11 @@ public class CheckInController extends CounterPageController{
                             "ชนิดห้อง : " + pet.get(5)+"\n"+
                             "เลขที่ห้อง : " + pet.get(6)+"\n"+
                             "-------------------------------------------\n";
+            price += calculator(pet.get(5),pet.get(3),pet.get(2),cus.getPets().get(i).getSpecies());
+            i++;
         }
         allDetails.setText(details);
-        totalField.setText("300");
+        totalField.setText(price+"");
     }
 
     public void handleOnClickedCheckInBtn(ActionEvent event) {
@@ -108,7 +113,7 @@ public class CheckInController extends CounterPageController{
             //do nothing
         }else{
             changePane.setVisible(true);
-            changeField.setText(calculator(total,recieve)+"");
+            changeField.setText((recieve-total)+"");
 
         }
     }
@@ -119,15 +124,65 @@ public class CheckInController extends CounterPageController{
         changePane.setVisible(false);
     }
 
-    private void settingMainPage(){
-        ObservableList<String> cus = reservedNumList.getItems();
-        for (Reserve r:reserves) {
-            cus.add(r.getId() + " " + r.getNumber_of_reserve());
+    private double calculator(String roomType, String pack, String foodName, String species){
+        double total = 0;
+        if (roomType.equalsIgnoreCase("ห้องเดี่ยว")){
+            total+=100;
+        }else if (roomType.equalsIgnoreCase("ห้องรวม")){
+            total+=200;
         }
-    }
+        if (pack.equalsIgnoreCase("Normal Package")){
+            total+=packages.get(0).getPrice();
+        }else if (pack.equalsIgnoreCase("Silver Package")){
+            total+=packages.get(1).getPrice();
+        }else if (pack.equalsIgnoreCase("Gold Package")){
+            total+=packages.get(2).getPrice();
+        }
+        if (species.equalsIgnoreCase("แมว")){
+            for (Food f:catFoods) {
+                if (f.getName().equalsIgnoreCase(foodName)){
+                    total+=f.getPrice();
+                }
+            }
+        }else if (species.equalsIgnoreCase("สุนัข")){
+            for (Food f:dogFoods) {
+                if (f.getName().equalsIgnoreCase(foodName)){
+                    total+=f.getPrice();
+                }
+            }
+        }else if (species.equalsIgnoreCase("กระต่าย")){
+            for (Food f:rabbitFoods) {
+                if (f.getName().equalsIgnoreCase(foodName)){
+                    total+=f.getPrice();
+                }
+            }
+        }
 
-    private double calculator(double total, double recieve){
-        return recieve-total;
+        return total;
     }
+    @FXML
+    public void setData(Customer cus, ArrayList<ArrayList<String>> petsDetail) {
+        this.cus = cus;
+        this.petsDetail = petsDetail;
 
+        mainPane.setVisible(false);
+        checkInPane.setVisible(true);
+        String details = "ชื่อลูกค้า : คุณ"+cus.getFirstName()+" "+cus.getLastName()+"\n";
+        double price = 0;
+        int i = 0;
+        for (ArrayList<String> pet:petsDetail) {
+            details +=
+                    "วันที่จอง : " +pet.get(0)+"\tจำนวนวัน : " + pet.get(4)+"\n"+
+                            "ชื่อสัตว์เลี้ยง : " + pet.get(1)+"\n"+
+                            "อาหารยี่ห้อ : " + pet.get(2)+"\n"+
+                            "แพคเกจ : " + pet.get(3)+"\n"+
+                            "ชนิดห้อง : " + pet.get(5)+"\n"+
+                            "เลขที่ห้อง : " + pet.get(6)+"\n"+
+                            "-------------------------------------------\n";
+            price += calculator(pet.get(5),pet.get(3),pet.get(2),cus.getPets().get(i).getSpecies());
+            i++;
+        }
+        allDetails.setText(details);
+        totalField.setText(price+"");
+    }
 }
