@@ -8,7 +8,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -30,6 +33,7 @@ public class CheckInController extends CounterPageController{
     @FXML protected TextField searchTextField;
     @FXML protected Button searchBtn;
     @FXML protected TableView reservedNumList;
+    @FXML protected TableColumn noCol, dateCol, nameCol;
     @FXML protected Button goToCheckInBtn;
     // check in pane
     @FXML protected TextArea allDetails;
@@ -74,10 +78,16 @@ public class CheckInController extends CounterPageController{
         petsDetail.add(new ArrayList(Arrays.asList("2018-12-03",pet2.getName(), "วิสกัส", "Normal Package", "1", "ห้องเดี่ยว","D1")));
 
         ObservableList<String> list = reservedNumList.getItems();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+
         for (Reserve r:reserves) {
-            list.add(r.getId()+ " " + r.getStart_date() + " " + customers.get(r.getNumber_of_reserve()-1).getFirstName());
+            noCol.setCellValueFactory(new PropertyValueFactory<>(r.getId()+""));
+            dateCol.setCellValueFactory(new PropertyValueFactory<>(sdf.format(r.getStart_date())+""));
+            nameCol.setCellValueFactory(new PropertyValueFactory<>(customers.get(r.getNumber_of_reserve()-1).getFirstName()));
+            list.add(r.getId()+ " " + sdf.format(r.getStart_date()) + " " + customers.get(r.getNumber_of_reserve()-1).getFirstName());
         }
         reservedNumList.setItems(list);
+        noCol.setVisible(true);
     }
 
     public void handleOnClickSearchBtn(ActionEvent event) {
@@ -86,7 +96,7 @@ public class CheckInController extends CounterPageController{
     public void handleOnClickedGoToCheckInBtn(ActionEvent event){
         mainPane.setVisible(false);
         checkInPane.setVisible(true);
-
+        System.out.println(reservedNumList.getSelectionModel().getSelectedItem());
         String details = "ชื่อลูกค้า : คุณ"+cus.getFirstName()+" "+cus.getLastName()+"\n";
         double price = 0;
         int i = 0;

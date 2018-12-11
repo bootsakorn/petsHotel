@@ -23,7 +23,7 @@ public class ReserveDataController extends DatabaseConnection {
             String query = "Select * from reserve";
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
-            SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyy");
+            SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 Date reserve_date = format.parse(resultSet.getString("reserve_date"));
