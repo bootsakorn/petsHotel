@@ -294,8 +294,14 @@ public class ReservedController extends CounterPageController{
         }
     }
 
-    public void handleOnClickedSubmitBtn(ActionEvent actionEvent) {
+    public void handleOnClickedSubmitBtn(ActionEvent event) throws Exception{
         insertData();
+
+        Button button = (Button) event.getSource();
+        Stage stage = (Stage) button.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CounterPage.fxml"));
+        stage.setScene(new Scene((Parent) loader.load()));
+        stage.show();
     }
 
     public void handleOnClickedCheckInBtn(ActionEvent event) throws Exception{

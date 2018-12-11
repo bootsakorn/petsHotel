@@ -46,6 +46,7 @@ public class CheckInController extends CounterPageController{
     // use in class
     private Customer cus;
     private Package pack;
+    private Reserve reserve;
     private DataController dataController ;
     private ArrayList<Food> catFoods;
     private ArrayList<Food> dogFoods;
@@ -54,6 +55,7 @@ public class CheckInController extends CounterPageController{
     private ArrayList<Reserve> reserves;
     private ArrayList<ArrayList<String>> petsDetail;
     private ArrayList<Package> packages;
+    private SimpleDateFormat sdf;
 
     public CheckInController(){
         try {
@@ -65,6 +67,7 @@ public class CheckInController extends CounterPageController{
             packages = dataController.getPackages();
             reserves = dataController.getReserves();
             petsDetail = new ArrayList();
+            sdf = new SimpleDateFormat("dd-MM-yyyy");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -78,16 +81,11 @@ public class CheckInController extends CounterPageController{
         petsDetail.add(new ArrayList(Arrays.asList("2018-12-03",pet2.getName(), "วิสกัส", "Normal Package", "1", "ห้องเดี่ยว","D1")));
 
         ObservableList<String> list = reservedNumList.getItems();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 
         for (Reserve r:reserves) {
-            noCol.setCellValueFactory(new PropertyValueFactory<>(r.getId()+""));
-            dateCol.setCellValueFactory(new PropertyValueFactory<>(sdf.format(r.getStart_date())+""));
-            nameCol.setCellValueFactory(new PropertyValueFactory<>(customers.get(r.getNumber_of_reserve()-1).getFirstName()));
             list.add(r.getId()+ " " + sdf.format(r.getStart_date()) + " " + customers.get(r.getNumber_of_reserve()-1).getFirstName());
         }
         reservedNumList.setItems(list);
-        noCol.setVisible(true);
     }
 
     public void handleOnClickSearchBtn(ActionEvent event) {
@@ -97,6 +95,21 @@ public class CheckInController extends CounterPageController{
         mainPane.setVisible(false);
         checkInPane.setVisible(true);
         System.out.println(reservedNumList.getSelectionModel().getSelectedItem());
+        String selected = reservedNumList.getSelectionModel().getSelectedItem().toString();
+        for (Customer c:customers) {
+            if (selected.split(" ")[2].equalsIgnoreCase(c.getFirstName())){
+                this.cus = c;
+            }
+        }
+        for (Reserve r: reserves){
+            if (selected.split(" ")[0].equalsIgnoreCase(r.getId()+"")){
+                this.reserve = r;
+            }
+        }
+
+        petsDetail = new ArrayList<>();
+        petsDetail.add(new ArrayList(Arrays.asList(sdf.format(reserve.getStart_date()),reserve.getPets_id()+"", "วิสกัส", "Normal Package", reserve.getNumber_of_reserve()+"", "ห้องเดี่ยว","E1")));
+
         String details = "ชื่อลูกค้า : คุณ"+cus.getFirstName()+" "+cus.getLastName()+"\n";
         double price = 0;
         int i = 0;
