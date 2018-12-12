@@ -23,11 +23,10 @@ public class ReserveDataController extends DatabaseConnection {
             String query = "Select * from reserve";
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
-            SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
-                Date reserve_date = format.parse(resultSet.getString("reserve_date"));
-                Date start_date = format.parse(resultSet.getString("start_date"));
+                String reserve_date = resultSet.getString("reserve_date");
+                String start_date = resultSet.getString("start_date");
                 int number_of_reserve = resultSet.getInt("number_of_reserve");
                 int customer_id = resultSet.getInt("customer_id");
                 int pets_id = resultSet.getInt("taking_care_pets_id");
@@ -39,8 +38,6 @@ public class ReserveDataController extends DatabaseConnection {
             }
             disconnect();
         } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
             e.printStackTrace();
         }
         return reserves;

@@ -83,7 +83,7 @@ public class CheckInController extends CounterPageController{
         ObservableList<String> list = reservedNumList.getItems();
 
         for (Reserve r:reserves) {
-            list.add(r.getId()+ " " + sdf.format(r.getStart_date()) + " " + customers.get(r.getNumber_of_reserve()-1).getFirstName());
+            list.add(r.getId()+ " " + r.getStart_date() + " " + customers.get(r.getNumber_of_reserve()-1).getFirstName());
         }
         reservedNumList.setItems(list);
     }
@@ -108,7 +108,7 @@ public class CheckInController extends CounterPageController{
         }
 
         petsDetail = new ArrayList<>();
-        petsDetail.add(new ArrayList(Arrays.asList(sdf.format(reserve.getStart_date()),reserve.getPets_id()+"", "วิสกัส", "Normal Package", reserve.getNumber_of_reserve()+"", "ห้องเดี่ยว","E1")));
+        petsDetail.add(new ArrayList(Arrays.asList(reserve.getStart_date(),reserve.getPets_id()+"", "วิสกัส", "Normal Package", reserve.getNumber_of_reserve()+"", "ห้องเดี่ยว","E1")));
 
         String details = "ชื่อลูกค้า : คุณ"+cus.getFirstName()+" "+cus.getLastName()+"\n";
         double price = 0;
