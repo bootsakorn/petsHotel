@@ -73,6 +73,7 @@ public class DataController {
 
     private void getData() {
         this.pets = petsDataController.getPetsList();
+        this.checkIns = checkInDataController.getCheckInList();
         this.petsLists = petsListDataController.getPetsIdList();
         this.customers = customersDataController.getCustomers();
         this.foods = foodDataController.getFoods();
@@ -177,7 +178,7 @@ public class DataController {
         int recieptId = 0;
         checkInDataController.insertCheckin(strtDate, reserveId, appId, recieptId, 0);
         checkoutDataController.insertCheckout(endDate, appointmentBills.get(appointmentBills.size()-1).getId(), "", 0);
-
+        getData();
     }
 
     public ArrayList<Reserve> getReserves (){
@@ -203,7 +204,7 @@ public class DataController {
         return tCPLists;
     }
 
-    public void setTotalPrice (Reserve reserve, double totalPrice){
+    private void setTotalPrice (double totalPrice){
 
     }
 
@@ -241,7 +242,34 @@ public class DataController {
         return appointmentBills;
     }
 
+    public void checkin (int reserveId, double total, double receive){
 
+        for (int i=0; i<reserves.size(); i++){
+            if (reserves.get(i).getId() == reserveId) {
+                reserves.get(i).setTotal_price(total);
+                break;
+            }
+        }
 
+        for (int j=0; j<checkIns.size(); j++){
+            if (checkIns.get(j).getReserve_id() == reserveId){
+                checkInDataController.editStatus(checkIns.get(j).getId(), 1);
+                String date = checkIns.get(j).getDate();
+                receiptDataController.insertReceipt(date, checkIns.get(j).getId(), total, receive, receive-total);
+                break;
+            }
+        }
+        getData();
+    }
+
+    public void checkout (int appId){
+        for (int i=0; i<checkOuts.size(); i++){
+            if (checkOuts.get(i).getAppointment_bill_id() == appId){
+                checkoutDataController.editStatus(checkIns.get(i).getId(), 1);
+                break;
+            }
+        }
+        getData();
+    }
 }
 

@@ -24,11 +24,9 @@ public class CheckoutDataController extends DatabaseConnection{
             String query = "Select * from checkout";
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
-            SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
             while (resultSet.next()){
                 int id  = resultSet.getInt("id");
-                String dateStr = resultSet.getString("date");
-                Date date = format.parse(dateStr);
+                String date = resultSet.getString("date");
                 int appointmentBillId = resultSet.getInt("appointment_bill_id");
                 String recieverName = resultSet.getString("reciever_name");
                 int statusInt = resultSet.getInt("status");
@@ -43,8 +41,6 @@ public class CheckoutDataController extends DatabaseConnection{
             }
             disconnect();
         } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
             e.printStackTrace();
         }
         return checkOutsArrayList;

@@ -24,11 +24,9 @@ public class CheckInDataController extends DatabaseConnection {
             String query = ("Select * from checkin");
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
-            SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyy");
             while (resultSet.next()){
                 int id = resultSet.getInt("id");
-                String date_str = resultSet.getString("date");
-                Date date = format.parse(date_str);
+                String date = resultSet.getString("date");
                 int reserveId = resultSet.getInt("reserve_id");
                 int appointmentBillId = resultSet.getInt("appointment_bill_id");
                 int receiptId = resultSet.getInt("receipt_id");
@@ -44,14 +42,13 @@ public class CheckInDataController extends DatabaseConnection {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
         }
         return checkInArrayList;
     }
 
     public void insertCheckin (String date, int reserveId, int appointmentId, int receiptId, int status){
         try{
+            System.out.println(date);
             String query = "INSERT INTO checkin (date,reserve_id,appointment_id, receipt_id, status) VALUES (?,?,?,?,?)";
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, date);

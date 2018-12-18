@@ -137,7 +137,7 @@ public class CheckInController extends CounterPageController{
         }else{
             changePane.setVisible(true);
             changeField.setText((recieve-total)+"");
-
+            dataController.checkin(reserve.getId(), total, recieve);
         }
     }
 
