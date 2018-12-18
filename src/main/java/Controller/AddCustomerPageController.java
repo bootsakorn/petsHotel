@@ -1,5 +1,6 @@
 package Controller;
 
+import Controller.dataController.DataController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -29,8 +30,15 @@ public class AddCustomerPageController extends CounterPageController {
     @FXML protected ComboBox speciesComboBox;
     private String fname = "", lname = "", address = "";
     private String pname = "",sex = "ผู้", age = "", species = "สุนัข", breed = "", disease = "", allergy = "";
+    private DataController dataController;
 
     public AddCustomerPageController(){
+        try {
+            this.dataController = new DataController();
+        }catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
     }
 
     @FXML private void initialize(){
@@ -58,6 +66,8 @@ public class AddCustomerPageController extends CounterPageController {
         allergy = allergyField.getText();
 
         //insert to database here
+        dataController.insertNewCustomer(fname, lname, address, pname, Integer.valueOf(age), sex, breed, disease, allergy, species);
+
     }
 
     @FXML protected void handleOnClickedCancelBtn(ActionEvent event) throws Exception{

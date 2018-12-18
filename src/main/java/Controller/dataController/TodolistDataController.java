@@ -29,8 +29,14 @@ public class TodolistDataController extends DatabaseConnection{
                 Date date = format.parse(dateStr);
                 int foodId = resultSet.getInt("food_id");
                 int packageId = resultSet.getInt("package_id");
-                int status = resultSet.getInt("status");
+                int statusInt = resultSet.getInt("status");
                 String note = resultSet.getString("note");
+                boolean status;
+                if (statusInt == 1) {
+                    status = true;
+                } else {
+                    status = false;
+                }
                 Todolist todolist = new Todolist(id, date, foodId, packageId, status, note);
                 todolists.add(todolist);
             }

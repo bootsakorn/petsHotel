@@ -7,10 +7,10 @@ public class Todolist {
     private Date date;
     private int food_id;
     private int package_id;
-    private int status;
+    private boolean status;
     private String note;
 
-    public Todolist(int id, Date date, int food_id, int package_id, int status, String note){
+    public Todolist(int id, Date date, int food_id, int package_id, boolean status, String note){
         this.id = id;
         this.date = date;
         this.food_id = food_id;
@@ -20,6 +20,6 @@ public class Todolist {
     }
 
     public void updateStatus(){
-        this.status = 1;
+        this.status = true;
     }
 }

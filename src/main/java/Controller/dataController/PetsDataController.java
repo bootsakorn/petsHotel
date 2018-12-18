@@ -37,10 +37,9 @@ public class PetsDataController extends DatabaseConnection{
         return petsList;
     }
 
-    public void insertPet(String name, int age, String sex, String breed, String disease, String allergy, String species) {
+    public void insertPet(String name, int age, String sex, String breed, String disease, String allergy, int species) {
         try {
             connect();
-            int species_id = speciesDataController.convertSpeciesNameToId(species);
             String query = "INSERT INTO pets (name,age,sex,breed,disease,allergy,species_id) VALUES (?,?,?,?,?,?,?)";
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, name);
@@ -49,7 +48,7 @@ public class PetsDataController extends DatabaseConnection{
             stmt.setString(4, breed);
             stmt.setString(5, disease);
             stmt.setString(6, allergy);
-            stmt.setInt(7, species_id);
+            stmt.setInt(7, species);
             stmt.execute();
             disconnect();
         } catch (SQLException e) {
