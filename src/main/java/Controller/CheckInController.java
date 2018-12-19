@@ -75,13 +75,8 @@ public class CheckInController extends CounterPageController{
 
     @FXML private void initialize(){
         cus = customers.get(0);
-        Pets pet1 = cus.getPets().get(0);
-        Pets pet2 = cus.getPets().get(1);
-        petsDetail.add(new ArrayList(Arrays.asList("2018-12-03",pet1.getName(), "วิสกัส", "Normal Package", "1", "ห้องเดี่ยว","E1")));
-        petsDetail.add(new ArrayList(Arrays.asList("2018-12-03",pet2.getName(), "วิสกัส", "Normal Package", "1", "ห้องเดี่ยว","D1")));
 
         ObservableList<String> list = reservedNumList.getItems();
-
         for (Reserve r:reserves) {
             list.add(r.getId()+ " " + sdf.format(r.getStart_date()) + " " + customers.get(r.getNumber_of_reserve()-1).getFirstName());
         }
