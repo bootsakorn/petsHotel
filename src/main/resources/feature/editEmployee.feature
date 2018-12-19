@@ -5,10 +5,10 @@ Feature: editEmployee
     I want to add employee and delete employee and update employee
 
 
-Scenerio:
-    Give a owner
-    When I hire emmployee
+Scenario:
+    Given a owner
+    When I hire employee
     Then I can add employee to system
 
 
-Scenerio:
+Scenario:

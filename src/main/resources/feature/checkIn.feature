@@ -3,5 +3,5 @@
 Feature: Search
     As a Cashier
     I want to check in.
-Scenerio:
+Scenario:
     Given

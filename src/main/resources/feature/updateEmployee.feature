@@ -4,12 +4,12 @@ Feature: editEmployee
     I want to  update employee
 
 
-Scenerio:
-    Give a owner
+Scenario:
+    Given a owner
     When emmployee had changed details
     Then I can edit  employee's detail to system
 
 
-Scenerio: Don't have employee detail
-    When emmployee had changed details
+Scenario: Don't have employee detail
+    When emmploye had changed details
     Then I can add employee's detail to system
