@@ -71,7 +71,7 @@ public class DataController {
         this.getData();
     }
 
-    private void getData() {
+    public void getData() {
         this.pets = petsDataController.getPetsList();
         this.checkIns = checkInDataController.getCheckInList();
         this.petsLists = petsListDataController.getPetsIdList();
@@ -147,11 +147,13 @@ public class DataController {
     }
 
     public int getIdTakingCarePetsListNext(){
-        int id = 0;
-        if (null == (Integer)takingCarePetsListDataController.getMaxId()){
+        int id;
+        if ( 0 == takingCarePetsListDataController.getMaxId()) {
             id = 0;
+        } else {
+            id = takingCarePetsListDataController.getMaxId()+1;
         }
-        return id+1;
+        return id;
     }
 
     public void insertReserve (String reserveDate, String startDate, int numberOfReserve, int customerId, ArrayList<TakingCarePetsList> takingCarePetsListsParam) {
@@ -324,6 +326,28 @@ public class DataController {
             }
         }
         return null;
+    }
+
+    public AppointmentBill getAppbillById(int id){
+        for (AppointmentBill bill : appointmentBills){
+            if (bill.getId() == id){
+                return bill;
+            }
+        }
+        return null;
+    }
+
+    public TakingCarePetsList getTKCListById(int id){
+        for (TakingCarePetsList tk : takingCarePetsLists){
+            if (tk.getId() == id){
+                return tk;
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<CheckIn> getCheckIns() {
+        return checkIns;
     }
 }
 

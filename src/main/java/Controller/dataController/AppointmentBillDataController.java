@@ -29,7 +29,7 @@ public class AppointmentBillDataController extends DatabaseConnection {
                 String date_str = resultSet.getString("appointment_date");
                 Date appointmentDate = format.parse(date_str);
                 int takingCarePetsId = resultSet.getInt("taking_care_pets_id");
-                AppointmentBill appointmentBill = new AppointmentBill(id, appointmentDate, takingCarePetsId);
+                AppointmentBill appointmentBill = new AppointmentBill(id, date_str, takingCarePetsId);
                 appointmentBills.add(appointmentBill);
             }
         } catch (SQLException e) {

@@ -87,10 +87,15 @@ public class TakingCarePetsListDataController extends DatabaseConnection {
             while (resultSet.next()){
                 max_id = resultSet.getInt("max_id");
             }
+
             disconnect();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        if (max_id < 1) {
+            max_id = 0;
+        }
+
         return max_id;
     }
 }
