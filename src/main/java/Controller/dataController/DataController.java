@@ -147,11 +147,13 @@ public class DataController {
     }
 
     public int getIdTakingCarePetsListNext(){
-        int id = 0;
-        if (null == (Integer)takingCarePetsListDataController.getMaxId()){
+        int id;
+        if ( 0 == takingCarePetsListDataController.getMaxId()) {
             id = 0;
+        } else {
+            id = takingCarePetsListDataController.getMaxId()+1;
         }
-        return id+1;
+        return id;
     }
 
     public void insertReserve (String reserveDate, String startDate, int numberOfReserve, int customerId, ArrayList<TakingCarePetsList> takingCarePetsListsParam) {
