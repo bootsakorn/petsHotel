@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Reserve {
-    private Date reserve_date;
-    private Date start_date;
+    private String reserve_date;
+    private String start_date;
     private int number_of_reserve;
     private int customer_id;
     private int pets_id;
@@ -13,7 +13,7 @@ public class Reserve {
     private int id;
     private ArrayList<TakingCarePetsList> list ;
 
-    public Reserve(int id, Date reserve_date, Date start_date, int number_of_reserve, int customer_id, int pets_id){
+    public Reserve(int id, String reserve_date, String start_date, int number_of_reserve, int customer_id, int pets_id){
         this.id = id;
         this.reserve_date = reserve_date;
         this.start_date = start_date;
@@ -27,19 +27,19 @@ public class Reserve {
         this.list = takingCarePetsLists;
     }
 
-    public Date getReserve_date() {
+    public String getReserve_date() {
         return reserve_date;
     }
 
-    public void setReserve_date(Date reserve_date) {
+    public void setReserve_date(String reserve_date) {
         this.reserve_date = reserve_date;
     }
 
-    public Date getStart_date() {
+    public String getStart_date() {
         return start_date;
     }
 
-    public void setStart_date(Date start_date) {
+    public void setStart_date(String start_date) {
         this.start_date = start_date;
     }
 

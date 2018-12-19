@@ -153,7 +153,11 @@ public class DataController {
 
     public void insertReserve (String reserveDate, String startDate, int numberOfReserve, int customerId, ArrayList<TakingCarePetsList> takingCarePetsLists) {
         int takingCarePetsId = takingCarePetsLists.get(0).getId();
-        reserveDataController.insertReserve(reserveDate, startDate, numberOfReserve, customerId, takingCarePetsId);
+                String[] strtDateSplit = startDate.split("-");
+        LocalDate localDate = LocalDate.of(Integer.valueOf(strtDateSplit[0]), Integer.valueOf(strtDateSplit[1]), Integer.valueOf(strtDateSplit[2]));
+        LocalDate strtLocalDate = localDate.plusDays(numberOfReserve);
+        String strtDate = strtLocalDate.getDayOfMonth()+"-"+strtLocalDate.getMonthValue()+"-"+strtLocalDate.getYear();
+        reserveDataController.insertReserve(reserveDate, strtDate, numberOfReserve, customerId, takingCarePetsId);
         for (TakingCarePetsList t: takingCarePetsLists) {
             int id = t.getId();
             int customer_id = t.getCustomerId();
@@ -163,10 +167,6 @@ public class DataController {
             int room_id = t.getRoomId();
             takingCarePetsListDataController.insertTakingCarePetsList(id, customer_id, pet_id, packageId, foodId, room_id);
         }
-        String[] strtDateSplit = startDate.split("-");
-        LocalDate localDate = LocalDate.of(Integer.valueOf(strtDateSplit[0]), Integer.valueOf(strtDateSplit[1]), Integer.valueOf(strtDateSplit[2]));
-        LocalDate strtLocalDate = localDate.plusDays(numberOfReserve);
-        String strtDate = strtLocalDate.getDayOfMonth()+"-"+strtLocalDate.getMonthValue()+"-"+strtLocalDate.getYear();
         appointmentBillDataController.insertAppointmentBill(strtDate, takingCarePetsId);
         this.getData();
     }
