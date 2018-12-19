@@ -156,7 +156,7 @@
                                        <content>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                              <children>
-                                                <TableView fx:id="reservedNumList" editable="true" prefHeight="263.0" prefWidth="499.0">
+                                                <TableView fx:id="reservedNumList" cacheShape="false" editable="true" prefHeight="263.0" prefWidth="499.0">
                                                   <columns>
                                                     <TableColumn fx:id="noCol" prefWidth="75.0" text="ลำดับที่" />
                                                     <TableColumn fx:id="dateCol" prefWidth="161.0" text="วันที่เช็คอิน" />

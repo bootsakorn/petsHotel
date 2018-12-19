@@ -325,5 +325,27 @@ public class DataController {
         }
         return null;
     }
+
+    public AppointmentBill getAppbillById(int id){
+        for (AppointmentBill bill : appointmentBills){
+            if (bill.getId() == id){
+                return bill;
+            }
+        }
+        return null;
+    }
+
+    public TakingCarePetsList getTKCListById(int id){
+        for (TakingCarePetsList tk : takingCarePetsLists){
+            if (tk.getId() == id){
+                return tk;
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<CheckIn> getCheckIns() {
+        return checkIns;
+    }
 }
 
