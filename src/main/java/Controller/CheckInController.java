@@ -102,33 +102,23 @@ public class CheckInController extends CounterPageController{
             }
         }
 
-        petsDetail = new ArrayList<>();
         System.out.println(reserve.getList().size());
-        for (TakingCarePetsList tk : reserve.getList()){
-            petsDetail.add(new ArrayList(Arrays.asList(reserve.getStart_date(),
-                    dataController.getPetById(reserve.getPets_id()).getName(),
-                    dataController.getFoodById(tk.getFoodId()).getName(),
-                    dataController.getPackageById(tk.getPackageId()).getName(),
-                    reserve.getNumber_of_reserve()+"",
-                    dataController.getRoomById(tk.getRoomId()).getType(),
-                    dataController.getRoomById(tk.getRoomId()).getName().toUpperCase())));
-        }
 
         String details = "ชื่อลูกค้า : คุณ"+cus.getFirstName()+" "+cus.getLastName()+"\n";
         double price = 0;
-        int i = 0;
-        for (ArrayList<String> pet:petsDetail) {
+        for (TakingCarePetsList tk : reserve.getList()){
             details +=
-                    "วันที่จอง : " +pet.get(0)+"\tจำนวนวัน : " + pet.get(4)+"\n"+
-                            "ชื่อสัตว์เลี้ยง : " + pet.get(1)+"\n"+
-                            "อาหารยี่ห้อ : " + pet.get(2)+"\n"+
-                            "แพคเกจ : " + pet.get(3)+"\n"+
-                            "ชนิดห้อง : " + pet.get(5)+"\n"+
-                            "เลขที่ห้อง : " + pet.get(6)+"\n"+
+                    "วันที่จอง : " +reserve.getStart_date()+"\tจำนวนวัน : " + reserve.getNumber_of_reserve()+"\n"+
+                            "ชื่อสัตว์เลี้ยง : " + dataController.getPetById(reserve.getPets_id()).getName()+"\n"+
+                            "อาหารยี่ห้อ : " + dataController.getFoodById(tk.getFoodId()).getName()+"\n"+
+                            "แพคเกจ : " + dataController.getPackageById(tk.getPackageId()).getName()+"\n"+
+                            "ชนิดห้อง : " + dataController.getRoomById(tk.getRoomId()).getType()+"\n"+
+                            "เลขที่ห้อง : " + dataController.getRoomById(tk.getRoomId()).getName().toUpperCase()+"\n"+
                             "-------------------------------------------\n";
-            System.out.println(i +" " + cus.getPets().size());
-            price += calculator(pet.get(5),pet.get(3),pet.get(2),cus.getPets().get(i).getSpecies());
-            i++;
+            price += calculator(dataController.getRoomById(tk.getRoomId()).getType(),
+                    dataController.getPackageById(tk.getPackageId()).getName(),
+                    dataController.getFoodById(tk.getFoodId()).getName(),
+                    dataController.getPetById(tk.getPetId()).getSpecies());
         }
         allDetails.setText(details);
         totalField.setText(price+"");
