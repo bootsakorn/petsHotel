@@ -42,6 +42,7 @@ public class CheckOutController extends CounterPageController {
 
     @FXML
     private void initialize() {
+        dataController.getData();
         ObservableList<CheckOutDataForTableView> list = recieveBillNumList.getItems();
         noCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
@@ -67,9 +68,8 @@ public class CheckOutController extends CounterPageController {
         mainPane.setVisible(false);
         successPane.setVisible(true);
 
-
-
-//        dataController.checkout(appointmentbill_id); ใส่ไอดีใบรับตัว
+        CheckOutDataForTableView selected = (CheckOutDataForTableView)recieveBillNumList.getSelectionModel().getSelectedItem();
+        dataController.checkout(selected.getId());
     }
 
     public void handleOnClickedOkBtn(ActionEvent event) {

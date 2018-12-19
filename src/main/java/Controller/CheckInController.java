@@ -74,13 +74,14 @@ public class CheckInController extends CounterPageController{
     }
 
     @FXML private void initialize(){
-
+        dataController.getData();
         ObservableList<CheckInDataForTableView> list = reservedNumList.getItems();
         noCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         dateCol.setCellValueFactory(new PropertyValueFactory<>("startDate"));
         nameCol.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         for (Reserve r:reserves) {
-            if (dataController.getCheckInByResereveId(r.getId()) == null) {
+            if (dataController.getCheckInByResereveId(r.getId()) == null ||
+                    dataController.getCheckInByResereveId(r.getId()).isStatus()) {
                 CheckInDataForTableView item = new CheckInDataForTableView(
                         r.getId(),
                         r.getStart_date(),

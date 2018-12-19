@@ -4,10 +4,10 @@ import java.util.Date;
 
 public class AppointmentBill {
     private int id;
-    private Date appointmentDate;
+    private String appointmentDate;
     private int takingCarePetsListId;
 
-    public AppointmentBill(int id, Date appointmentDate, int takingCarePetsListId) {
+    public AppointmentBill(int id, String appointmentDate, int takingCarePetsListId) {
         this.id = id;
         this.appointmentDate = appointmentDate;
         this.takingCarePetsListId = takingCarePetsListId;
@@ -17,7 +17,7 @@ public class AppointmentBill {
         return id;
     }
 
-    public Date getAppointmentDate() {
+    public String getAppointmentDate() {
         return appointmentDate;
     }
 

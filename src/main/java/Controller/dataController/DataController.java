@@ -71,7 +71,7 @@ public class DataController {
         this.getData();
     }
 
-    private void getData() {
+    public void getData() {
         this.pets = petsDataController.getPetsList();
         this.checkIns = checkInDataController.getCheckInList();
         this.petsLists = petsListDataController.getPetsIdList();
