@@ -104,7 +104,15 @@ public class CheckInController extends CounterPageController{
 
         petsDetail = new ArrayList<>();
         System.out.println(reserve.getList().size());
-        petsDetail.add(new ArrayList(Arrays.asList(reserve.getStart_date(),dataController.getPetById(reserve.getPets_id()).getName()+"", "วิสกัส", "Normal Package", reserve.getNumber_of_reserve()+"", "ห้องเดี่ยว","E1")));
+        for (TakingCarePetsList tk : reserve.getList()){
+            petsDetail.add(new ArrayList(Arrays.asList(reserve.getStart_date(),
+                    dataController.getPetById(reserve.getPets_id()).getName(),
+                    dataController.getFoodById(tk.getFoodId()).getName(),
+                    dataController.getPackageById(tk.getPackageId()).getName(),
+                    reserve.getNumber_of_reserve()+"",
+                    dataController.getRoomById(tk.getRoomId()).getType(),
+                    dataController.getRoomById(tk.getRoomId()).getName().toUpperCase())));
+        }
 
         String details = "ชื่อลูกค้า : คุณ"+cus.getFirstName()+" "+cus.getLastName()+"\n";
         double price = 0;
@@ -118,6 +126,7 @@ public class CheckInController extends CounterPageController{
                             "ชนิดห้อง : " + pet.get(5)+"\n"+
                             "เลขที่ห้อง : " + pet.get(6)+"\n"+
                             "-------------------------------------------\n";
+            System.out.println(i +" " + cus.getPets().size());
             price += calculator(pet.get(5),pet.get(3),pet.get(2),cus.getPets().get(i).getSpecies());
             i++;
         }

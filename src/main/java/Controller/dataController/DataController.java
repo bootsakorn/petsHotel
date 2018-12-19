@@ -247,6 +247,33 @@ public class DataController {
         return null;
     }
 
+    public Package getPackageById(int id){
+        for (Package p : packages){
+            if (p.getId() == (id)){
+                return p;
+            }
+        }
+        return null;
+    }
+
+    public Room getRoomById(int id){
+        for (Room r : rooms){
+            if (r.getId() == (id)){
+                return r;
+            }
+        }
+        return null;
+    }
+
+    public Food getFoodById(int id){
+        for (Food f : foods){
+            if (f.getId() == (id)){
+                return f;
+            }
+        }
+        return null;
+    }
+
     public Customer getCustomerById(int id){
         for (Customer p : customers){
             if (p.getId() == (id)){
