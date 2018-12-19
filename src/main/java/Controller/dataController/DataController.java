@@ -154,15 +154,15 @@ public class DataController {
         return id+1;
     }
 
-    public void insertReserve (String reserveDate, String startDate, int numberOfReserve, int customerId, ArrayList<TakingCarePetsList> takingCarePetsLists) {
-        int takingCarePetsId = takingCarePetsLists.get(0).getId();
+    public void insertReserve (String reserveDate, String startDate, int numberOfReserve, int customerId, ArrayList<TakingCarePetsList> takingCarePetsListsParam) {
+        int takingCarePetsId = takingCarePetsListsParam.get(0).getId();
         String[] strtDateSplit = startDate.split("-");
         LocalDate localDate = LocalDate.of(Integer.valueOf(strtDateSplit[0]), Integer.valueOf(strtDateSplit[1]), Integer.valueOf(strtDateSplit[2]));
         LocalDate endLocalDate = localDate.plusDays(numberOfReserve);
         String strtDate = localDate.getDayOfMonth()+"-"+localDate.getMonthValue()+"-"+localDate.getYear();
         String endDate = endLocalDate.getDayOfMonth()+"-"+endLocalDate.getMonthValue()+"-"+localDate.getYear();
         reserveDataController.insertReserve(reserveDate, strtDate, numberOfReserve, customerId, takingCarePetsId);
-        for (TakingCarePetsList t: takingCarePetsLists) {
+        for (TakingCarePetsList t: takingCarePetsListsParam) {
             int id = t.getId();
             int customer_id = t.getCustomerId();
             int pet_id = t.getPetId();
