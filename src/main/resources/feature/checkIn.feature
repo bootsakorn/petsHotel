@@ -24,7 +24,7 @@ Scenario: check in after receive money (have change)
     When I receive 10200 baht from Mr.B
     Then I can check in And give the change 100 baht to Mr.B
 
-    
+
 
 
 
