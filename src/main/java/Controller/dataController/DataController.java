@@ -240,6 +240,51 @@ public class DataController {
         return null;
     }
 
+    public Pets getPetById(int id){
+        for (Pets p : pets){
+            if (p.getId() == (id)){
+                return p;
+            }
+        }
+        return null;
+    }
+
+    public Package getPackageById(int id){
+        for (Package p : packages){
+            if (p.getId() == (id)){
+                return p;
+            }
+        }
+        return null;
+    }
+
+    public Room getRoomById(int id){
+        for (Room r : rooms){
+            if (r.getId() == (id)){
+                return r;
+            }
+        }
+        return null;
+    }
+
+    public Food getFoodById(int id){
+        for (Food f : foods){
+            if (f.getId() == (id)){
+                return f;
+            }
+        }
+        return null;
+    }
+
+    public Customer getCustomerById(int id){
+        for (Customer p : customers){
+            if (p.getId() == (id)){
+                return p;
+            }
+        }
+        return null;
+    }
+
     public ArrayList<AppointmentBill> getAppointmentBills() {
         return appointmentBills;
     }
@@ -272,6 +317,15 @@ public class DataController {
             }
         }
         getData();
+    }
+
+    public CheckIn getCheckInByResereveId(int id){
+        for (CheckIn c : checkIns){
+            if (c.getReserve_id() == (id)){
+                return c;
+            }
+        }
+        return null;
     }
 }
 

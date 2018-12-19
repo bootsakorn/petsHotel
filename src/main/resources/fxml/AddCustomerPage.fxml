@@ -9,6 +9,7 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -159,6 +160,25 @@
                               <Button fx:id="cancelBtn" layoutX="228.0" layoutY="419.0" mnemonicParsing="false" onAction="#handleOnClickedCancelBtn" style="-fx-background-color: #e07d7d;" text="ยกเลิก" />
                               <ComboBox fx:id="sexComboBox" layoutX="385.0" layoutY="85.0" onAction="#handleOnClickedSelectSexComboBox" prefHeight="31.0" prefWidth="130.0" />
                               <ComboBox fx:id="speciesComboBox" layoutX="419.0" layoutY="170.0" onAction="#handleOnClickedSelectSpeciesComboBox" prefHeight="31.0" prefWidth="130.0" />
+                              <Text layoutX="526.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ปี" />
+                              <AnchorPane fx:id="successPane" layoutX="102.0" layoutY="95.0" prefHeight="224.0" prefWidth="420.0" visible="false">
+                                 <children>
+                                    <TitledPane prefHeight="224.0" prefWidth="420.0" text="เพิ่มลูกค้า">
+                                       <content>
+                                          <AnchorPane>
+                                             <children>
+                                                <Text layoutX="88.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ทำรายการเรียบร้อย">
+                                                   <font>
+                                                      <Font size="36.0" />
+                                                   </font>
+                                                </Text>
+                                                <Button fx:id="okBtn" layoutX="189.0" layoutY="125.0" mnemonicParsing="false" onAction="#handleOnClickedOkBtn" text="OK" />
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                    </TitledPane>
+                                 </children>
+                              </AnchorPane>
                            </children></AnchorPane>
                      </items>
                   </SplitPane>

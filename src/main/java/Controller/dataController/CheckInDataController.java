@@ -49,7 +49,7 @@ public class CheckInDataController extends DatabaseConnection {
     public void insertCheckin (String date, int reserveId, int appointmentId, int receiptId, int status){
         try{
             System.out.println(date);
-            String query = "INSERT INTO checkin (date,reserve_id,appointment_id, receipt_id, status) VALUES (?,?,?,?,?)";
+            String query = "INSERT INTO checkin (date,reserve_id,appointment_bill_id, receipt_id, status) VALUES (?,?,?,?,?)";
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, date);
             stmt.setInt(2, reserveId);

@@ -36,7 +36,7 @@ public class PetsListDataController extends DatabaseConnection{
     public void insertPetsList(int petId, int customerId){
         try{
             connect();
-            String query = "INSERT INTO petslist (pet_id, customer_id) VALUES (?,?)";
+            String query = "INSERT INTO pets_list (pet_id, customer_id) VALUES (?,?)";
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setInt(1, petId);
             stmt.setInt(2, customerId);
