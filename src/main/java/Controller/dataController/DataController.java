@@ -319,7 +319,7 @@ public class DataController {
 
     public CheckIn getCheckInByResereveId(int id){
         for (CheckIn c : checkIns){
-            if (c.getReserve_id() == (id)){
+            if (c.getReserve_id() == id){
                 return c;
             }
         }

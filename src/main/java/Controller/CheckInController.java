@@ -56,7 +56,7 @@ public class CheckInController extends CounterPageController{
     private ArrayList<ArrayList<String>> petsDetail;
     private ArrayList<Package> packages;
     private ArrayList<TakingCarePetsList> tkList;
-    private SimpleDateFormat sdf;
+    private CheckInDataForTableView ci;
 
     public CheckInController(){
         try {
@@ -68,7 +68,6 @@ public class CheckInController extends CounterPageController{
             packages = dataController.getPackages();
             reserves = dataController.getReserves();
             petsDetail = new ArrayList();
-            sdf = new SimpleDateFormat("dd-MM-yyyy");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -76,9 +75,19 @@ public class CheckInController extends CounterPageController{
 
     @FXML private void initialize(){
 
-        ObservableList<String> list = reservedNumList.getItems();
+        ObservableList<CheckInDataForTableView> list = reservedNumList.getItems();
+        noCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+        dateCol.setCellValueFactory(new PropertyValueFactory<>("startDate"));
+        nameCol.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         for (Reserve r:reserves) {
-            list.add(r.getId()+ " " + r.getStart_date() + " " + dataController.getCustomerById(r.getCustomer_id()).getFirstName());
+            if (dataController.getCheckInByResereveId(r.getId()) == null) {
+                CheckInDataForTableView item = new CheckInDataForTableView(
+                        r.getId(),
+                        r.getStart_date(),
+                        dataController.getCustomerById(r.getCustomer_id()).getFirstName()
+                );
+                list.add(item);
+            }
         }
         reservedNumList.setItems(list);
     }
@@ -89,15 +98,15 @@ public class CheckInController extends CounterPageController{
     public void handleOnClickedGoToCheckInBtn(ActionEvent event){
         mainPane.setVisible(false);
         checkInPane.setVisible(true);
-        System.out.println(reservedNumList.getSelectionModel().getSelectedItem());
-        String selected = reservedNumList.getSelectionModel().getSelectedItem().toString();
+        CheckInDataForTableView selected = (CheckInDataForTableView) reservedNumList.getSelectionModel().getSelectedItem();
+        System.out.println(selected.getFirstName());
         for (Customer c:customers) {
-            if (selected.split(" ")[2].equalsIgnoreCase(c.getFirstName())){
+            if (selected.getFirstName().equalsIgnoreCase(c.getFirstName())){
                 this.cus = c;
             }
         }
         for (Reserve r: reserves){
-            if (selected.split(" ")[0].equalsIgnoreCase(r.getId()+"")){
+            if (selected.getId() == r.getId()){
                 this.reserve = r;
             }
         }
