@@ -119,7 +119,7 @@ public class CheckInController extends CounterPageController{
         for (TakingCarePetsList tk : reserve.getList()){
             details +=
                     "วันที่จอง : " +reserve.getStart_date()+"\tจำนวนวัน : " + reserve.getNumber_of_reserve()+"\n"+
-                            "ชื่อสัตว์เลี้ยง : " + dataController.getPetById(reserve.getPets_id()).getName()+"\n"+
+                            "ชื่อสัตว์เลี้ยง : " + dataController.getPetById(tk.getPetId()).getName()+"\n"+
                             "อาหารยี่ห้อ : " + dataController.getFoodById(tk.getFoodId()).getName()+"\n"+
                             "แพคเกจ : " + dataController.getPackageById(tk.getPackageId()).getName()+"\n"+
                             "ชนิดห้อง : " + dataController.getRoomById(tk.getRoomId()).getType()+"\n"+
