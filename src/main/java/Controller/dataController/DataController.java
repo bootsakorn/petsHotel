@@ -238,6 +238,15 @@ public class DataController {
         return null;
     }
 
+    public Pets getPetById(int id){
+        for (Pets p : pets){
+            if (p.getId() == (id)){
+                return p;
+            }
+        }
+        return null;
+    }
+
     public ArrayList<AppointmentBill> getAppointmentBills() {
         return appointmentBills;
     }

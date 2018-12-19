@@ -55,6 +55,7 @@ public class CheckInController extends CounterPageController{
     private ArrayList<Reserve> reserves;
     private ArrayList<ArrayList<String>> petsDetail;
     private ArrayList<Package> packages;
+    private ArrayList<TakingCarePetsList> tkList;
     private SimpleDateFormat sdf;
 
     public CheckInController(){
@@ -103,7 +104,8 @@ public class CheckInController extends CounterPageController{
         }
 
         petsDetail = new ArrayList<>();
-        petsDetail.add(new ArrayList(Arrays.asList(reserve.getStart_date(),reserve.getPets_id()+"", "วิสกัส", "Normal Package", reserve.getNumber_of_reserve()+"", "ห้องเดี่ยว","E1")));
+        System.out.println(reserve.getList().size());
+        petsDetail.add(new ArrayList(Arrays.asList(reserve.getStart_date(),dataController.getPetById(reserve.getPets_id()).getName()+"", "วิสกัส", "Normal Package", reserve.getNumber_of_reserve()+"", "ห้องเดี่ยว","E1")));
 
         String details = "ชื่อลูกค้า : คุณ"+cus.getFirstName()+" "+cus.getLastName()+"\n";
         double price = 0;

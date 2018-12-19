@@ -50,7 +50,7 @@ public class AddCustomerPageController extends CounterPageController {
         speciesComboBox.getSelectionModel().selectFirst();
     }
 
-    @FXML protected void handleOnClickedSubmitBtn(ActionEvent event) {
+    @FXML protected void handleOnClickedSubmitBtn(ActionEvent event) throws Exception{
         //cutomer
         fname = fnameField.getText();
         lname = lnameField.getText();
@@ -68,6 +68,11 @@ public class AddCustomerPageController extends CounterPageController {
         //insert to database here
         dataController.insertNewCustomer(fname, lname, address, pname, Integer.valueOf(age), sex, breed, disease, allergy, species);
 
+        Button button = (Button) event.getSource();
+        Stage stage = (Stage) button.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CounterPage.fxml"));
+        stage.setScene(new Scene((Parent) loader.load()));
+        stage.show();
     }
 
     @FXML protected void handleOnClickedCancelBtn(ActionEvent event) throws Exception{
