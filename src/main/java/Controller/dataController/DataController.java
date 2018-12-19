@@ -247,6 +247,15 @@ public class DataController {
         return null;
     }
 
+    public Customer getCustomerById(int id){
+        for (Customer p : customers){
+            if (p.getId() == (id)){
+                return p;
+            }
+        }
+        return null;
+    }
+
     public ArrayList<AppointmentBill> getAppointmentBills() {
         return appointmentBills;
     }

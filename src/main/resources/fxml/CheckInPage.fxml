@@ -189,7 +189,7 @@
                                     <TextField fx:id="recieveField" alignment="CENTER_RIGHT" layoutX="438.0" layoutY="123.0" text="0" AnchorPane.leftAnchor="440.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="110.0" />
                                     <Text layoutX="388.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="รวม" AnchorPane.leftAnchor="390.0" AnchorPane.rightAnchor="255.0" AnchorPane.topAnchor="65.0" />
                                     <Text layoutX="383.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="รับมา" AnchorPane.leftAnchor="390.0" AnchorPane.rightAnchor="245.0" AnchorPane.topAnchor="115.0" />
-                                    <Button fx:id="checkInBtn" layoutX="472.0" layoutY="201.0" mnemonicParsing="false" onAction="#handleOnClickedCheckInBtn" text="เช็คอิน" AnchorPane.bottomAnchor="215.0" AnchorPane.leftAnchor="470.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="200.0">
+                                    <Button fx:id="checkInBtn" layoutX="472.0" layoutY="201.0" mnemonicParsing="false" onAction="#handleOnClickedCheckInBtn" prefHeight="52.0" prefWidth="112.0" text="เช็คอิน" AnchorPane.bottomAnchor="215.0" AnchorPane.leftAnchor="470.0" AnchorPane.rightAnchor="85.0" AnchorPane.topAnchor="200.0">
                                        <font>
                                           <Font size="24.0" />
                                        </font>

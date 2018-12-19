@@ -12,10 +12,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class AddCustomerPageController extends CounterPageController {
 
+    @FXML protected AnchorPane successPane;
     @FXML protected TextField fnameField;
     @FXML protected TextField lnameField;
     @FXML protected TextArea addressField;
@@ -68,11 +70,7 @@ public class AddCustomerPageController extends CounterPageController {
         //insert to database here
         dataController.insertNewCustomer(fname, lname, address, pname, Integer.valueOf(age), sex, breed, disease, allergy, species);
 
-        Button button = (Button) event.getSource();
-        Stage stage = (Stage) button.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CounterPage.fxml"));
-        stage.setScene(new Scene((Parent) loader.load()));
-        stage.show();
+        successPane.setVisible(true);
     }
 
     @FXML protected void handleOnClickedCancelBtn(ActionEvent event) throws Exception{
@@ -89,5 +87,13 @@ public class AddCustomerPageController extends CounterPageController {
 
     @FXML protected void handleOnClickedSelectSpeciesComboBox(ActionEvent event) {
         species = speciesComboBox.getSelectionModel().getSelectedItem().toString();
+    }
+
+    public void handleOnClickedOkBtn(ActionEvent event) throws Exception{
+        Button button = (Button) event.getSource();
+        Stage stage = (Stage) button.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CounterPage.fxml"));
+        stage.setScene(new Scene((Parent) loader.load()));
+        stage.show();
     }
 }
