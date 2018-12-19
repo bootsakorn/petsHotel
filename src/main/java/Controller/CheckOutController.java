@@ -41,6 +41,10 @@ public class CheckOutController extends CounterPageController {
     public void handleOnClickedCheckOutBtn(ActionEvent event) {
         mainPane.setVisible(false);
         successPane.setVisible(true);
+
+
+
+//        dataController.checkout(appointmentbill_id); ใส่ไอดีใบรับตัว
     }
 
     public void handleOnClickedOkBtn(ActionEvent event) {

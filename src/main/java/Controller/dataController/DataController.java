@@ -73,6 +73,7 @@ public class DataController {
 
     private void getData() {
         this.pets = petsDataController.getPetsList();
+        this.checkIns = checkInDataController.getCheckInList();
         this.petsLists = petsListDataController.getPetsIdList();
         this.customers = customersDataController.getCustomers();
         this.foods = foodDataController.getFoods();
@@ -103,11 +104,13 @@ public class DataController {
         return customers;
     }
 
-    public void insertCustomer (Customer customer){
-        String firstname = customer.getFirstName();
-        String lastname = customer.getLastName();
-        String address = customer.getAddress();
+    public void insertNewCustomer (String firstname, String lastname, String address,String pname,int age,String sex, String breed, String disease, String allergy, String species){
         customersDataController.insertCustomer(firstname, lastname, address);
+        petsDataController.insertPet(pname, age, sex, breed, disease, allergy, speciesDataController.convertSpeciesNameToId(species));
+        getData();
+        int pId = pets.get(pets.size()-1).getId();
+        int cId = customers.get(customers.size()-1).getId();
+        petsListDataController.insertPetsList(pId, cId);
         getData();
     }
 
@@ -153,10 +156,11 @@ public class DataController {
 
     public void insertReserve (String reserveDate, String startDate, int numberOfReserve, int customerId, ArrayList<TakingCarePetsList> takingCarePetsLists) {
         int takingCarePetsId = takingCarePetsLists.get(0).getId();
-                String[] strtDateSplit = startDate.split("-");
+        String[] strtDateSplit = startDate.split("-");
         LocalDate localDate = LocalDate.of(Integer.valueOf(strtDateSplit[0]), Integer.valueOf(strtDateSplit[1]), Integer.valueOf(strtDateSplit[2]));
-        LocalDate strtLocalDate = localDate.plusDays(numberOfReserve);
-        String strtDate = strtLocalDate.getDayOfMonth()+"-"+strtLocalDate.getMonthValue()+"-"+strtLocalDate.getYear();
+        LocalDate endLocalDate = localDate.plusDays(numberOfReserve);
+        String strtDate = localDate.getDayOfMonth()+"-"+localDate.getMonthValue()+"-"+localDate.getYear();
+        String endDate = endLocalDate.getDayOfMonth()+"-"+endLocalDate.getMonthValue()+"-"+localDate.getYear();
         reserveDataController.insertReserve(reserveDate, strtDate, numberOfReserve, customerId, takingCarePetsId);
         for (TakingCarePetsList t: takingCarePetsLists) {
             int id = t.getId();
@@ -167,8 +171,14 @@ public class DataController {
             int room_id = t.getRoomId();
             takingCarePetsListDataController.insertTakingCarePetsList(id, customer_id, pet_id, packageId, foodId, room_id);
         }
-        appointmentBillDataController.insertAppointmentBill(strtDate, takingCarePetsId);
+        appointmentBillDataController.insertAppointmentBill(endDate, takingCarePetsId);
         this.getData();
+        int reserveId = reserves.get(reserves.size()-1).getId();
+        int appId = appointmentBills.get(appointmentBills.size()-1).getId();
+        int recieptId = 0;
+        checkInDataController.insertCheckin(strtDate, reserveId, appId, recieptId, 0);
+        checkoutDataController.insertCheckout(endDate, appointmentBills.get(appointmentBills.size()-1).getId(), "", 0);
+        getData();
     }
 
     public ArrayList<Reserve> getReserves (){
@@ -194,7 +204,7 @@ public class DataController {
         return tCPLists;
     }
 
-    public void setTotalPrice (Reserve reserve, double totalPrice){
+    private void setTotalPrice (double totalPrice){
 
     }
 
@@ -232,6 +242,34 @@ public class DataController {
         return appointmentBills;
     }
 
+    public void checkin (int reserveId, double total, double receive){
 
+        for (int i=0; i<reserves.size(); i++){
+            if (reserves.get(i).getId() == reserveId) {
+                reserves.get(i).setTotal_price(total);
+                break;
+            }
+        }
+
+        for (int j=0; j<checkIns.size(); j++){
+            if (checkIns.get(j).getReserve_id() == reserveId){
+                checkInDataController.editStatus(checkIns.get(j).getId(), 1);
+                String date = checkIns.get(j).getDate();
+                receiptDataController.insertReceipt(date, checkIns.get(j).getId(), total, receive, receive-total);
+                break;
+            }
+        }
+        getData();
+    }
+
+    public void checkout (int appId){
+        for (int i=0; i<checkOuts.size(); i++){
+            if (checkOuts.get(i).getAppointment_bill_id() == appId){
+                checkoutDataController.editStatus(checkIns.get(i).getId(), 1);
+                break;
+            }
+        }
+        getData();
+    }
 }
 
