@@ -3,13 +3,16 @@ Feature: editEmployee
     As  a owner
     I want to  update employee
 
+Background:
 
 Scenario:
-    Given a owner
-    When emmployee had changed details
-    Then I can edit  employee's detail to system
+    Given an employee "Mrs.C" change her "name"
+    When employee had changed details
+    Then I can change "Mrs.C" "name"
 
+Background:
 
 Scenario: Don't have employee detail
-    When emmploye had changed details
-    Then I can add employee's detail to system
+    Given an employee "Mrs.C" no have detail on system
+    When employee had changed details
+    Then I can add employee's detail
