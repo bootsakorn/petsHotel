@@ -2,13 +2,15 @@
 
 Feature: editEmployee
     As  a owner
-    I want to add employee and delete employee and update employee
+    I want to add employee and delete employee
+
+Scenario: add employee
+    Given a new employee's name Catherine
+    When I hire Catherine
+    Then I can add Catherine's detail to system
 
 
-Scenario:
-    Given a owner
-    When I hire employee
-    Then I can add employee to system
-
-
-Scenario:
+Scenario: delete employee
+    Given an employee's name Catherine
+    When I lay off Catherine
+    Then I can delete Catherine's detail from system
