@@ -2,10 +2,9 @@
 
 Feature: Check In
     As a Owner
-    I want to add employee or delete employee .
+    I want to add employee or delete employee
 
 Background:
-
 
 Scenario: hire new employee
     Given an employee name "Mr.A"
