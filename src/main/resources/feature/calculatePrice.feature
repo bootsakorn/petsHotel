@@ -6,19 +6,24 @@ Feature: calculate total price
 
 Background:
     Given "normal" package price 200 baht
-    And "silver" package price 250 baht
-    And "gold I" package price 300 baht
     And "gold II" package price 350 baht
-    And "super gold" package price 400 baht
-    And "dimond" package price 500 baht
+    And food id "3" price 340 baht
+    And food id "19" price 240 baht
 
 Scenario: customer has a pet
     When customer choose "normal" package
-    Then total price is 200 baht
+    And customer choose food id "3"
+    Then total price is 540 baht
 
 Background:
 Scenario: customer has > 1 pets
      When customer choose "normal" package
      And customer choose "gold II" package
-     Then total price is 550 baht
+     And customer choose food id "3"
+     And customer choose food id "19"
+     Then total price is 1030 baht
+
+
+
+
 
