@@ -157,7 +157,7 @@
                                              <children>
                                                 <TableView fx:id="recieveBillNumList" cacheShape="false" editable="true" prefHeight="263.0" prefWidth="499.0">
                                                    <columns>
-                                                      <TableColumn fx:id="noCol" prefWidth="75.0" text="ลำดับที่" />
+                                                      <TableColumn fx:id="noCol" prefWidth="75.0" text="เลขที่" />
                                                       <TableColumn fx:id="dateCol" prefWidth="128.0" text="วันที่นัดรับ" />
                                                       <TableColumn fx:id="nameCol" prefWidth="159.0" text="ชื่อผู้รับ" />
                                                       <TableColumn fx:id="petCol" prefWidth="136.0" text="ชื่อสัตว์เลี้ยง" />

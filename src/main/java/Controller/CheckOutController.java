@@ -2,7 +2,6 @@ package Controller;
 
 import Controller.dataController.DataController;
 import Models.*;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -50,14 +49,15 @@ public class CheckOutController extends CounterPageController {
         petCol.setCellValueFactory(new PropertyValueFactory<>("petName"));
 
         for (CheckIn c:checkIns) {
-            if (dataController.getCheckInByResereveId(c.getId()) == null) {
-                TakingCarePetsList tk = dataController.getTKCListById(dataController.getAppbillById(c.getAppointment_bill_id()).getTakingCarePetsListId());
+            if (c.isStatus()) {
+                TakingCarePetsList tk = dataController.getTKCListById(dataController.getReserveById(c.getReserve_id()).getCustomer_id());
                 CheckOutDataForTableView item = new CheckOutDataForTableView(
                         c.getId(),
                         dataController.getAppbillById(c.getAppointment_bill_id()).getAppointmentDate()+"",
-                        dataController.getCustomerById(tk.getCustomerId()).getFirstName(),
+                        dataController.getCustomerById(dataController.getReserveById(c.getReserve_id()).getCustomer_id()).getFirstName(),
                         dataController.getPetById(tk.getPetId()).getName()
                 );
+                System.out.println(item.getFirstName());
                 list.add(item);
             }
         }
@@ -65,7 +65,6 @@ public class CheckOutController extends CounterPageController {
     }
 
     public void handleOnClickedCheckOutBtn(ActionEvent event) {
-        mainPane.setVisible(false);
         successPane.setVisible(true);
 
         CheckOutDataForTableView selected = (CheckOutDataForTableView)recieveBillNumList.getSelectionModel().getSelectedItem();

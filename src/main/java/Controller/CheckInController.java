@@ -3,17 +3,13 @@ package Controller;
 import Controller.dataController.DataController;
 import Models.*;
 import Models.Package;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class CheckInController extends CounterPageController{
 
@@ -45,7 +41,6 @@ public class CheckInController extends CounterPageController{
     @FXML protected Button printBtn;
     // use in class
     private Customer cus;
-    private Package pack;
     private Reserve reserve;
     private DataController dataController ;
     private ArrayList<Food> catFoods;
@@ -55,8 +50,6 @@ public class CheckInController extends CounterPageController{
     private ArrayList<Reserve> reserves;
     private ArrayList<ArrayList<String>> petsDetail;
     private ArrayList<Package> packages;
-    private ArrayList<TakingCarePetsList> tkList;
-    private CheckInDataForTableView ci;
 
     public CheckInController(){
         try {
@@ -80,8 +73,7 @@ public class CheckInController extends CounterPageController{
         dateCol.setCellValueFactory(new PropertyValueFactory<>("startDate"));
         nameCol.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         for (Reserve r:reserves) {
-            if (dataController.getCheckInByResereveId(r.getId()) == null ||
-                    dataController.getCheckInByResereveId(r.getId()).isStatus()) {
+            if (!dataController.getCheckInByResereveId(r.getId()).isStatus()) {
                 CheckInDataForTableView item = new CheckInDataForTableView(
                         r.getId(),
                         r.getStart_date(),

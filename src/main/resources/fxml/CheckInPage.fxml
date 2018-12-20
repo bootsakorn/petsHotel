@@ -158,7 +158,7 @@
                                              <children>
                                                 <TableView fx:id="reservedNumList" cacheShape="false" editable="true" prefHeight="263.0" prefWidth="499.0">
                                                   <columns>
-                                                    <TableColumn fx:id="noCol" prefWidth="75.0" text="ลำดับที่" />
+                                                    <TableColumn fx:id="noCol" prefWidth="75.0" text="เลขที่" />
                                                     <TableColumn fx:id="dateCol" prefWidth="161.0" text="วันที่เช็คอิน" />
                                                       <TableColumn fx:id="nameCol" prefWidth="262.0" text="ชื่อผู้จอง" />
                                                   </columns>

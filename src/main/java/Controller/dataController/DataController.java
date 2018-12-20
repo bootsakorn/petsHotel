@@ -401,10 +401,19 @@ public class DataController {
         return null;
     }
 
-    public TakingCarePetsList getTKCListById(int id){
+    public TakingCarePetsList getTKCListById(int cusid){
         for (TakingCarePetsList tk : takingCarePetsLists){
-            if (tk.getId() == id){
+            if (tk.getCustomerId() == cusid){
                 return tk;
+            }
+        }
+        return null;
+    }
+
+    public Reserve getReserveById(int id){
+        for (Reserve r : reserves){
+            if (r.getId() == id){
+                return r;
             }
         }
         return null;
