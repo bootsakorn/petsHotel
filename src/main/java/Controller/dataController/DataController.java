@@ -443,7 +443,7 @@ public class DataController {
     }
 
     public Service getService(int service_id){
-        Service service = new Service(0, "", "", "", true, "");
+        Service service = new Service(0, "", 0, "", true, "");
         for (Service s: services){
             if (s.getId() == service_id){
                 service = s;

@@ -22,7 +22,7 @@ public class ServiceDataController extends DatabaseConnection {
             while (resultSet.next()){
                 int id = resultSet.getInt("id");
                 String petName = resultSet.getString("pet");
-                String room = resultSet.getString("room");
+                int room = resultSet.getInt("room");
                 int statusInt = resultSet.getInt("status");
                 String detail = resultSet.getString("detail");
                 String date = resultSet.getString("date");

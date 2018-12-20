@@ -3,12 +3,12 @@ package Models;
 public class Service {
     private int id;
     private String petName;
-    private String room;
+    private int room;
     private String detail;
     private boolean status;
     private String date;
 
-    public Service (int id, String petName, String room, String detail, boolean status, String date){
+    public Service (int id, String petName, int room, String detail, boolean status, String date){
         this.id = id;
         this.petName = petName;
         this.detail = detail;
@@ -29,7 +29,7 @@ public class Service {
         return petName;
     }
 
-    public String getRoom() {
+    public int getRoom() {
         return room;
     }
 

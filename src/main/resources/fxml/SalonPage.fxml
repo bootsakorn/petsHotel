@@ -134,7 +134,7 @@
                                 </AnchorPane>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                            <children>
-                              <ImageView blendMode="OVERLAY" fitHeight="846.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView blendMode="OVERLAY" fitHeight="846.0" fitWidth="900.0" onMouseClicked="#handleToDoListView" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../image/posters-pet-theme-seamless-pattern-with-heart-shaped-animal-paw-footprints-and-clew-of-threads.png" />
                                  </image>
@@ -149,7 +149,7 @@
                                  <children>
                                     <AnchorPane prefHeight="436.0" prefWidth="572.0">
                                        <children>
-                                          <Button fx:id="toToDoList" layoutX="251.0" layoutY="166.0" mnemonicParsing="false" onMouseClicked="#handleOnClickToToDoListBtn">
+                                          <Button fx:id="toToDoList" layoutX="252.0" layoutY="248.0" mnemonicParsing="false" onAction="#handleOnClickToToDoListBtn">
                                              <graphic>
                                                 <ImageView fitHeight="38.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
@@ -163,7 +163,7 @@
                                                 <Font size="18.0" />
                                              </font>
                                           </Label>
-                                          <Button fx:id="toDoneList" layoutX="252.0" layoutY="223.0" mnemonicParsing="false" onMouseClicked="#handleOnClickToDoneListBtn">
+                                          <Button fx:id="toDoneList" layoutX="252.0" layoutY="184.0" mnemonicParsing="false" onAction="#handleOnClickToDoneListBtn">
                                              <graphic>
                                                 <ImageView fitHeight="38.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
@@ -176,9 +176,19 @@
                                             <content>
                                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="318.0" prefWidth="242.0">
                                                    <children>
-                                                      <ListView fx:id="toDoList" layoutX="4.0" layoutY="4.0" onMouseClicked="#handleToDoListView" prefHeight="143.0" prefWidth="202.0" />
-                                                      <ListView fx:id="detailList" layoutX="4.0" layoutY="165.0" onMouseClicked="#handleToDoListView" prefHeight="143.0" prefWidth="202.0" />
+                                                      <ListView fx:id="toDoList" layoutX="4.0" layoutY="29.0" onMouseClicked="#handleToDoListView" prefHeight="118.0" prefWidth="202.0" />
+                                                      <ListView fx:id="detailList" layoutX="4.0" layoutY="184.0" prefHeight="124.0" prefWidth="202.0" />
                                                       <Separator layoutX="5.0" layoutY="154.0" prefWidth="200.0" />
+                                                      <Label layoutX="5.0" layoutY="1.0" text="ชื่อสัตว์ ">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label layoutX="5.0" layoutY="156.0" text="รายละเอียด">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                      </Label>
                                                    </children>
                                                 </AnchorPane>
                                             </content>
@@ -187,7 +197,7 @@
                                              <content>
                                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="318.0" prefWidth="242.0">
                                                    <children>
-                                                      <ListView fx:id="doneList" layoutX="3.0" layoutY="1.0" onMouseClicked="#handleDoneListView" prefHeight="311.0" prefWidth="203.0" />
+                                                      <ListView fx:id="doneList" layoutX="3.0" layoutY="1.0" prefHeight="311.0" prefWidth="203.0" />
                                                    </children>
                                                 </AnchorPane>
                                              </content>
