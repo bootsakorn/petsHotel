@@ -5,9 +5,7 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         format = {"pretty", "html:target/cucumber"},
-        features = {"classpath:feature/checkOut.feature"}
+        features = {"classpath:feature/addNewCustomer.feature"}
 )
-public class UATCheckout {
-
-
+public class UATAddNewCustomer {
 }
