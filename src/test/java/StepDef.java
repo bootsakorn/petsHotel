@@ -34,16 +34,10 @@ public class StepDef {
             }
         }
     }
-    @When("I click appointment number (\\d+)")
+    @When("I click appointment number (\\d+) and I check out")
     public void whenCheckOut(int id){
 
     }
-
-    @And("I check out")
-    public void andCheckOut(){
-
-    }
-
     @Then("system edit status in checkout number (\\d+) to (.*)")
     public void thenCheckOut(int id, String bl){
         cdc.editStatus(id,1);

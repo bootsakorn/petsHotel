@@ -3,9 +3,8 @@ Feature: Check out
     I want to check out.
 
 Scenario: choose an appointment number and click check out
-    Given a customer "Mr.B" check out with appointment number 26
-    When I click appointment number 26
-    And I check out
+    Given a customer Mr.B check out with appointment number 26
+    When I click appointment number 26 and I check out
     Then system edit status in checkout number 10 to true
 
 #Background:
