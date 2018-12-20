@@ -1,6 +1,6 @@
 // เพิ่ม - ลบ พนักงาน
 
-Feature: Check In
+Feature: add or delete employee's detail
     As a Owner
     I want to add employee or delete employee
 
