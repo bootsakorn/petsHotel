@@ -3,11 +3,8 @@ package Controller.dataController;
 import Models.*;
 import Models.Package;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class DataController {
     /*
@@ -28,7 +25,8 @@ public class DataController {
     private SpeciesDataController speciesDataController;;
     private StorageDataController storageDataController;
     private TakingCarePetsListDataController takingCarePetsListDataController;
-    private TodolistDataController todolistDataController;
+    private ServiceDataController serviceDataController;
+    private SalonDataController salonDataController;
 
     /*
     Models
@@ -49,8 +47,8 @@ public class DataController {
     private ArrayList<Reserve> reserves;
     private ArrayList<Room> rooms;
     private ArrayList<TakingCarePetsList> takingCarePetsLists;
-    private ArrayList<Todolist> todolists;
-
+    private ArrayList<Salon> salons;
+    private ArrayList<Service> services;
     public DataController() throws ClassNotFoundException {
         this.appointmentBillDataController = new AppointmentBillDataController();
         this.checkInDataController = new CheckInDataController();
@@ -67,7 +65,8 @@ public class DataController {
         this.speciesDataController = new SpeciesDataController();
         this.storageDataController = new StorageDataController();
         this.takingCarePetsListDataController = new TakingCarePetsListDataController();
-        this.todolistDataController = new TodolistDataController();
+        this.salonDataController = new SalonDataController();
+        this.serviceDataController = new ServiceDataController();
         this.getData();
     }
 
@@ -82,6 +81,8 @@ public class DataController {
         this.reserves = reserveDataController.getReserve();
         this.rooms = roomDataController.getRooms();
         this.appointmentBills = appointmentBillDataController.getAppointmentBills();
+        this.salons = salonDataController.getSalons();
+        this.services = serviceDataController.getServices();
     }
 
     public String getPassword (String username){
@@ -306,6 +307,69 @@ public class DataController {
                 break;
             }
         }
+
+        LocalDate localDate = LocalDate.now();
+        String date = localDate.getDayOfMonth()+"-"+localDate.getMonthValue()+"-"+localDate.getYear();
+        int tklId = 0;
+        for (Reserve r : reserves){
+            if (r.getId() == reserveId){
+                tklId = r.getId();
+                break;
+            }
+        }
+        if (tklId > 0) {
+            for (TakingCarePetsList t : takingCarePetsLists){
+                if (t.getId() == tklId){
+                    String petName = "";
+                    String roomName = "";
+                    String foodName = "";
+                    int shower = 0;
+                    int salon = 0;
+                    int walk = 0;
+                    int swim = 0;
+                    for (Pets p : pets) {
+                        if (p.getId() == t.getPetId()){
+                            petName = p.getName();
+                            break;
+                        }
+                    }
+                    for (Room r : rooms){
+                        if(r.getId() == t.getRoomId()){
+                            roomName = r.getName();
+                            break;
+                        }
+                    }
+                    for (Food f : foods){
+                        if(f.getId() == t.getFoodId()){
+                            foodName = f.getName();
+                            break;
+                        }
+                    }
+                    for (Package p : packages){
+                        if (p.getId() == t.getPackageId()){
+                            shower = p.getShower();
+                            salon = p.getSalon();
+                            walk = p.getWalk();
+                            swim = p.getSwim();
+                        }
+                    }
+                    if (salon == 1) {
+                        salonDataController.insertSalon(petName, roomName, 0, "ตัดขน", date);
+                    }
+                    if (shower == 1) {
+                        salonDataController.insertSalon(petName, roomName, 0, "อาบน้ำ", date);
+                    }
+                    if (walk == 1) {
+                        serviceDataController.insertService(petName, roomName, 0, "เดินเล่น", date);
+                    }
+                    if (swim == 1) {
+                        serviceDataController.insertService(petName, roomName, 0, "ว่ายน้ำ", date);
+                    }
+                    serviceDataController.insertService(petName, roomName, 0, "ให้อาหาร"+foodName, date);
+
+                }
+            }
+        }
         getData();
     }
 
@@ -348,6 +412,44 @@ public class DataController {
 
     public ArrayList<CheckIn> getCheckIns() {
         return checkIns;
+    }
+
+    public ArrayList<Salon> getSalon (){
+        return salons;
+    }
+
+    public Salon getSalon(int salon_id){
+        Salon salon = new Salon(0, "", "", "", true, "");
+        for (Salon s: salons){
+            if (s.getId() == salon_id){
+                salon = s;
+            }
+        }
+        return salon;
+    }
+
+    public ArrayList<Service> getService (){
+        return services;
+    }
+
+    public Service getService(int service_id){
+        Service service = new Service(0, "", "", "", true, "");
+        for (Service s: services){
+            if (s.getId() == service_id){
+                service = s;
+            }
+        }
+        return service;
+    }
+
+    public void editStatusSalon (int salon_id) {
+        salonDataController.editStatus(salon_id, 1);
+        getData();
+    }
+
+    public void editStatusService (int service_id) {
+        serviceDataController.editStatus(service_id, 1);
+        getData();
     }
 }
 
