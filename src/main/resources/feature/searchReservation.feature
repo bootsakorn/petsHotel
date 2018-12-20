@@ -13,6 +13,6 @@ Scenario: choose reserved number and click check in
 
 Background:
 
-Scenario: don't have reserved number and click check in
+Scenario: customers don't have reserved number and I click check in
     When I click check in
     Then I can't check in
