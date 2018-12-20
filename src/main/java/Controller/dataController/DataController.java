@@ -73,6 +73,7 @@ public class DataController {
     public void getData() {
         this.pets = petsDataController.getPetsList();
         this.checkIns = checkInDataController.getCheckInList();
+        this.checkOuts = checkoutDataController.getCheckoutArrayList();
         this.petsLists = petsListDataController.getPetsIdList();
         this.customers = customersDataController.getCustomers();
         this.foods = foodDataController.getFoods();
@@ -459,6 +460,10 @@ public class DataController {
     public void editStatusService (int service_id) {
         serviceDataController.editStatus(service_id, 1);
         getData();
+    }
+
+    public ArrayList<CheckOut> getCheckOuts() {
+        return checkOuts;
     }
 }
 
