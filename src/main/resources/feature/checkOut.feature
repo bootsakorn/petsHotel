@@ -2,6 +2,7 @@ Feature: Check out
     As a Cashier
     I want to check out.
 
+Background:
 Scenario: choose an appointment number and click check out
     Given a customer Mr.B check out with appointment number 26
     When I click appointment number 26 and I check out
