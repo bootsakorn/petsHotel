@@ -1,20 +1,24 @@
 // ออกใบเสร็จให้ลูกค้า
 
-Feather: make invoice
+Feature: make invoice
     As a cashier
     I want to make invoice for customer
 
-Scenario: no change
+Background:
     Given total price is 10100 baht
+
+Scenario: no change
     When a customer cash 10100 baht
     Then I give them invoice
 
+Background:
+
 Scenario: has change
-    Given total price is 10100 baht
     When a customer cash 10200 baht
     Then I give them invoice And change 100 baht
 
+Background:
+
 Scenario: no invoice
-    Given total price is 10100 baht
     When a customer isn't cash
     Then I can't make invoice
